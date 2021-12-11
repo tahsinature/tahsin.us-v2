@@ -1,0 +1,125 @@
+{
+  "httpCode": 200,
+  "requestId": "bbc5f21b-072a-402c-a0cb-853094bfd21a",
+  "errors": [],
+  "data": {
+    "title": "Tools I'm using nowadays",
+    "list": [
+      {
+        "_id": "1f9a46ea-7cb5-4893-a808-56af27c166c7",
+        "image": "https://s.appbrain.com/static/202003041452037/blob/sdk-logos/grpc.png",
+        "title": "gRPC",
+        "description": "I like gRPC transport mechanism for request/response as non-persistent streaming protocol."
+      },
+      {
+        "_id": "f6de396e-9220-463c-b522-27a578dcb2cc",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fgoogle-pub-sub.png?alt=media&token=114864ba-6c9f-4ee4-bb33-305049f5cb32",
+        "title": "Google Cloud Pub/Sub",
+        "description": "GC Pub/Sub became my favt tool for event driven architecture and a good alternative to Kafka as it is backed by Google and because of it's less complexity"
+      },
+      {
+        "_id": "78aeb921-2b40-4114-9ce1-78481b0f4363",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fsocket-io-logo.svg?alt=media&token=8c692e6c-a53e-4054-b19c-6d99c5d1e643",
+        "title": "Socket.IO",
+        "description": "I am using Socket.IO for bi-directional communication for quite a long now."
+      },
+      {
+        "_id": "c5b28e04-3694-42fb-82ea-0ef18ce414cb",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Ffirebase_logo.png?alt=media&token=c1230b32-e464-48f0-8d3f-b49fe600f71b",
+        "title": "FCM",
+        "description": "Using Firebase Cloud Messaging (FCM) since 2019, as it's powered by Google, feels pretty consistant and reliable."
+      },
+      {
+        "_id": "8cfebeda-149a-490d-9c26-3f5c333f8b34",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fdocker-logo.png?alt=media&token=531f83a7-ace5-4a31-b825-822dbc1aa6c5",
+        "title": "Docker",
+        "description": "Everyday's tool. In fact if I create a new repo now, I put it on docker first."
+      },
+      {
+        "_id": "0bdee134-f834-41e4-a0a6-143ca3dc9e83",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fjest-logo.jpg?alt=media&token=a97a9453-7782-4a0f-bde4-915274ebbff9",
+        "title": "Jest",
+        "description": "Previously I was using Jasmine for testing. Now using Jest since 2019."
+      },
+      {
+        "_id": "7e6a0b58-0e48-40b0-8a8a-6657908ae04b",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fjasmine-logo.png?alt=media&token=e6ae2173-a0b5-4c74-be00-af037aa7a23c",
+        "title": "Jasmine",
+        "description": "Before I started to use Jest, I was using Jesmine continuously as a testing framework for JavaScript"
+      },
+      {
+        "_id": "3e2f15f6-c534-4be0-a723-3dafe8dbc77c",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fredux-logo.png?alt=media&token=2868fad7-92b8-46d3-be0c-fa1b6039b1d1",
+        "title": "Redux",
+        "description": "If I use React or React Native apps, redux will take place there for sure."
+      },
+      {
+        "_id": "20f1da6a-eed2-4063-9b49-4d8fc767ffed",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fredux-saga-logo.png?alt=media&token=ae773577-05bb-44b2-aaed-e7408447c9a3",
+        "title": "Redux Saga",
+        "description": "I use it to handle side effects of react or, react-native apps."
+      },
+      {
+        "_id": "3620b398-0250-4ae5-9c10-60398a96d964",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fsass-logo.png?alt=media&token=5302045a-468b-4ea4-8c99-421330500513",
+        "title": "Sass",
+        "description": "Whenever I say I am writting CSS, it means I am writting Sass. I mean literally"
+      },
+      {
+        "_id": "e2811230-5a05-4a5e-bffe-92a61bb340db",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fgulp-logo.jpg?alt=media&token=516b0e41-67b7-4410-9828-23819c2b0f85",
+        "title": "Gulp",
+        "description": "I use gulp mostly when I don't use a framework. Great tool as a task-runner"
+      },
+      {
+        "_id": "89fefa73-262f-482e-b1f4-f3301d421afd",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fgit-logo.png?alt=media&token=48901fa3-44ad-43c3-8f1f-88fa5074f7e5",
+        "title": "Git",
+        "description": "Of course you can say, \"Every minute I use Git on GitHub and GitLab\". Literally."
+      },
+      {
+        "_id": "038ea8db-cd95-45b7-8fc8-d5c2aba75747",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fops_manager_backup-k53o3agwfc.png?alt=media&token=483ca954-f87a-4b4e-a73e-fb8d82b52869",
+        "title": "ORM / ODM",
+        "description": "I use Mongoose, Sequelize & TypeORM to deal with the databases I work on day-to-day."
+      },
+      {
+        "_id": "bbaa4c31-b95f-47a4-b2ce-75e79661cf7a",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fredis-logo.png?alt=media&token=f39a4fde-2be6-407d-8e87-7f97e7c1c2dd",
+        "title": "Redis",
+        "description": "I've been using Redis for caching & scheduling. I love it for those purposes."
+      },
+      {
+        "_id": "4f0f01d0-8cab-4dee-9630-dd2d5f36e031",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fdatabases-logo.png?alt=media&token=5e140a2a-ff2f-45e0-a934-a83b0d6491fd",
+        "title": "Databases",
+        "description": "So far I've worked with Postgres, MongoDB & MySQL."
+      },
+      {
+        "_id": "107a2cc6-0745-439f-b4dc-58606e04c1dd",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Ffirebase_logo.png?alt=media&token=c1230b32-e464-48f0-8d3f-b49fe600f71b",
+        "title": "Firebase",
+        "description": "I love this platform. I feel so comfortable and confident as it's backed by Google"
+      },
+      {
+        "_id": "b9dd3a54-77a1-49bb-8140-ea9503d6cf89",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fsonarqube-logo.png?alt=media&token=c75b584c-77d4-4341-8c5b-71616300830d",
+        "title": "SonarQube",
+        "description": "I use Sonar to inspect my code quality, detect bugs, code smells and security vulnerabilities. Really helps when I work in a team."
+      },
+      {
+        "_id": "99f39a13-aca5-4e23-966e-aaa5105cac90",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fhashicorp-vault-logo.png?alt=media&token=950f4c59-a5b0-4eaf-8b1b-683c8889e4c4",
+        "title": "HashiCorp Vault",
+        "description": "It's a single source of truth to manage credentials. I use it for storing application API keys, passwords, certificates and other sensitive data."
+      },
+      {
+        "_id": "651038c4-1ef0-4942-9dd2-5fd931b9ef37",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fselenium%20logo.png?alt=media&token=150ada39-5351-4636-8365-52064190df68",
+        "title": "Selenium",
+        "description": "I use it to automate browser related stuffs as well as to write e2e test."
+      }
+    ]
+  },
+  "message": "success"
+}

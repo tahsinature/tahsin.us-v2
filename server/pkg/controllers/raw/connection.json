@@ -1,0 +1,47 @@
+{
+  "httpCode": 200,
+  "requestId": "758d7013-4d71-40ec-9c7a-b6b2d5c4cdb8",
+  "errors": [],
+  "data": {
+    "connection": {
+      "name": "Anonymous",
+      "lookUpData": {
+        "ip": "114.124.247.206",
+        "version": "IPv4",
+        "city": "Jakarta",
+        "region": "Jakarta",
+        "region_code": "JK",
+        "country": "ID",
+        "country_name": "Indonesia",
+        "country_code": "ID",
+        "country_code_iso3": "IDN",
+        "country_capital": "Jakarta",
+        "country_tld": ".id",
+        "continent_code": "AS",
+        "in_eu": false,
+        "postal": null,
+        "latitude": -6.1741,
+        "longitude": 106.8296,
+        "timezone": "Asia/Jakarta",
+        "utc_offset": "+0700",
+        "country_calling_code": "+62",
+        "currency": "IDR",
+        "currency_name": "Rupiah",
+        "languages": "id,en,nl,jv",
+        "country_area": 1919440,
+        "country_population": 267663435,
+        "asn": "AS23693",
+        "org": "PT. Telekomunikasi Selular"
+      },
+      "socketId": null,
+      "disableLog": false,
+      "_id": "6170707e7b1a40001234b96c",
+      "createdAt": "2021-10-20T19:39:42.568Z",
+      "updatedAt": "2021-12-11T15:40:26.129Z",
+      "__v": 0,
+      "ip": "114.124.247.206"
+    },
+    "isNewConnection": false
+  },
+  "message": "success"
+}

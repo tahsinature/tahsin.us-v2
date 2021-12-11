@@ -1,0 +1,125 @@
+{
+  "httpCode": 200,
+  "requestId": "bbc5f21b-072a-402c-a0cb-853094bfd21a",
+  "errors": [],
+  "data": {
+    "personal": {
+      "name": "Mohammad Tahsin",
+      "email": "work.tahsin@gmail.com",
+      "profession": "Software Developer",
+      "avatar": "https://avatars2.githubusercontent.com/u/41298152"
+    },
+    "writings": [
+      {
+        "display": true,
+        "_id": "6092a9b16c4f6757812e8d2f",
+        "title": "Make Life Easier with Relational Database & Node.js with sequelize-utility",
+        "content": "\n<p align=\"center\" width=\"100%\">\n\t<img src=\"https://miro.medium.com/max/700/1*cndbleNCmua6nXRK2K3k0w.jpeg\" width=\"80%\" style=\"border-radius:5px;\" /> \n</p>\n\n\n<br />\n<br />\n\nAs far as we know, [Sequelize](https://www.npmjs.com/package/sequelize) is the most used tool among the relational database users as an ORM. The alternatives are of course [Bookshelf](https://www.npmjs.com/package/bookshelf), [node-orm2](https://www.npmjs.com/package/node-orm) and so on… But the most popular one is **Sequelize.** (19k+ GitHub star at the time of writing this article.)\n\nSequelize as a daily driver of Relational DB users, I was missing some handy methods which I need almost every hour. Manually writing those things is quite annoying. That’s why I was thinking, wouldn\\'t it be nice if I could create some helpers for the things that I need that often.\n\nThat’s how [**sequelize-utility**](https://www.npmjs.com/package/sequelize-utility) came to the rescue. I created this lib just to combine some sequelize feature with each other.\n\nHope this will help you out as well.\n<br />\n<br />\nHappy Coding!\n\n\n",
+        "description": "Accusamus ut dignissimos laudantium blanditiis dolorem. Quo iusto cumque ut blanditiis quia ab dolores ex. Eaque ratione et optio et aut maiores.",
+        "createdAt": "2019-09-05T14:20:33.231Z",
+        "updatedAt": "2019-09-05T14:20:33.231Z",
+        "__v": 0
+      },
+      {
+        "display": true,
+        "_id": "6094455b529b1cecff2e5085",
+        "title": "Why building something with what we’ve learned is important?",
+        "content": "![](https://miro.medium.com/max/1360/1*nGRZbHUHg0NIQUA5CtxOjw.png)\n<small>*Image source: makeuseof.com*</small>\n\n<br />\n\nFirst of all, let’s talk a bit about learning. There are a tons of methods of learning. For example, some people like to follow along with a course project as most courses out there go with at least a big project. Or some people might prefer a very tiny individual project but focus on a specific topic related to the part he/she learning at this time. Next, maybe move to another part, then build another tiny mini-project. You get the idea.\n\n<br />\n\nI prefer to go with the 2nd approach. Because of that, I can really focus only on the part I am learning at this point. For example, I am learning [**Vue.js**](https://vuejs.org/). The course I am following, it has a big project. And suppose currently, I am on the [**Vuex**](https://vuex.vuejs.org/) part. Of course, I will follow the big course-project. But at the moment I am learning Vuex, what I do is, I create a very tiny project which specifically focuses on Vuex. So I get less distracted by other complexity of the technology that I’m about to learn. And also it’s very important, after learning a technology, build something interesting with it.\n\n<br />\n\nAh, speaking of Vue.js and learning things, I completed a big project [**Vue-Store**](https://vue-store-tahsin.firebaseapp.com/) (a complete, fully functional e-commerce site) immediately after I learned the basics of Vue.js. In-case if you wanna have a look: [https://vue-store-tahsin.firebaseapp.com](https://vue-store-tahsin.firebaseapp.com/).\n\n<br />\n\nI spent around 20 days for both Backend & Frontend to build it. Even after around 1.5 years, I still use this project as a reference for myself and my friends. And, when I said reference, it can be an implementation of a tool or a concept.\n\n\n<br />\nYou can have a look at my [**GitHub**](https://github.com/tahsinature) as well: <https://github.com/tahsinature>\n",
+        "description": "Building a project extremely important while learning something",
+        "createdAt": "2020-06-05T14:20:33.231Z",
+        "updatedAt": "2020-06-05T14:20:33.231Z",
+        "__v": 0
+      },
+      {
+        "display": true,
+        "_id": "60944898529b1cecff315c16",
+        "title": "Tired of circular dependency in Typescript/Node.js?",
+        "content": "\n<style>\n.img-holder {\n\talign: center;\n    overflow: hidden;\n    padding-top: 2rem;\n    padding-bottom: 2rem;\n#    background-color: red;\n}\n.img-holder img {\n\tborder-radius: 0px;\n}\n</style>\n\n\n\n\nFirst of all, let’s see what is [circular dependency](https://en.wikipedia.org/wiki/Circular_dependency). According to this Wikipedia:\n\n> In [software engineering](https://en.wikipedia.org/wiki/Software_engineering), a **circular dependency** is a relation between two or more modules which either directly or indirectly depend on each other to function properly. Such modules are also known as [mutually recursive](https://en.wikipedia.org/wiki/Mutual_recursion).\n\n<p align=\"center\" class=\"img-holder\">\n\t<img src=\"https://miro.medium.com/max/216/1*qW0jpDLSgaLw8E3Es32rtg.png\" />\n</p>\n\n\nAlright, what does it mean? Well, to understand it properly let’s clone this [repository](https://github.com/tahsinature/circular-dependency-typescript) and cd into `src/good` dir & inspect the files.\n\nWhat we can see there is, `a.ts` is importing a variable from `b.ts` & in the `main.ts` we are importing & printing the variable from `a.ts`. So the flow looks like this:\n\n<p align=\"center\" class=\"img-holder\">\n\t<img src=\"https://miro.medium.com/max/261/1*15OI7wPKsO0AcpMOfeiQ1w.png\" />\n</p>\n\nWhen we execute `main.ts` by `npx ts-node main.ts` here is the output:\n\n<p align=\"center\" class=\"img-holder\">\n\t<img src=\"https://miro.medium.com/max/184/1*2A3lEGZkg6z2fNbaRmjZDA.png\" />\n</p>\n\nSo far so good. Now let’s cd into `src/problem` dir & inspect what's going on. Here we can see `a.ts` importing a variable from `b.ts` and so does `b.ts` the opposite. And in `main.ts` it’s importing a variable from `a.ts` & `b.ts` and printing them. In this case, the flow looks like this:\n\n<p align=\"center\" class=\"img-holder\">\n\t<img src=\"https://miro.medium.com/max/161/1*iyG6DAXqqTbA6rg0yiFbVQ.png\" />\n</p>\n\nWhen we execute `main.ts` by `npx ts-node main.ts` here is the output:\n\n<p align=\"center\" class=\"img-holder\">\n\t<img src=\"https://miro.medium.com/max/281/1*Wl9AM9OZLLHp-eqaWIEvRQ.png\" />\n</p>\n\nWhat is going on? In the last line instead of John, we are seeing `undefined`. Didn’t we import the variable correctly? Yes, we did. But it is happening because of the circular dependency problem. Look at the problem dir flow above. File `a.ts` is dependent on `b.ts` & `b.ts` dependent on `a.ts`.\n\nHow it’s happening let’s talk about it another time, but before that let’s see how we can detect it.\n\nIn a small program like this, it’s not a big problem to detect circular dependency. But in a large codebase, once we depend on a wrong module accidentally, then it’s tough to detect this later on. So today we are gonna use a tool call madge. Let’s see how we are gonna use it.\n\ncd into `src/good` dir & execute `npx madge --extensions js,ts --circular .`\n\nWhat do you see? No problems found. Right? Yeah. Because there is no circular dependency problem.\n\n\n<p align=\"center\" class=\"img-holder\">\n\t<img src=\"https://miro.medium.com/max/710/1*OyflhLcqApYFmTBYD0Legg.png\" />\n</p>\n\n\n\n\nNow cd into `src/problem` dir & execute `npx madge --extensions js,ts --circular .`\n\nWhat do you see? It’s awesome, right? The way it shows which files are circularly depending on what files, in a large codebase, it saves a lot of time.\n\n\n<p align=\"center\" class=\"img-holder\">\n\t<img src=\"https://miro.medium.com/max/718/1*Kyz2GgJawnPNx1y1rR0mNQ.png\" />\n</p>\n\nOiya, before we forget, of course in a large codebase we use `tsconfig.json`. If we have module aliases or something like that, we have to point to that `tsconfig.json`. So in that case we can add another flag like this:\n\n<p align=\"center\" class=\"img-holder\">\n\t<img src=\"https://miro.medium.com/max/2920/1*0LMJsLBk27vXDQs_UJnkIQ.png\" />\n</p>\n\n\nIf we do not use typescript, we don’t have to use `--ts-config` flag as well as `ts` in the `--extensions` flag.\n\nAlright, enough for today. Next, hopefully, we will talk about how circular-dependency gets created underneath.\n\n<br />\n<br />\nThank You.\n\nHappy Coding 💻\n",
+        "description": "In typescript circular dependency issue is a nightmare sometimes. Here I talked about this.",
+        "createdAt": "2021-01-20T14:20:33.231Z",
+        "updatedAt": "2021-01-20T14:20:33.231Z",
+        "__v": 0
+      }
+    ],
+    "tools": [
+      {
+        "display": true,
+        "_id": "6094334de9de5f3f9a9505ee",
+        "title": "Selenium",
+        "description": "I use it to automate browser related stuffs as well as to write e2e test.",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fselenium%20logo.png?alt=media&token=150ada39-5351-4636-8365-52064190df68",
+        "url": "https://www.selenium.dev/",
+        "__v": 0,
+        "createdAt": "2021-05-06T18:19:57.963Z",
+        "updatedAt": "2021-05-06T18:19:57.963Z"
+      },
+      {
+        "display": true,
+        "_id": "6094334de9de5f3f9a9505dd",
+        "title": "Google Cloud Pub/Sub",
+        "description": "GC Pub/Sub became my favt tool for event driven architecture and a good alternative to Kafka as it is backed by Google and because of it's less complexity",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fgoogle-pub-sub.png?alt=media&token=114864ba-6c9f-4ee4-bb33-305049f5cb32",
+        "url": "https://cloud.google.com/pubsub",
+        "__v": 0,
+        "createdAt": "2021-05-06T18:19:57.961Z",
+        "updatedAt": "2021-05-06T18:19:57.961Z"
+      },
+      {
+        "display": true,
+        "_id": "6094334de9de5f3f9a9505ec",
+        "title": "SonarQube",
+        "description": "I use Sonar to inspect my code quality, detect bugs, code smells and security vulnerabilities. Really helps when I work in a team.",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fsonarqube-logo.png?alt=media&token=c75b584c-77d4-4341-8c5b-71616300830d",
+        "url": "https://www.sonarqube.org/",
+        "__v": 0,
+        "createdAt": "2021-05-06T18:19:57.963Z",
+        "updatedAt": "2021-05-06T18:19:57.963Z"
+      },
+      {
+        "display": true,
+        "_id": "6094334de9de5f3f9a9505dc",
+        "title": "gRPC",
+        "description": "I like gRPC transport mechanism for request/response as non-persistent streaming protocol.",
+        "image": "https://s.appbrain.com/static/202003041452037/blob/sdk-logos/grpc.png",
+        "url": "https://grpc.io/",
+        "__v": 0,
+        "createdAt": "2021-05-06T18:19:57.960Z",
+        "updatedAt": "2021-05-06T18:19:57.960Z"
+      },
+      {
+        "display": true,
+        "_id": "6094334de9de5f3f9a9505ed",
+        "title": "HashiCorp Vault",
+        "description": "It's a single source of truth to manage credentials. I use it for storing application API keys, passwords, certificates and other sensitive data.",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fhashicorp-vault-logo.png?alt=media&token=950f4c59-a5b0-4eaf-8b1b-683c8889e4c4",
+        "url": "https://www.vaultproject.io/",
+        "__v": 0,
+        "createdAt": "2021-05-06T18:19:57.963Z",
+        "updatedAt": "2021-05-06T18:19:57.963Z"
+      },
+      {
+        "display": true,
+        "_id": "6094334de9de5f3f9a9505e0",
+        "title": "Docker",
+        "description": "Everyday's tool. In fact if I create a new repo now, I put it on docker first.",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fdocker-logo.png?alt=media&token=531f83a7-ace5-4a31-b825-822dbc1aa6c5",
+        "url": "https://www.docker.com/",
+        "__v": 0,
+        "createdAt": "2021-05-06T18:19:57.961Z",
+        "updatedAt": "2021-05-06T18:19:57.961Z"
+      },
+      {
+        "display": true,
+        "_id": "6094334de9de5f3f9a9505e1",
+        "title": "Jest",
+        "description": "Previously I was using Jasmine for testing. Now using Jest since 2019.",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fjest-logo.jpg?alt=media&token=a97a9453-7782-4a0f-bde4-915274ebbff9",
+        "url": "https://jestjs.io/",
+        "__v": 0,
+        "createdAt": "2021-05-06T18:19:57.961Z",
+        "updatedAt": "2021-05-06T18:19:57.961Z"
+      }
+    ]
+  },
+  "message": "success"
+}

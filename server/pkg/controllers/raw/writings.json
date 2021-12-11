@@ -1,0 +1,29 @@
+{
+  "httpCode": 200,
+  "requestId": "bbc5f21b-072a-402c-a0cb-853094bfd21a",
+  "errors": [],
+  "data": {
+    "title": "My Writings",
+    "list": [
+      {
+        "_id": "6092a9b16c4f6757812e8d2f",
+        "image": "https://icon-library.com/images/article-icon-png/article-icon-png-15.jpg",
+        "title": "Make Life Easier with Relational Database & Node.js with sequelize-utility",
+        "description": "Accusamus ut dignissimos laudantium blanditiis dolorem. Quo iusto cumque ut blanditiis quia ab dolores ex. Eaque ratione et optio et aut maiores."
+      },
+      {
+        "_id": "6094455b529b1cecff2e5085",
+        "image": "https://icon-library.com/images/article-icon-png/article-icon-png-15.jpg",
+        "title": "Why building something with what we’ve learned is important?",
+        "description": "Building a project extremely important while learning something"
+      },
+      {
+        "_id": "60944898529b1cecff315c16",
+        "image": "https://icon-library.com/images/article-icon-png/article-icon-png-15.jpg",
+        "title": "Tired of circular dependency in Typescript/Node.js?",
+        "description": "In typescript circular dependency issue is a nightmare sometimes. Here I talked about this."
+      }
+    ]
+  },
+  "message": "success"
+}
