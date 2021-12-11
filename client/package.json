@@ -47,6 +47,7 @@
     "eject": "react-scripts eject",
     "commit": "git-cz"
   },
+  "homepage": "http://localhost:3001/app",
   "eslintConfig": {
     "extends": "react-app"
   },
