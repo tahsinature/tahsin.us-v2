@@ -1,0 +1,49 @@
+@import '../../assets/sass/media';
+
+.Root {
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  .ListTitle {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .List {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+    padding: 0;
+    @include respond(mf, tab-l) {
+      grid-template-columns: 1fr 1fr;
+    }
+    li {
+      padding: 1rem 0.5rem;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      p {
+        margin: 0;
+      }
+      &:hover {
+        border-color: rgba(81, 81, 81, 0.098);
+        transform: scale(1.02);
+      }
+      .ItemTop {
+        display: flex;
+        align-items: center;
+        h4 {
+          margin: 0.5rem;
+        }
+        img {
+          width: 20px;
+          height: 20px;
+          margin-right: 0.5rem;
+          object-fit: scale-down;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}

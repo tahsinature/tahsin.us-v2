@@ -1,0 +1,30 @@
+@import '../../../assets/sass/main.scss';
+
+.GotoChatButton {
+  padding: 0.1rem 1rem;
+  @include respond(df, sm) {
+    padding: 0.1rem 0.4rem;
+  }
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  background-color: #19a974;
+  color: #fff;
+  font-size: 0.7rem;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.7rem;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+  &:hover {
+    background-color: #fff;
+    color: #19a974;
+    border: 1px solid #19a974;
+  }
+  p {
+    margin: 0;
+    margin-left: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+}

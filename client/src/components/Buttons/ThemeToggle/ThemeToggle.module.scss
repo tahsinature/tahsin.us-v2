@@ -1,0 +1,48 @@
+$color-dark: #1f242a;
+$color-light: #f5f6f8;
+
+.ThemeToggle {
+  display: block;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  transition: all 400ms ease;
+  border-radius: 4px;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+
+  &.dawn {
+    background: $color-light;
+    &:hover {
+      background: lighten($color-light, 20%);
+    }
+    .toggle-glyph {
+      fill: $color-dark;
+      transform: rotate(360deg);
+    }
+  }
+
+  &.dusk {
+    background: $color-dark;
+    &:hover {
+      background: lighten($color-dark, 20%);
+    }
+    .toggle-glyph {
+      transform: rotate(180deg);
+      fill: $color-light;
+    }
+  }
+}
+
+.toggle-glyph {
+  text-align: center;
+  transition: all 400ms ease;
+  width: 24px;
+  margin: auto;
+
+  svg {
+    display: block;
+  }
+}

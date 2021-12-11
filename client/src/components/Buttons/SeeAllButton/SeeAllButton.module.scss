@@ -1,0 +1,13 @@
+.SeeAllButton {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: rgba(6, 240, 84, 0.192);
+  transition: all 0.3s;
+  border: 1px solid rgba(6, 240, 84, 0.3);
+  &:hover {
+    color: #fff;
+    background-color: colors;
+  }
+}

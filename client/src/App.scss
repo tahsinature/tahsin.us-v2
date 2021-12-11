@@ -1,0 +1,70 @@
+* {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+
+  /*
+    Introduced in Internet Explorer 10.
+    See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+  */
+  -ms-user-select: none;
+  user-select: none;
+  // transition: background-color 5s;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus {
+  outline: none;
+}
+
+body {
+  // max-width: 60%;
+  // min-width: 500px;
+  // padding: 2em;
+  margin: 0 auto;
+  font-family: 'Roboto Slab', 'sans-serif';
+  font-size: 1rem;
+  // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  transition: background-color 0.2s, color 0.2s;
+
+  height: 100vh;
+}
+
+p {
+  line-height: 1.7;
+  // line-height: 4.8;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+li {
+  list-style: none;
+  padding-bottom: 0.5em;
+}
+li ul li {
+  list-style: none;
+  padding-bottom: 0.1em;
+}
+
+#iamassumingyouareadevelopertoo {
+  height: 100%;
+}

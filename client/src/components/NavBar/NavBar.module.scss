@@ -1,0 +1,14 @@
+.NavBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+  // background-color: red;
+}
+
+.Button {
+  border: none;
+  background-color: transparent;
+  // border-radius: 50%;
+}

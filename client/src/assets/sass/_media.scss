@@ -1,0 +1,53 @@
+/**
+https://material-ui.com/customization/breakpoints/
+xs, extra-small: 0px
+sm, small: 600px
+md, medium: 960px
+lg, large: 1280px
+xl, extra-large: 1920px
+**/
+
+@mixin respond($appr, $point) {
+  // Approach Set
+  @if ($appr == mf) {
+    $appr: min-width;
+  } @else if ($appr == df) {
+    $appr: max-width;
+  }
+
+  // Breakpoint Set
+  @if ($point == mbl) {
+    $point: 576px;
+  } @else if ($point == tab-p) {
+    $point: 768px;
+  } @else if ($point == tab-l) {
+    $point: 992px;
+  } @else if ($point == desk-l) {
+    $point: 1900px;
+  } @else if ($point == sm) {
+    $point: 600px;
+  } @else if ($point == md) {
+    $point: 960px;
+  } @else if ($point == lg) {
+    $point: 1280px;
+  } @else if ($point == xl) {
+    $point: 1920px;
+  }
+
+  // Media Query Set
+  @media ($appr: $point) {
+    @content;
+  }
+}
+
+/**
+example
+@import './assets/sass/main.scss';
+
+.content {
+  background: red;
+  @include respond(mf, mbl) {
+    background: black;
+  }
+}
+**/

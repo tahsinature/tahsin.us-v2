@@ -1,0 +1,19 @@
+.GravityPoints {
+  width: 100%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.Canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
