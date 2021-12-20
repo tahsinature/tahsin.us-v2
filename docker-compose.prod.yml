@@ -1,13 +1,17 @@
-version: '3'
+version: "3"
+
 services:
-  frontend:
-    build:
-      context: .
-      dockerfile: custom.prod.dockerfile
-    ports:
-      - 3000:3000
-    volumes:
-      - ~/Workstation/personal/me/src:/app/src
-      - ~/Workstation/personal/me/public:/app/public
-    network_mode: host
-    command: npm start
+  app:
+    image: tahsinature/me:1
+    networks: [traefik]
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.whoami.rule=Host(`tahsin.us`)
+      - traefik.http.services.whoami.loadbalancer.server.port=3001
+      - traefik.http.routers.whoami.tls=true
+      - traefik.http.routers.whoami.entrypoints=websecure
+      - traefik.http.routers.whoami.tls.certresolver=myresolver
+
+networks:
+  traefik:
+    external: true
