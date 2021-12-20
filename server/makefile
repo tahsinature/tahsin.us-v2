@@ -3,7 +3,7 @@ prepare:
 run:
 	go run pkg/main.go -r
 run-watch:
-	air
+	./bin/air
 syncdb:
 	go run pkg/main.go --syncf
 seed:

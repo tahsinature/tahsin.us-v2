@@ -27,9 +27,9 @@ var (
 
 func Validate() {
 	_, file, _, _ := runtime.Caller(0)
-	rootPath := path.Join(file, "..", "..", "..")
+	serverRootPath := path.Join(file, "..", "..", "..")
 
-	if envPath := path.Join(rootPath, ".env"); godotenv.Load(envPath) != nil {
+	if envPath := path.Join(serverRootPath, "..", ".env"); godotenv.Load(envPath) != nil {
 		log.Fatal("error: failed to load the env file")
 	}
 
@@ -62,7 +62,7 @@ func Validate() {
 	}
 
 	Other = otherConfig{
-		RootPath: rootPath,
+		RootPath: serverRootPath,
 	}
 
 	utilities.ValidateMultipleStruct(DB, App, JWT, Redis, Other)
