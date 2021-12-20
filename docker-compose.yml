@@ -35,4 +35,15 @@ services:
       REDIS_HOST: redis
     command: sh -c '../scripts/wait-for db:5432 redis:6379 -- make run-watch'
     ports:
-      - "9000:9000"
+      - "3001:3001"
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    volumes:
+      - ./client:/app
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
