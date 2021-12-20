@@ -134,4 +134,6 @@ server/pkg/public/app
 server/bin/air
 server/tmp
 
+client/build
+
 firebaseServiceAccountKey.json
