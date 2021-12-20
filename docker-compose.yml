@@ -25,7 +25,7 @@ services:
       context: ./server
       dockerfile: Dockerfile
     volumes:
-      - .:/app/server
+      - .:/app
       - /app/server/bin
     depends_on:
       - db
