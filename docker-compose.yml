@@ -44,6 +44,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./client:/app
+      - /app/node_modules
       - ./scripts:/app/scripts
     depends_on:
       - backend
