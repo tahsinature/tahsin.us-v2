@@ -35,7 +35,7 @@ services:
     environment:
       DB_HOST: db
       REDIS_HOST: redis
-    command: sh -c './scripts/wait-for -t 30 db:5432 redis:6379 -- make run'
+    command: sh -c './scripts/wait-for -t 30 db:5432 redis:6379 -- make run-watch'
     ports:
       - "3001:3001"
 
