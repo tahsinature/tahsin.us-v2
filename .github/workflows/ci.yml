@@ -3,6 +3,13 @@ name: ci
 on: [push]
 
 jobs:
+  prepare-files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create .env
+        run: |
+          cp .env_rename_me .env
+
   primary-build:
     runs-on: ubuntu-latest
     steps:
