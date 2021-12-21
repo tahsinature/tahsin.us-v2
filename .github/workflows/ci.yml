@@ -16,7 +16,10 @@ jobs:
       #     username: ${{ secrets.DOCKERHUB_USERNAME }}
       #     password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Create .env
-        run: cp .env_rename_me .env
+        uses: canastro/copy-file-action@master
+        with:
+          source: ".env_rename_me"
+          target: ".env"
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
