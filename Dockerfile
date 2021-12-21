@@ -7,7 +7,7 @@ RUN ["npm", "run", "build"]
 
 
 FROM golang:1.17.2-alpine3.14
-WORKDIR /app/server
+WORKDIR /app
 RUN [ "apk", "add", "curl" ]
 RUN [ "apk", "add", "make" ]
 COPY ./server/makefile .
@@ -17,5 +17,5 @@ COPY ./server/go.sum .
 RUN [ "go", "mod", "download" ]
 COPY ./server .
 COPY .env /app
-COPY --from=build /app/build /app/server/pkg/public/app
+COPY --from=build /app/build /app/pkg/public/app
 CMD [ "make", "run" ]
