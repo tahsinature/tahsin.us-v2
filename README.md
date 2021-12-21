@@ -1,3 +1,5 @@
+![ci](https://github.com/tahsinature/tahsin.us/actions/workflows/ci.yml/badge.svg)
+
 ## temp command (run like from your host machine from docker)
 
 ```bash
