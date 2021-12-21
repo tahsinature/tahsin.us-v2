@@ -25,6 +25,10 @@ func Setup() *gin.Engine {
 	engine.Use(gzip.Gzip(gzip.DefaultCompression))
 	engine.Use(gin.Logger())
 
+	engine.GET("/", func(c *gin.Context) {
+		c.Redirect(http.StatusMovedPermanently, "/app")
+	})
+
 	new(Ping).setup(engine.Group("/ping"))
 	new(Visitor).setup(engine.Group("/visitor"))
 

@@ -9,7 +9,8 @@ import classes from './Home.module.scss';
 const Home = (props: { basicData: IReducers.IAppReducer['basicData'] }) => {
   let history = useHistory();
 
-  if (history.location.pathname === '/app') document.location.pathname = '/';
+  if (history.location.pathname === '/app') console.log('hehehe');
+
   if (!props.basicData) throw new Error('basic data not found but component tried to render');
   return (
     <div className={classes.Home}>
