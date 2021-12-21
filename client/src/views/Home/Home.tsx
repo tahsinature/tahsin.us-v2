@@ -2,10 +2,14 @@ import React from 'react';
 
 import HomeSections from '../../components/HomeSections/HomeSections';
 import { IReducers } from '../../interfaces/reducers';
+import { useHistory } from 'react-router-dom';
 
 import classes from './Home.module.scss';
 
 const Home = (props: { basicData: IReducers.IAppReducer['basicData'] }) => {
+  let history = useHistory();
+
+  if (history.location.pathname === '/app') document.location.pathname = '/';
   if (!props.basicData) throw new Error('basic data not found but component tried to render');
   return (
     <div className={classes.Home}>

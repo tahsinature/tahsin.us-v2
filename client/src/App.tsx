@@ -53,7 +53,7 @@ function App(props: any) {
         <NavBar />
         <div className={classes.Content}>
           <Switch>
-            <Route exact path="/" component={() => <Home basicData={basicData} />} />
+            <Route exact path={['/', '/app']} component={() => <Home basicData={basicData} />} />
             <Route path="/chat" component={() => <Chat />} />
             <Route path="/list" component={() => <List />} />
             <Route path="/md/:id" component={() => <Markdown />} />
