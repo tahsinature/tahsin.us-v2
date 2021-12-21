@@ -16,6 +16,6 @@ COPY ./server/go.mod .
 COPY ./server/go.sum .
 RUN [ "go", "mod", "download" ]
 COPY ./server .
-COPY .env /app
+COPY .env_rename_me /app/.env
 COPY --from=build /app/build /app/pkg/public/app
 CMD [ "make", "run" ]

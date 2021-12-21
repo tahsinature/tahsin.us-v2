@@ -15,11 +15,11 @@ jobs:
       #   with:
       #     username: ${{ secrets.DOCKERHUB_USERNAME }}
       #     password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Create .env
-        uses: canastro/copy-file-action@master
-        with:
-          source: ".env_rename_me"
-          target: ".env"
+      # - name: Create .env
+      #   uses: canastro/copy-file-action@master
+      #   with:
+      #     source: ".env_rename_me"
+      #     target: ".env"
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
