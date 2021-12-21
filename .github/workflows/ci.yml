@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   prepare-files:
-    runs-on: ubuntu-latest
     steps:
       - name: Create .env
         run: |
