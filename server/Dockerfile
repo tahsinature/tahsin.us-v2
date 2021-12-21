@@ -1,5 +1,5 @@
 FROM golang:1.17.2-alpine3.14
-WORKDIR /app/server
+WORKDIR /app
 RUN [ "apk", "add", "curl" ]
 RUN [ "apk", "add", "make" ]
 COPY makefile .

@@ -25,15 +25,16 @@ services:
       context: ./server
       dockerfile: Dockerfile
     volumes:
-      - .:/app
-      - /app/server/bin
+      - ./server:/app
+      - ./scripts:/app/scripts
+      - /app/bin
     depends_on:
       - db
       - redis
     environment:
       DB_HOST: db
       REDIS_HOST: redis
-    command: sh -c '../scripts/wait-for db:5432 redis:6379 -- make run-watch'
+    command: sh -c './scripts/wait-for -t 30 db:5432 redis:6379 -- make run'
     ports:
       - "3001:3001"
 
@@ -43,7 +44,9 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./client:/app
+      - ./scripts:/app/scripts
     depends_on:
       - backend
+    command: sh -c './scripts/wait-for -t 900 backend:3001 -- npm start'
     ports:
       - "3000:3000"
