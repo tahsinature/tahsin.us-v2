@@ -29,7 +29,7 @@ func Validate() {
 	_, file, _, _ := runtime.Caller(0)
 	serverRootPath := path.Join(file, "..", "..", "..")
 
-	if envPath := path.Join(serverRootPath, "..", ".env"); godotenv.Load(envPath) != nil {
+	if envPath := path.Join(serverRootPath, ".env"); godotenv.Load(envPath) != nil {
 		log.Fatal("error: failed to load the env file")
 	}
 

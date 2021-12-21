@@ -27,6 +27,7 @@ services:
     volumes:
       - ./server:/app
       - ./scripts:/app/scripts
+      - ./.env:/app/.env
       - /app/bin
     depends_on:
       - db
