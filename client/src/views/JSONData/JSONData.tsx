@@ -25,6 +25,7 @@ const JSONData = () => {
       .finally(() => {
         makeLoaded(true);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const postLoad = error ? <p>{error.message}</p> : <ReactJson src={data} />;

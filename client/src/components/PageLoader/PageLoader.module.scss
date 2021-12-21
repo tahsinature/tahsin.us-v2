@@ -55,12 +55,12 @@
       animation: pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
     }
     rect {
-      stroke-dasharray: (256 / 4 * 3) (256 / 4) (256 / 4 * 3) (256 / 4);
+      stroke-dasharray: (256 * 0.25 * 3) (256 * 0.25) (256 * 0.25 * 3) (256 * 0.25);
       stroke-dashoffset: 0;
       animation: pathRect 3s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
     }
     circle {
-      stroke-dasharray: (200 / 4 * 3) (200 / 4) (200 / 4 * 3) (200 / 4);
+      stroke-dasharray: (200 * 0.25 * 3) (200 * 0.25) (200 * 0.25 * 3) (200 * 0.25);
       stroke-dashoffset: 75;
       animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
     }
