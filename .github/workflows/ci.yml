@@ -8,6 +8,7 @@ jobs:
     steps:
       - name: Create .env
         run: |
+          ls -a
           cp .env_rename_me .env
 
   primary-build:
