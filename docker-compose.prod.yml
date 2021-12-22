@@ -2,7 +2,7 @@ version: "3"
 
 services:
   tahsinus-front:
-    image: tahsinature/me-front:1
+    image: tahsinature/me-front:latest
     networks: [traefik]
     labels:
       - traefik.enable=true
@@ -13,7 +13,7 @@ services:
       - traefik.http.routers.tahsinus-front.tls.certresolver=myresolver
 
   tahsinus-back:
-    image: tahsinature/me-back:1
+    image: tahsinature/me-back:latest
     networks: [traefik]
     labels:
       - traefik.enable=true
