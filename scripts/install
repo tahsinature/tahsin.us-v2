@@ -12,7 +12,3 @@ NVM_DIR="$HOME/.nvm"
 nvm install 12.18.4
 
 npm i http-server -g
-
-
-
-
