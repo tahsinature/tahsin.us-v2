@@ -15,9 +15,15 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build and push
-        id: docker_build
+      - name: Build and push (Frontent)
         uses: docker/build-push-action@v2
         with:
+          context: ./client
           push: true
-          tags: tahsinature/me:1
+          tags: tahsinature/me-front:1
+      - name: Build and push (Backend)
+        uses: docker/build-push-action@v2
+        with:
+          context: ./server
+          push: true
+          tags: tahsinature/me-back:1

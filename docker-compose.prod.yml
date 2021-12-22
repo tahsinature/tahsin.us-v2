@@ -1,16 +1,27 @@
 version: "3"
 
 services:
-  app:
-    image: tahsinature/me:1
+  tahsinus-front:
+    image: tahsinature/me-front:1
     networks: [traefik]
     labels:
       - traefik.enable=true
-      - traefik.http.routers.whoami.rule=Host(`tahsin.us`)
-      - traefik.http.services.whoami.loadbalancer.server.port=80
-      - traefik.http.routers.whoami.tls=true
-      - traefik.http.routers.whoami.entrypoints=websecure
-      - traefik.http.routers.whoami.tls.certresolver=myresolver
+      - traefik.http.routers.tahsinus-front.rule=Host(`tahsin.us`)
+      - traefik.http.services.tahsinus-front.loadbalancer.server.port=80
+      - traefik.http.routers.tahsinus-front.tls=true
+      - traefik.http.routers.tahsinus-front.entrypoints=websecure
+      - traefik.http.routers.tahsinus-front.tls.certresolver=myresolver
+
+  tahsinus-back:
+    image: tahsinature/me-back:1
+    networks: [traefik]
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.tahsinus-back.rule=Host(`back.tahsin.us`)
+      - traefik.http.services.tahsinus-back.loadbalancer.server.port=3001
+      - traefik.http.routers.tahsinus-back.tls=true
+      - traefik.http.routers.tahsinus-back.entrypoints=websecure
+      - traefik.http.routers.tahsinus-back.tls.certresolver=myresolver
 
 networks:
   traefik:
