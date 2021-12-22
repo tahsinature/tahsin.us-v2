@@ -6,16 +6,25 @@ COPY ./client .
 RUN ["npm", "run", "build"]
 
 
-FROM golang:1.17.2-alpine3.14
+FROM ubuntu:20.04
+SHELL [ "/bin/bash" ]
 WORKDIR /app
-RUN [ "apk", "add", "curl" ]
-RUN [ "apk", "add", "make" ]
-COPY ./server/makefile .
-RUN [ "make", "prepare" ]
-COPY ./server/go.mod .
-COPY ./server/go.sum .
-RUN [ "go", "mod", "download" ]
-COPY ./server .
-COPY .env_rename_me /app/.env
-COPY --from=build /app/build /app/pkg/public/app
-CMD [ "make", "run" ]
+RUN [ "apt", "update" ]
+RUN [ "apt", "install", "-y", "gcc", "make", "curl", "git", "bison" ]
+COPY ./scripts /app/scripts
+RUN [ "/app/scripts/install" ]
+
+WORKDIR /app/client
+COPY --from=build /app/build /app/client
+
+# WORKDIR /app/server
+# COPY ./server/makefile .
+# RUN [ "make", "prepare" ]
+# COPY ./server/go.mod .
+# COPY ./server/go.sum .
+# RUN [ "go", "mod", "download" ]
+# COPY ./server .
+# COPY .env_rename_me /app/.env
+# CMD [ "make", "run" ]
+
+CMD [ "sleep", "9999999999" ]
