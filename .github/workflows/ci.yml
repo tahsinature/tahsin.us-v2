@@ -26,9 +26,9 @@ jobs:
           context: ./client
           push: true
           tags: tahsinature/me-front:1
-      # - name: Build and push (Backend)
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: ./server
-      #     push: true
-      #     tags: tahsinature/me-back:1
+      - name: Build and push (Backend)
+        uses: docker/build-push-action@v2
+        with:
+          context: ./server
+          push: true
+          tags: tahsinature/me-back:1
