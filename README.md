@@ -7,3 +7,8 @@ docker build -t me-v2 .
 docker run -v ~/<project-dir>/src:/app/src -v ~/<project-dir>/public:/app/public --rm -it -p 3000:3000 me-v2 sh
 npm start
 ```
+
+### tasks
+
+- [ ] why image is so large
+- [ ] how its calling backend from chrome but not from firefox and other browser

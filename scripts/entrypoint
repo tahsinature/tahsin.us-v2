@@ -7,3 +7,4 @@ NVM_DIR="$HOME/.nvm"
 http-server -p 80 /app/client
 
 source /root/.gvm/scripts/gvm
+make -f ./server/makefile run
