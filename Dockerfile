@@ -27,4 +27,4 @@ COPY --from=build /app/build /app/client
 # COPY .env_rename_me /app/.env
 # CMD [ "make", "run" ]
 
-CMD [ "sleep", "9999999999" ]
+CMD [ "/app/scripts/entrypoint" ]
