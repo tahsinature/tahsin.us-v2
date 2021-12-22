@@ -12,19 +12,19 @@ WORKDIR /app
 RUN [ "apt", "update" ]
 RUN [ "apt", "install", "-y", "gcc", "make", "curl", "git", "bison" ]
 COPY ./scripts /app/scripts
-RUN [ "/app/scripts/install" ]
 
 WORKDIR /app/client
 COPY --from=build /app/build /app/client
 
-# WORKDIR /app/server
-# COPY ./server/makefile .
-# RUN [ "make", "prepare" ]
+WORKDIR /app/server
+COPY ./server .
+COPY .env_rename_me /app/server/.env
 # COPY ./server/go.mod .
 # COPY ./server/go.sum .
+# COPY ./server/makefile .
+# RUN [ "make", "prepare" ]
 # RUN [ "go", "mod", "download" ]
-# COPY ./server .
-# COPY .env_rename_me /app/.env
 # CMD [ "make", "run" ]
 
+RUN [ "/app/scripts/install" ]
 CMD [ "/app/scripts/entrypoint" ]
