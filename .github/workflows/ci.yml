@@ -6,13 +6,9 @@ on:
       - "master"
 
 jobs:
-  primary-build:
+  frontend-build:
     runs-on: ubuntu-latest
     steps:
-      # - name: Set up QEMU
-      #   uses: docker/setup-qemu-action@v1
-      # - name: Set up Docker Buildx
-      #   uses: docker/setup-buildx-action@v1
       - name: Checkout
         uses: actions/checkout@v2
       - name: Login to DockerHub
@@ -25,10 +21,21 @@ jobs:
         with:
           context: ./client
           push: true
-          tags: tahsinature/me-front:1
+          tags: tahsinature/me-front:latest
+
+  backend-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push (Backend)
         uses: docker/build-push-action@v2
         with:
           context: ./server
           push: true
-          tags: tahsinature/me-back:1
+          tags: tahsinature/me-back:latest

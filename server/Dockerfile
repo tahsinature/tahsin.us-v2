@@ -6,7 +6,7 @@ COPY makefile .
 RUN [ "make", "prepare" ]
 COPY go.mod .
 COPY go.sum .
-RUN [ "go", "mod", "download" ]
+# RUN [ "go", "mod", "download" ]
 COPY . .
 COPY .env_rename_me .env
 CMD [ "make", "run" ]
