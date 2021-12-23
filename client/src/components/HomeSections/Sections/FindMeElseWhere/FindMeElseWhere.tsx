@@ -1,7 +1,7 @@
 import React from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 
-import GotoChatButton from '../../../Buttons/GotoChatButton/GotoChatButton';
+// import GotoChatButton from '../../../Buttons/GotoChatButton/GotoChatButton';
 import NpxTahsin from '../../../NpxTahsin/NpxTahsin';
 import Toy from '../../../Fun/GravityPoints/GravityPoints';
 import Header from '../../../Header/Header';
@@ -109,10 +109,10 @@ const FindMeElseWhere = () => {
             </a>
           </p>
         </li>
-        <li style={{ display: 'flex', alignItems: 'center' }}>
+        {/* <li style={{ display: 'flex', alignItems: 'center' }}>
           <p>Or, let's do a live chat:</p>
           <GotoChatButton />
-        </li>
+        </li> */}
       </ul>
       <ScrollAnimation animateIn="fadeIn">
         <NpxTahsin />

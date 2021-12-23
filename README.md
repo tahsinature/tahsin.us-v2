@@ -10,5 +10,4 @@ npm start
 
 ### tasks
 
-- [ ] why image is so large
-- [ ] how its calling backend from chrome but not from firefox and other browser
+- [ ] if no changes on the image, do not build
