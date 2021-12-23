@@ -2,6 +2,7 @@ version: "3"
 
 services:
   tahsinus-front:
+    container_name: tahsin.us
     image: tahsinature/me-front:latest
     networks: [traefik]
     labels:
@@ -13,6 +14,7 @@ services:
       - traefik.http.routers.tahsinus-front.tls.certresolver=myresolver
 
   tahsinus-back:
+    container_name: back.tahsin.us
     image: tahsinature/me-back:latest
     networks: [traefik]
     labels:
