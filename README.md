@@ -1,13 +1,19 @@
 ![ci](https://github.com/tahsinature/tahsin.us/actions/workflows/ci.yml/badge.svg)
+![build](https://img.shields.io/docker/image-size/tahsinature/me-front?label=frontend-image)
+![build](https://img.shields.io/docker/image-size/tahsinature/me-back?label=backend-image)
 
-## temp command (run like from your host machine from docker)
+### Frontend
 
-```bash
-docker build -t me-v2 .
-docker run -v ~/<project-dir>/src:/app/src -v ~/<project-dir>/public:/app/public --rm -it -p 3000:3000 me-v2 sh
-npm start
-```
+- React
+- Redux
+- Redux Saga
 
-### tasks
+### Backend
+
+- Go / Gin
+- Postgres
+- Redis
+
+### Todo
 
 - [ ] if no changes on the image, do not build
