@@ -11,3 +11,9 @@ CMD [ "npx", "http-server", "-p", "80", "--proxy", "http://localhost\?", "build"
 # COPY --from=build /app/build /usr/share/nginx/html
 # EXPOSE 80
 # ENTRYPOINT [ "nginx-debug", "-g", "daemon off;" ]
+
+FROM node:12.18.4-alpine3.12
+WORKDIR /app
+COPY --from=build /app/build /app
+EXPOSE 80
+CMD [ "npx", "http-server", "-p", "80", "--proxy", "http://localhost\?", "/app" ]
