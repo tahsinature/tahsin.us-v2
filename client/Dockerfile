@@ -15,4 +15,4 @@ FROM node:12.18.4-alpine3.12
 WORKDIR /app
 COPY --from=build /app/build /app
 EXPOSE 80
-CMD [ "npx", "http-server", "-p", "80", "--proxy", "http://localhost\?", "/app" ]
+CMD [ "npx", "http-server", "-p", "80", "--proxy", "https://tahsin.us\?", "/app" ]
