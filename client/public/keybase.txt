@@ -1,6 +1,4 @@
-import React from 'react';
-
-const content = `==================================================================
+==================================================================
 https://keybase.io/t4h51n
 --------------------------------------------------------------------
 
@@ -55,14 +53,4 @@ appending to this document.
 
 View my publicly-auditable identity here: https://keybase.io/t4h51n
 
-==================================================================`;
-
-const KeybaseProof = () => {
-  return (
-    <>
-      <code>{content}</code>
-    </>
-  );
-};
-
-export default KeybaseProof;
+==================================================================

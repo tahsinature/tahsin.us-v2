@@ -29,7 +29,6 @@ import { IReducers } from './interfaces/reducers';
 import apiCalls from './api/calls';
 import config from './config';
 import JSONData from './views/JSONData/JSONData';
-import KeybaseProof from './components/KeybaseProof/KeybaseProof';
 
 function App(props: any) {
   const appState: IReducers.IAppReducer = props.appState;
@@ -59,7 +58,6 @@ function App(props: any) {
             <Route path="/list" component={() => <List />} />
             <Route path="/md/:id" component={() => <Markdown />} />
             <Route path="/json/:id" component={() => <JSONData />} />
-            <Route path="/keybase.txt" component={() => <KeybaseProof />} />
             <Route component={() => <Error404 />} />
           </Switch>
         </div>
