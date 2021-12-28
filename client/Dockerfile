@@ -5,7 +5,6 @@ RUN ["npm", "i"]
 COPY . .
 COPY .env_rename_me .env
 RUN ["npm", "run", "build"]
-CMD [ "npx", "http-server", "-p", "80", "--proxy", "http://localhost\?", "build" ]
 
 # FROM nginx:1.20.1-alpine
 # COPY --from=build /app/build /usr/share/nginx/html
