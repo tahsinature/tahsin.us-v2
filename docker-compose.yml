@@ -23,7 +23,7 @@ services:
   backend:
     build:
       context: ./server
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     volumes:
       - ./server:/app
       - ./scripts:/app/scripts
