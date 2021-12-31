@@ -1,2 +1,2 @@
-server/bin/
-server/tmp/
+/bin
+/tmp
