@@ -17,6 +17,10 @@ services:
     container_name: back.tahsin.us
     image: tahsinature/me-back:latest
     networks: [traefik]
+    environment:
+      DOPPLER_TOKEN: $DOPPLER_TOKEN_MY_PERSONAL
+      DOPPLER_PROJECT: tahsin-us-back
+      DOPPLER_CONFIG: prd
     labels:
       - traefik.enable=true
       - traefik.http.routers.tahsinus-back.rule=Host(`back.tahsin.us`)
