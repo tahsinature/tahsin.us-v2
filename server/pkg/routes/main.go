@@ -22,6 +22,7 @@ func Setup() *gin.Engine {
 	engine.Use(middlewares.RequestID)
 	engine.Use(gzip.Gzip(gzip.DefaultCompression))
 	engine.Use(gin.Logger())
+	engine.Use(middlewares.LogNewUser)
 
 	new(Ping).setup(engine.Group("/ping"))
 	new(Visitor).setup(engine.Group("/visitor"))
