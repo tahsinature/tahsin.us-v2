@@ -22,6 +22,7 @@ var (
 	JWT       jwtConfig
 	Redis     redisConfig
 	EntryArgs EntryArgsType
+	Telegram  telegramConfig
 	Other     otherConfig
 )
 
@@ -61,9 +62,14 @@ func Validate() {
 		DB:       os.Getenv("REDIS_DB"),
 	}
 
+	Telegram = telegramConfig{
+		BOT_TOKEN:         os.Getenv("TELEGRAM_BOT_TOKEN"),
+		CHAT_ID_ME_SERVER: os.Getenv("TELEGRAM_CHAT_ID_ME_SERVER"),
+	}
+
 	Other = otherConfig{
 		RootPath: serverRootPath,
 	}
 
-	utilities.ValidateMultipleStruct(DB, App, JWT, Redis, Other)
+	utilities.ValidateMultipleStruct(DB, App, JWT, Redis, Other, Telegram)
 }
