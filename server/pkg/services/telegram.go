@@ -30,10 +30,12 @@ func (tgbot Telegram) Init() {
 }
 
 func (tgbot Telegram) SendMessage(text string) {
-	msg := tgbotapi.NewMessage(TELEGRAM_BOT_CHAT_ID, text)
-	tgbotapi.NewMessage(TELEGRAM_BOT_CHAT_ID, text)
-	_, err := bot.Send(msg)
-	if err != nil {
-		panic(err)
+	if config.Telegram.SEND {
+		msg := tgbotapi.NewMessage(TELEGRAM_BOT_CHAT_ID, text)
+		tgbotapi.NewMessage(TELEGRAM_BOT_CHAT_ID, text)
+		_, err := bot.Send(msg)
+		if err != nil {
+			panic(err)
+		}
 	}
 }
