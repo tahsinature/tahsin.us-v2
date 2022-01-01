@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiMessageCircle } from 'react-icons/fi';
+// import { FiMessageCircle } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
 
 import classes from './GotoChatButton.module.scss';
@@ -9,7 +9,7 @@ const GotoChatButton = (props: any) => {
 
   return (
     <button className={classes.GotoChatButton} onClick={() => history.push('/chat')}>
-      <FiMessageCircle />
+      {/* <FiMessageCircle /> */}
       <p>Chat</p>
     </button>
   );
