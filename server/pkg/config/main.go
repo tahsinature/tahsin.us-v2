@@ -65,6 +65,7 @@ func Validate() {
 	Telegram = telegramConfig{
 		BOT_TOKEN:         os.Getenv("TELEGRAM_BOT_TOKEN"),
 		CHAT_ID_ME_SERVER: os.Getenv("TELEGRAM_CHAT_ID_ME_SERVER"),
+		SEND:              os.Getenv("TELEGRAM_SEND") == "true",
 	}
 
 	Other = otherConfig{
