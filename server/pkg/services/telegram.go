@@ -32,7 +32,7 @@ func (tgbot Telegram) Init() {
 func (tgbot Telegram) SendMessage(text string) {
 	if config.Telegram.SEND {
 		msg := tgbotapi.NewMessage(TELEGRAM_BOT_CHAT_ID, text)
-		tgbotapi.NewMessage(TELEGRAM_BOT_CHAT_ID, text)
+		msg.DisableWebPagePreview = true
 		_, err := bot.Send(msg)
 		if err != nil {
 			panic(err)
