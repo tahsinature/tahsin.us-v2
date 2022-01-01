@@ -33,7 +33,7 @@ const data = [
 const PersonalProjects = () => {
   return (
     <Section>
-      <Header>Projects</Header>
+      <Header title="Projects" />
       <ul>
         {data.map(ele => (
           <li key={ele.title}>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../../../Header/Header';
+import { SettingsEthernetRounded } from '@material-ui/icons';
 
 const data = [
   {
@@ -37,7 +38,7 @@ const data = [
 const FrameworksAndLibraries = () => {
   return (
     <section className="lh-copy">
-      <Header>Frameworks & Libraries</Header>
+      <Header title="Frameworks & Libraries" icon={<SettingsEthernetRounded />} />
       <ul>
         {data.map(ele => (
           <li key={ele.title}>

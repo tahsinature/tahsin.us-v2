@@ -2,15 +2,13 @@ import React from 'react';
 import Header from '../../../Header/Header';
 import Section from '../../../Section/Section';
 
-const EventsIAmAt = () => {
+const Work = () => {
   return (
     <Section>
-      <Header title="Events I'm At" />
-      <ul>
-        <li>Done for 2018 (I think?)</li>
-      </ul>
+      <Header title="Work" />
+      <p>Work History</p>
     </Section>
   );
 };
 
-export default EventsIAmAt;
+export default Work;

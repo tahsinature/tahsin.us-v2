@@ -5,7 +5,7 @@ import Section from '../../../Section/Section';
 const PublicSpeaking = () => {
   return (
     <Section>
-      <Header>Public Speaking</Header>
+      <Header title="Public Speaking" />
       <ul>
         <li>
           <a className="fw6 green no-underline underline-hover" href="https://google.com/">

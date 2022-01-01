@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../../../Header/Header';
 import Section from '../../../Section/Section';
 import classes from './ProgrammingLanguages.module.scss';
+import { Code } from '@material-ui/icons';
 
 const languages = [
   { _id: '1', name: 'Go', logo: 'https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fgo-programming-language.png?alt=media&token=9439e5b7-90ca-45f9-81cb-c045bc5f52fc' },
@@ -15,7 +16,7 @@ const languages = [
 const ProgrammingLanguages = () => {
   return (
     <Section classNames={[classes.ProgrammingLanguages]}>
-      <Header>Languages I Speak</Header>
+      <Header title="Programming Languages I Work With" icon={<Code />} />
       <p>All the technologies, frameworks and tools I use mostly are based on the following languages:</p>
       <br />
       <ul>

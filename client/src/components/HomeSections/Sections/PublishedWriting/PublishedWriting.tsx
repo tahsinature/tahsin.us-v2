@@ -16,7 +16,7 @@ const PublishedWriting = (props: { writings: IApiResponses.IGetBasicData['writin
 
   return (
     <Section classNames={[classes.PublishedWriting]}>
-      <Header>Published Writing</Header>
+      <Header title="Published Writing" />
       <ul>
         {props.writings.map(writing => (
           <li key={writing._id}>

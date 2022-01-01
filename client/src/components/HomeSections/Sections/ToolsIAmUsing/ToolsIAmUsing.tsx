@@ -3,11 +3,12 @@ import Header from '../../../Header/Header';
 import Section from '../../../Section/Section';
 import SeeAllButton from '../../../Buttons/SeeAllButton/SeeAllButton';
 import { IApiResponses } from '../../../../interfaces/apiResponse';
+import { BuildRounded } from '@material-ui/icons';
 
 const ToolsIAmUsing = (props: { tools: IApiResponses.IGetBasicData['tools'] }) => {
   return (
     <Section>
-      <Header>Tools I'm using nowadays</Header>
+      <Header title="Tools I'm using nowadays" icon={<BuildRounded />} />
       <ul>
         {props.tools.map(
           ele =>

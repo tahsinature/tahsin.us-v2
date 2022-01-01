@@ -11,7 +11,7 @@ import Section from '../../../Section/Section';
 const FindMeElseWhere = () => {
   return (
     <Section classNames={[classes.FindMeElseWhere]}>
-      <Header>Find Me Elsewhere</Header>
+      <Header title="Find Me Elsewhere" />
       <ul>
         <li>
           <p>
