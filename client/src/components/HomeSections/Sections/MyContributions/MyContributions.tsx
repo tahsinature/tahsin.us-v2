@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../../../Header/Header';
 import Section from '../../../Section/Section';
+import { AssessmentRounded } from '@material-ui/icons';
 
 const data = [
   {
@@ -33,7 +34,7 @@ const data = [
 const PersonalProjects = () => {
   return (
     <Section>
-      <Header title="Projects" />
+      <Header title="Projects" icon={<AssessmentRounded />} />
       <ul>
         {data.map(ele => (
           <li key={ele.title}>

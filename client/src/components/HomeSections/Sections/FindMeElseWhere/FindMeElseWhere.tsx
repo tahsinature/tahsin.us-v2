@@ -7,11 +7,12 @@ import Toy from '../../../Fun/GravityPoints/GravityPoints';
 import Header from '../../../Header/Header';
 import classes from './FindMeElseWhere.module.scss';
 import Section from '../../../Section/Section';
+import { PublicRounded } from '@material-ui/icons';
 
 const FindMeElseWhere = () => {
   return (
     <Section classNames={[classes.FindMeElseWhere]}>
-      <Header title="Find Me Elsewhere" />
+      <Header title="Find Me Elsewhere" icon={<PublicRounded />} />
       <ul>
         <li>
           <p>

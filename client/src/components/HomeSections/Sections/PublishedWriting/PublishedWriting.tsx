@@ -6,6 +6,7 @@ import Section from '../../../Section/Section';
 import SeeAllButton from '../../../Buttons/SeeAllButton/SeeAllButton';
 import classes from './PublishedWriting.module.scss';
 import { IApiResponses } from '../../../../interfaces/apiResponse';
+import { DescriptionRounded } from '@material-ui/icons';
 
 const PublishedWriting = (props: { writings: IApiResponses.IGetBasicData['writings'] }) => {
   const history = useHistory();
@@ -16,7 +17,7 @@ const PublishedWriting = (props: { writings: IApiResponses.IGetBasicData['writin
 
   return (
     <Section classNames={[classes.PublishedWriting]}>
-      <Header title="Published Writing" />
+      <Header title="Published Writing" icon={<DescriptionRounded />} />
       <ul>
         {props.writings.map(writing => (
           <li key={writing._id}>
