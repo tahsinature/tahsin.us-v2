@@ -14,7 +14,7 @@ const data = [
   {
     platform: 'Facebook',
     url: 'https://www.facebook.com/t4h51n',
-    logo: 'https://04.cadwork.com/wp-content/uploads/logo-facebook.png',
+    logo: 'https://gallery.tahsin.us/uploads/big/0b470cd01c523fc3fc48c2d43172cafd.png',
     username: '@t4h51n',
   },
   {
