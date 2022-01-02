@@ -54,11 +54,11 @@ const Children = (props: IFoo) => {
     <div className={classes.Children}>
       <img src={props.logo} alt={`logo of ${props.company}`} />
       <p>
-        <b>{props.company}</b>
+        <b>{props.company}</b> <small>({props.timeRange})</small>
       </p>
       <p>{props.position}</p>
       <div className={classes.LocationBox}>
-        <PlaceRounded />
+        <PlaceRounded fontSize="small" />
         <p>{props.location}</p>
       </div>
       <p>Specialized in: {props.specialization}</p>
