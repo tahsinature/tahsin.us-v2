@@ -16,9 +16,11 @@
 
 ### Todo
 
+- [x] ip lookup
+- [x] frontend grid view
 - [ ] if no changes on the image, do not build
 - [ ] put latest source code on the host machine
 - [ ] try to put in kubernetes
 - [ ] frontend taking too much time on first load
-- [ ] ip lookup
-- [ ] frontend grid view
+- [ ] other activities -> photos / music / movies
+- [ ] find me elsewhere grid view

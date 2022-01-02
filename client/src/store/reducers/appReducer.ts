@@ -2,7 +2,7 @@ import { actionTypes } from '../../actions';
 import { IReducers } from '../../interfaces/reducers';
 
 const initialState: IReducers.IAppReducer = {
-  appTheme: 'light',
+  appTheme: 'dark',
   isAppLoaded: false,
   basicData: null,
 };
