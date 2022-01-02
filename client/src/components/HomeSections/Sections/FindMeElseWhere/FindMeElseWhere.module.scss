@@ -21,7 +21,7 @@
       min-width: 30%;
       @include respond(df, sm) {
         min-width: 40%;
-        padding: 0.3rem;
+        padding: 0.3rem 0.6rem;
       }
       padding: 0.3rem 1rem;
       margin-right: 1rem;
