@@ -24,3 +24,4 @@
 - [ ] frontend taking too much time on first load
 - [ ] other activities -> photos / music / movies
 - [ ] find me elsewhere grid view
+- [ ] move all static image to local cdn

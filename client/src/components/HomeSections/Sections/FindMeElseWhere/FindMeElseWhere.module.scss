@@ -1,3 +1,5 @@
+@import '../../../../assets/sass/main.scss';
+
 .FindMeElseWhere {
   ul {
     margin-bottom: 2rem;
@@ -7,6 +9,53 @@
         a {
           margin-left: 0.3rem;
         }
+      }
+    }
+  }
+  .Holder {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .Single {
+      min-width: 30%;
+      @include respond(df, sm) {
+        min-width: 40%;
+      }
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.05);
+      }
+      p {
+        font-size: 13px;
+      }
+      small {
+        font-size: 9px;
+      }
+      padding: 0.3rem;
+      display: flex;
+      border-radius: 4px;
+      align-items: center;
+      border: solid 1px #75757531;
+      .LogoBox {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        img {
+          height: 30px;
+          width: 30px;
+          object-fit: cover;
+        }
+      }
+      .DetailBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
     }
   }
