@@ -91,6 +91,11 @@ const data = [
   },
 ];
 
+const handleClick = (url: string) => {
+  const win = window.open(url, '_blank');
+  win?.focus();
+};
+
 const FindMeElseWhere = () => {
   return (
     <Section classNames={[classes.FindMeElseWhere]}>
@@ -98,7 +103,7 @@ const FindMeElseWhere = () => {
 
       <div className={classes.Holder}>
         {data.map(ele => (
-          <div key={ele.platform} className={classes.Single}>
+          <div key={ele.platform} className={classes.Single} onClick={() => handleClick(ele.url)}>
             <div className={classes.LogoBox}>
               <img src={ele.logo} alt="" />
             </div>
