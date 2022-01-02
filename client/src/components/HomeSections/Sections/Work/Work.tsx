@@ -86,9 +86,9 @@ const Work = (props: any) => {
           children={items.map(item => (
             <Children key={item.company} {...item} />
           ))}
-          items={items.map(item => ({ title: item.timeRange }))}
+          // items={items.map(item => ({ title: item.timeRange }))}
           theme={theme}
-          mode="VERTICAL_ALTERNATING"
+          mode="VERTICAL"
         />
       </div>
     </Section>
