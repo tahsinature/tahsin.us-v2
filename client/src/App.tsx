@@ -19,7 +19,7 @@ import Error404 from './views/Error404/Error404';
 
 // import UnderDevelopment from './views/UnderDevelopment/UnderDevelopment';
 
-import perticlesConfig from './perticles';
+// import perticlesConfig from './perticles';
 import Markdown from './views/Markdown/Markdown';
 // import SocketLayer from './components/SocketLayer/SocketLayer';
 import PageLoader from './components/PageLoader/PageLoader';
@@ -71,7 +71,7 @@ function App(props: any) {
       <Container className={classes.Container} maxWidth="md">
         <ThemeProvider theme={{ mode: appState.appTheme }}>
           <GlobalStyle />
-          <div className={['App', classes.App].join(' ')}>{isAppLoaded ? getContentComponent() : <PageLoader message={'Loading Profile Data...'} />}</div>
+          <div className={['App', classes.App].join(' ')}>{isAppLoaded ? getContentComponent() : <PageLoader message={'Fetching Data...'} />}</div>
           {/* <SocketLayer>
             
           </SocketLayer> */}

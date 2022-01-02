@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './PageLoader.module.scss';
 import { GlobalStyle } from './PageLoader.theme';
+import Typist from 'react-typist';
 
 const PageLoader = (props: { message?: string }) => {
   return (
@@ -25,7 +26,13 @@ const PageLoader = (props: { message?: string }) => {
         </div>
       </div>
 
-      {props.message ? <div className={classes.TextDiv}>{props.message}</div> : null}
+      {props.message && (
+        <div className={classes.TextDiv}>
+          <Typist cursor={{ show: false }}>
+            <p>{props.message}</p>
+          </Typist>
+        </div>
+      )}
     </div>
   );
 };
