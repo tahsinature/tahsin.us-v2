@@ -9,111 +9,37 @@ import classes from './FindMeElseWhere.module.scss';
 import Section from '../../../Section/Section';
 import { PublicRounded } from '@material-ui/icons';
 
+const data = [
+  { platform: 'Facebook', url: 'https://www.facebook.com/t4h51n', username: '@t4h51n' },
+  { platform: 'Instagram', url: 'https://www.instagram.com/t4h51n', username: '@t4h51n' },
+  { platform: 'Twitter', url: 'https://twitter.com/t4h51n', username: '@t4h51n' },
+  { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/t4h51n', username: '@t4h51n' },
+  { platform: 'Keybase', url: 'https://keybase.io/t4h51n', username: '@t4h51n' },
+  { platform: 'Telegram', url: 'https://t.me/t4h51n', username: '@t4h51n' },
+  { platform: 'Discord', url: 'https://discord.com/users/t4h51n', username: '@t4h51n' },
+  { platform: 'npm', url: 'https://www.npmjs.com/~tahsin', username: '@tahsin' },
+  { platform: 'PyPI', url: 'https://pypi.org/user/tahsinature', username: '@tahsinature' },
+  { platform: 'GitHub', url: 'https://github.com/tahsinature', username: '@tahsinature' },
+  { platform: 'Gitlab', url: 'https://gitlab.com/tahsinature', username: '@tahsinature' },
+  { platform: 'Medium', url: 'https://medium.com/@tahsinature', username: '@tahsinature' },
+  { platform: 'DEV Community', url: 'https://dev.to/tahsinature', username: '@tahsinature' },
+];
+
 const FindMeElseWhere = () => {
   return (
     <Section classNames={[classes.FindMeElseWhere]}>
       <Header title="Find Me Elsewhere" icon={<PublicRounded />} />
       <ul>
-        <li>
-          <p>
-            On Facebook:{' '}
-            <a className="fw6 green no-underline underline-hover" href="https://www.facebook.com/t4h51n">
-              @t4h51n
-            </a>
-          </p>
-        </li>
-        <li>
-          <p>
-            On Instagram:{' '}
-            <a className="fw6 green no-underline underline-hover" href="https://www.instagram.com/t4h51n">
-              @t4h51n
-            </a>
-          </p>
-        </li>
-        <li>
-          <p>
-            On Twitter:{' '}
-            <a className="fw6 green no-underline underline-hover" href="https://twitter.com/t4h51n">
-              @t4h51n
-            </a>
-          </p>
-        </li>
-        <li>
-          <p>
-            On LinkedIn:{' '}
-            <a className="fw6 green no-underline underline-hover" href="https://www.linkedin.com/in/t4h51n">
-              @t4h51n
-            </a>
-          </p>
-        </li>
-        <li>
-          <p>
-            On Keybase:{' '}
-            <a className="fw6 green no-underline underline-hover" href="https://keybase.io/t4h51n">
-              @t4h51n
-            </a>
-          </p>
-        </li>
-        <li>
-          <p>
-            On Telegram:{' '}
-            <a className="fw6 green no-underline underline-hover" href="https://t.me/t4h51n">
-              @t4h51n
-            </a>
-          </p>
-        </li>
-        <li>
-          <p>
-            On Discord:{' '}
-            <a className="fw6 green no-underline underline-hover" href="https://discord.com/users/t4h51n">
-              @t4h51n
-            </a>
-          </p>
-        </li>
-        <li>
-          <p>
-            On npm:{' '}
-            <a className="fw6 green no-underline underline-hover" href="https://www.npmjs.com/~tahsin">
-              @tahsin
-            </a>
-          </p>
-        </li>
-        <li>
-          <p>
-            On PyPI:{' '}
-            <a className="fw6 green no-underline underline-hover" href="https://pypi.org/user/tahsinature">
-              @tahsinature
-            </a>
-          </p>
-        </li>
-        <li>
-          <p>
-            On GitHub:{' '}
-            <a className="fw6 green no-underline underline-hover" href="https://github.com/tahsinature">
-              @tahsinature
-            </a>
-          </p>
-        </li>
-        <li>
-          <p>
-            On Gitlab:{' '}
-            <a className="fw6 green no-underline underline-hover" href="https://gitlab.com/tahsinature">
-              @tahsinature
-            </a>
-          </p>
-        </li>
-        <li>
-          <p>
-            On Medium:{' '}
-            <a className="fw6 green no-underline underline-hover" href="https://medium.com/@tahsinature">
-              @tahsinature
-            </a>
-          </p>
-        </li>
-        {/* <li style={{ display: 'flex', alignItems: 'center' }}>
-          <p>Or, let's do a live chat:</p>
-          <GotoChatButton />
-        </li> */}
+        {data.map(ele => (
+          <li key={ele.platform}>
+            <p>
+              On {ele.platform}:{' '}
+              <a className="fw6 green no-underline underline-hover" href={ele.url}>
+                {ele.username}
+              </a>
+            </p>
+          </li>
+        ))}
       </ul>
       <ScrollAnimation animateIn="fadeIn">
         <NpxTahsin />
