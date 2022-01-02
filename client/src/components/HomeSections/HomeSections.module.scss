@@ -3,23 +3,11 @@
 .HomeSections {
   margin-top: 4rem;
   padding-bottom: 4rem;
-  h2 {
-    @include respond(df, md) {
-      font-size: 1.5rem;
-    }
-    @include respond(df, sm) {
-      font-size: 1.2rem;
-    }
-  }
+
   section:not(:last-child) {
     margin-bottom: 4rem;
   }
-  p,
-  li {
-    @include respond(df, sm) {
-      font-size: 15px;
-    }
-  }
+
   ul {
     @include respond(df, sm) {
       padding-inline-start: 0px;

@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap');
+@import './assets/sass/main.scss';
+
+h2 {
+  @include respond(df, md) {
+    font-size: 1.5rem;
+  }
+  @include respond(df, sm) {
+    font-size: 1.2rem;
+  }
+}
+p,
+li {
+  @include respond(df, sm) {
+    font-size: 13px;
+  }
+}
+
 * {
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -37,13 +55,12 @@ body {
   // min-width: 500px;
   // padding: 2em;
   margin: 0 auto;
-  font-family: 'Roboto Slab', 'sans-serif';
+  font-family: 'Fira Sans', 'Roboto Slab', 'sans-serif';
   font-size: 1rem;
   // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
   transition: background-color 0.2s, color 0.2s;
-
   height: 100vh;
 }
 
