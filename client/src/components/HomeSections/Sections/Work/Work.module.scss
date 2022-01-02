@@ -1,0 +1,20 @@
+.TimeLineBox {
+  // max-height: 50vh;
+  // color: ;
+}
+
+.Children {
+  width: 100%;
+  padding: 0.3rem;
+  // background-color: rgba(255, 0, 0, 0.103);
+  .LocationBox {
+    display: flex;
+    align-items: center;
+    p {
+      margin-left: 0.1rem;
+    }
+  }
+  img {
+    height: 30px;
+  }
+}
