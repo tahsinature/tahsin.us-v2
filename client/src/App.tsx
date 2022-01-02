@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { connect } from 'react-redux';
 import { Container } from '@material-ui/core';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Particles from 'react-particles-js';
+// import Particles from 'react-particles-js';
 
 import './App.scss';
 import './assets/sass/main.scss';
