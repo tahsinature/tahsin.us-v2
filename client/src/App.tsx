@@ -67,7 +67,7 @@ function App(props: any) {
 
   return (
     <Router>
-      <Particles className={classes.Particle} width="100vw" height="100vh" params={perticlesConfig} />
+      {/* <Particles className={classes.Particle} width="100vw" height="100vh" params={perticlesConfig} /> */}
       <Container className={classes.Container} maxWidth="md">
         <ThemeProvider theme={{ mode: appState.appTheme }}>
           <GlobalStyle />
