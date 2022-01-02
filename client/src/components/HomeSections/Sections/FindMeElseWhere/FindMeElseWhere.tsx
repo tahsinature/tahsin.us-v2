@@ -20,25 +20,25 @@ const data = [
   {
     platform: 'Instagram',
     url: 'https://www.instagram.com/t4h51n',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/800px-Instagram_logo_2016.svg.png',
+    logo: 'https://gallery.tahsin.us/uploads/big/d1b92f099027c229e8e8afb95504d500.png',
     username: '@t4h51n',
   },
   {
     platform: 'Twitter',
     url: 'https://twitter.com/t4h51n',
-    logo: 'http://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png',
+    logo: 'https://gallery.tahsin.us/uploads/medium/a3637f046a6199cc3045a452b5da3774.png',
     username: '@t4h51n',
   },
   {
     platform: 'LinkedIn',
     url: 'https://www.linkedin.com/in/t4h51n',
-    logo: 'https://cdn-icons-png.flaticon.com/512/174/174857.png',
+    logo: 'https://gallery.tahsin.us/uploads/big/42c79b4a94374df122fabf7efdee1cd8.png',
     username: '@t4h51n',
   },
   {
     platform: 'Keybase',
     url: 'https://keybase.io/t4h51n',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Keybase_logo_official.svg/1114px-Keybase_logo_official.svg.png',
+    logo: 'https://gallery.tahsin.us/uploads/big/5083c580fe90845f0cae03eb1ca3b9d0.png',
     username: '@t4h51n',
   },
   {
@@ -50,7 +50,7 @@ const data = [
   {
     platform: 'Discord',
     url: 'https://discord.com/users/t4h51n',
-    logo: 'https://pnggrid.com/wp-content/uploads/2021/05/Discord-Logo-Square-1024x1024.png',
+    logo: 'https://gallery.tahsin.us/uploads/big/8327553703af9b9103c22e0a91d54182.png',
     username: '@t4h51n',
   },
   {
