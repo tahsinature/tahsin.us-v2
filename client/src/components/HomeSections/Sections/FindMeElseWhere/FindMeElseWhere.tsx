@@ -1,9 +1,9 @@
 import React from 'react';
-import ScrollAnimation from 'react-animate-on-scroll';
+// import ScrollAnimation from 'react-animate-on-scroll';
 
 // import GotoChatButton from '../../../Buttons/GotoChatButton/GotoChatButton';
-import NpxTahsin from '../../../NpxTahsin/NpxTahsin';
-import Toy from '../../../Fun/GravityPoints/GravityPoints';
+// import NpxTahsin from '../../../NpxTahsin/NpxTahsin';
+// import Toy from '../../../Fun/GravityPoints/GravityPoints';
 import Header from '../../../Header/Header';
 import classes from './FindMeElseWhere.module.scss';
 import Section from '../../../Section/Section';
@@ -114,12 +114,12 @@ const FindMeElseWhere = () => {
           </div>
         ))}
       </div>
-      <ScrollAnimation animateIn="fadeIn">
+      {/* <ScrollAnimation animateIn="fadeIn">
         <NpxTahsin />
-      </ScrollAnimation>
-      <ScrollAnimation animateIn="fadeIn">
+      </ScrollAnimation> */}
+      {/* <ScrollAnimation animateIn="fadeIn">
         <Toy />
-      </ScrollAnimation>
+      </ScrollAnimation> */}
     </Section>
   );
 };

@@ -1,14 +1,64 @@
+@import '../../../../assets/sass/main.scss';
+
 .ProgrammingLanguages {
-  li {
+  .Holder {
+    margin-bottom: 2rem;
     display: flex;
-    align-items: center;
-    img {
-      height: 30px;
-      width: 30px;
-      margin-right: 1.5rem;
+    flex-wrap: wrap;
+    // width: 100%;
+    // justify-content: space-between;
+    .Single {
+      // min-width: 30%;
+      @include respond(df, sm) {
+        // min-width: 40%;
+        padding: 0.3rem 0.6rem;
+      }
+      padding: 0.3rem 1rem;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.05);
+      }
+      p {
+        font-size: 13px;
+      }
+      small {
+        font-size: 9px;
+      }
+      display: flex;
+      border-radius: 4px;
+      align-items: center;
+      border: solid 1px #75757531;
+      .LogoBox {
+        height: 20px;
+        width: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+      .DetailBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
     }
-    p {
-      margin: 0;
+  }
+
+  .Main {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    .Monitor {
+      width: 100%;
+      // background-color: red;
     }
   }
 }

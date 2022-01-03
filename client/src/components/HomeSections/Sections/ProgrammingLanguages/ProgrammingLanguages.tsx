@@ -4,6 +4,7 @@ import Section from '../../../Section/Section';
 import classes from './ProgrammingLanguages.module.scss';
 import { Code } from '@material-ui/icons';
 import Terminal from '../../../Terminal/Terminal';
+import colors from '../../../../constants/colors';
 
 const languages = [
   {
@@ -19,10 +20,10 @@ package main
 import "fmt"
 
 func main() {
-  fmt.Println("hi mom")
+  fmt.Println("hi mom!")
 }`,
       },
-      { cmd: false, text: '> hi mom' },
+      { cmd: false, text: '> hi mom!' },
     ],
   },
   {
@@ -34,9 +35,9 @@ func main() {
         cmd: true,
         delay: 2,
         text: `index.ts
-console.log("hi mom")`,
+console.log("hi mom!")`,
       },
-      { cmd: false, text: '> hi mom' },
+      { cmd: false, text: '> hi mom!' },
     ],
   },
   {
@@ -52,11 +53,11 @@ package us.tahsin.java;
 
 class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("hi mom"); 
+        System.out.println("hi mom!"); 
     }
 }`,
       },
-      { cmd: false, text: '> hi mom' },
+      { cmd: false, text: '> hi mom!' },
     ],
   },
   {
@@ -68,9 +69,9 @@ class HelloWorld {
         cmd: true,
         delay: 2,
         text: `app.py
-print("hi mom")`,
+print("hi mom!")`,
       },
-      { cmd: false, text: '> hi mom' },
+      { cmd: false, text: '> hi mom!' },
     ],
   },
   {
@@ -82,9 +83,9 @@ print("hi mom")`,
         cmd: true,
         delay: 2,
         text: `index.js
-console.log("hi mom")`,
+console.log("hi mom!")`,
       },
-      { cmd: false, text: '> hi mom' },
+      { cmd: false, text: '> hi mom!' },
     ],
   },
   {
@@ -97,9 +98,9 @@ console.log("hi mom")`,
         delay: 2,
         text: `hello-world.sh
 #!/usr/bin/env bash
-echo "hi mom"`,
+echo "hi mom!"`,
       },
-      { cmd: false, text: '> hi mom' },
+      { cmd: false, text: '> hi mom!' },
     ],
   },
 ];
@@ -107,6 +108,11 @@ echo "hi mom"`,
 const ProgrammingLanguages = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
   const [show, setShow] = useState(true);
+
+  const activeStyle = {
+    borderColor: colors.common.primaryGreenishColor,
+    color: colors.common.primaryGreenishColor,
+  };
 
   return (
     <Section classNames={[classes.ProgrammingLanguages]}>
@@ -125,6 +131,7 @@ const ProgrammingLanguages = () => {
                 }, 1);
               }}
               key={language._id}
+              style={language === selectedLanguage ? activeStyle : {}}
               className={classes.Single}>
               <div className={classes.LogoBox}>
                 <img src={language.logo} alt="" />
@@ -136,7 +143,7 @@ const ProgrammingLanguages = () => {
           ))}
         </div>
 
-        <div className={classes.Monitor}>{show && <Terminal height={300} lines={selectedLanguage.presentation} />}</div>
+        <div className={classes.Monitor}>{show && <Terminal height={250} lines={selectedLanguage.presentation} />}</div>
       </div>
     </Section>
   );
