@@ -25,9 +25,9 @@ const HomeSections = (props: { basicData: IReducers.IAppReducer['basicData'] }) 
       <ToolsIAmUsing tools={props.basicData.tools} />
       <FrameworksAndLibraries />
       <ProgrammingLanguages />
-      <HumanLanguages />
       <MyContributions />
       <PublishedWriting writings={props.basicData.writings} />
+      <HumanLanguages />
       {/* <PublicSpeaking /> */}
       {/* <EventsIAmAt /> */}
       <OtherActivities />

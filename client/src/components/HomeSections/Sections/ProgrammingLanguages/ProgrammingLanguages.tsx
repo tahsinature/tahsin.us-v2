@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../../Header/Header';
 import Section from '../../../Section/Section';
 import classes from './ProgrammingLanguages.module.scss';
@@ -114,6 +114,14 @@ const ProgrammingLanguages = () => {
     color: colors.common.primaryGreenishColor,
   };
 
+  const terminalHeight = 250;
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setShow(false);
+  //   }, 15000);
+  // })
+
   return (
     <Section classNames={[classes.ProgrammingLanguages]}>
       <Header title="Programming Languages I Work With" icon={<Code />} />
@@ -143,7 +151,9 @@ const ProgrammingLanguages = () => {
           ))}
         </div>
 
-        <div className={classes.Monitor}>{show && <Terminal height={250} lines={selectedLanguage.presentation} />}</div>
+        <div style={{ height: `${terminalHeight + 2}px` }} className={classes.Monitor}>
+          {show && <Terminal height={terminalHeight} lines={selectedLanguage.presentation} />}
+        </div>
       </div>
     </Section>
   );
