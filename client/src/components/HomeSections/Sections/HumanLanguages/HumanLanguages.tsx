@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../../Header/Header';
 import Section from '../../../Section/Section';
 import classes from './HumanLanguages.module.scss';
@@ -19,6 +19,14 @@ const HumanLanguages = () => {
   const [show, toggle] = useState(true);
   const nextLang = activeLangIndex === languages.length - 1 ? 0 : activeLangIndex + 1;
   let currentTimeout: NodeJS.Timeout;
+
+  useEffect(() => {
+    return () => {
+      if (currentTimeout) {
+        clearTimeout(currentTimeout);
+      }
+    };
+  });
 
   return (
     <Section classNames={[classes.HumanLanguages]}>
