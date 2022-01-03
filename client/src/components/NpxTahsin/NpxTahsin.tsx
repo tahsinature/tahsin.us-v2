@@ -1,8 +1,5 @@
-// @ts-nocheck
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import 'react-animated-term/dist/react-animated-term.css';
-import Terminal from 'react-animated-term';
+import Terminal from '../Terminal/Terminal';
 
 const termLines = [
   {
@@ -12,9 +9,7 @@ const termLines = [
   },
 ];
 
-const NpxTahsin = (props: any) => {
-  const { appState } = props;
-
+const NpxTahsin = () => {
   const [show, toggleShow] = useState(true);
 
   useEffect(() => {
@@ -32,14 +27,9 @@ const NpxTahsin = (props: any) => {
 
   return (
     <>
-      {/* <p>or cli</p> */}
-      <div>{show ? <Terminal height={100} lines={termLines} interval={80} white={appState.appTheme === 'dark'} /> : null}</div>
+      <div>{show && <Terminal lines={termLines} />}</div>
     </>
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  appState: state.appReducer,
-});
-
-export default connect(mapStateToProps, null)(NpxTahsin);
+export default NpxTahsin;
