@@ -1,16 +1,15 @@
 @import '../../../../assets/sass/main.scss';
 
 .Cards {
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1rem;
-  margin-top: 1rem;
   @include respond(mf, tab-p) {
     grid-template-columns: 1fr 1fr;
     // min-width: 40%;
   }
   .Card {
-    // background-color: red;
     border: 2px solid #7c7c7c21;
     &:hover {
       border-color: $primaryGreenish;
