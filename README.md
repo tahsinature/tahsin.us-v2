@@ -26,3 +26,4 @@
 - [ ] frontend taking too much time on first load
 - [ ] other activities -> photos / music / movies
 - [ ] move all static image to local cdn
+- [ ] put NFT -> https://juliancanderson.com/nfts
