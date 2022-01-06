@@ -2,11 +2,9 @@ import React from 'react';
 import Header from '../../../Header/Header';
 import Section from '../../../Section/Section';
 import { WorkRounded as WorkIcon } from '@material-ui/icons';
-import { Chrono } from 'react-chrono';
 import classes from './Work.module.scss';
-import './Chrono.scss';
 import colors from '../../../../constants/colors';
-import { PlaceRounded, WorkRounded, BuildRounded } from '@material-ui/icons';
+import { PlaceRounded, BuildRounded } from '@material-ui/icons';
 import { connect } from 'react-redux';
 import { ThemeManager } from '../../../../App.theme';
 import styled from 'styled-components';
@@ -93,13 +91,13 @@ const Work = (props: any) => {
     <Section>
       <Header title="Work" icon={<WorkIcon />} />
       <div className={classes.TimeLineBox}>
-        <UL className="timeline">
+        <UL className={classes.Timeline}>
           {items.map(item => (
-            <li key={item.company + item.position} className="timeline-event">
-              <LABEL className="timeline-event-icon"></LABEL>
-              <div className="timeline-event-copy">
-                <P className="timeline-event-thumbnail">
-                  {item.company} <small>{item.timeRange}</small>
+            <li key={item.company + item.position} className={classes.TimelineEvent}>
+              <LABEL className={classes.TimelineEventIcon}></LABEL>
+              <div className={classes.TimelineEventCopy}>
+                <P className={classes.TimelineEventThumbnail}>
+                  {item.company} <small className={classes.TimeRange}>{item.timeRange}</small>
                 </P>
                 <div className={classes.Logobox}>
                   <img src={item.logo} alt="" />

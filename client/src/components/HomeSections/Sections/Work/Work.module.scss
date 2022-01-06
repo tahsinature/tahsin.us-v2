@@ -1,16 +1,10 @@
-.TimeLineBox {
-  // max-height: 50vh;
-  // color: ;
-}
+@import '../../../../assets/sass/main.scss';
 
-.Children {
-  width: 100%;
-  padding: 0.3rem;
-  // background-color: rgba(255, 0, 0, 0.103);
+$color-3: $primaryGreenish;
 
-  img {
-    height: 30px;
-  }
+.TimeRange {
+  font-size: 60%;
+  margin-left: 0.4rem;
 }
 
 .Logobox {
@@ -23,8 +17,85 @@
 
 .LocationBox {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   p {
     margin-left: 0.3rem;
+  }
+}
+
+.Timeline {
+  position: relative;
+
+  &:before {
+    content: '';
+    margin-left: -1px;
+    position: absolute;
+    top: 0;
+    left: 2em;
+    width: 2px;
+    height: 100%;
+  }
+}
+
+.TimelineEvent {
+  .TimelineEventIcon {
+    border-radius: 3px;
+    transition: transform 0.2s ease-in;
+    transform: rotate(45deg);
+    display: block;
+    margin: 0.5em 0.5em 0.5em -0.5em;
+    position: absolute;
+    top: 0;
+    left: 2em;
+    width: 1em;
+    height: 1em;
+  }
+
+  position: relative;
+  .TimelineEventIcon {
+    @include respond(df, sm) {
+      left: 2.4em;
+    }
+  }
+  &:hover {
+    .TimelineEventIcon {
+      transform: rotate(-45deg);
+      background-color: $color-3;
+      transition: all 0.5s;
+    }
+
+    .TimelineEventThumbnail {
+      // box-shadow: inset 40em 0 0 0 $color-3;
+      background-color: $color-3;
+      transition: all 0.5s;
+    }
+  }
+}
+
+.TimelineEventThumbnail {
+  border-radius: 3px;
+  transition: box-shadow 0.5s ease-in 0.1s;
+  box-shadow: inset 0 0 0 0em #ef795a;
+  display: inline-block;
+  margin-bottom: 1.2em;
+  padding: 0.25em 1em 0.2em 1em;
+}
+
+.TimelineEventCopy {
+  padding: 2em;
+  padding-bottom: 0;
+  position: relative;
+  top: -1.875em;
+  left: 4em;
+  @include respond(df, mbl) {
+    left: 2em;
+  }
+
+  h4 {
+    margin-bottom: 0.6em;
+  }
+
+  strong {
+    font-weight: 700;
   }
 }
