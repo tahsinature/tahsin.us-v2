@@ -82,13 +82,12 @@ $color-3: $primaryGreenish;
 }
 
 .TimelineEventCopy {
-  padding: 2em;
-  padding-bottom: 0;
+  padding: 2em 2em 0 6rem;
   position: relative;
   top: -1.875em;
-  left: 4em;
+  // left: 4em;
   @include respond(df, mbl) {
-    left: 2em;
+    padding-left: 4rem;
   }
 
   h4 {
