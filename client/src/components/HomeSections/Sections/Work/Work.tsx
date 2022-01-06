@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { ThemeManager } from '../../../../App.theme';
 import styled from 'styled-components';
 
-interface IFoo {
+interface IWorkExperience {
   company: string;
   timeRange: string;
   position: string;
@@ -20,7 +20,7 @@ interface IFoo {
   techStack: string;
 }
 
-const items: IFoo[] = [
+const items: IWorkExperience[] = [
   {
     timeRange: 'July 2021 - Present',
     company: 'Bountie',

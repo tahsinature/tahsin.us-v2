@@ -57,11 +57,19 @@ $color-3: $primaryGreenish;
       left: 2.4em;
     }
   }
+
+  p {
+    transition: color 0.5s;
+  }
   &:hover {
     .TimelineEventIcon {
       transform: rotate(-45deg);
       background-color: $color-3;
       transition: all 0.5s;
+    }
+
+    p {
+      color: $color-3;
     }
 
     .TimelineEventThumbnail {
