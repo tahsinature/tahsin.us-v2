@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import storeManager from '../../store/storeManager';
+
+import storeManager from 'src/store/storeManager';
 import classes from './Chat.module.scss';
 
 const GlobalStyleCss: any = {

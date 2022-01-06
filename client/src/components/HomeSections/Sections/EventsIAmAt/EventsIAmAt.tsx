@@ -1,6 +1,7 @@
 import React from 'react';
-import Header from '../../../Header/Header';
-import Section from '../../../Section/Section';
+
+import Header from 'src/components/Header/Header';
+import Section from 'src/components/Section/Section';
 
 const EventsIAmAt = () => {
   return (

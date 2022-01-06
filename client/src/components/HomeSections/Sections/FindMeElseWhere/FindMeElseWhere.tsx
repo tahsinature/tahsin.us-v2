@@ -1,14 +1,14 @@
 import React from 'react';
+import { PublicRounded } from '@material-ui/icons';
 // import ScrollAnimation from 'react-animate-on-scroll';
 
 // import GotoChatButton from '../../../Buttons/GotoChatButton/GotoChatButton';
 // import NpxTahsin from '../../../NpxTahsin/NpxTahsin';
 // import Toy from '../../../Fun/GravityPoints/GravityPoints';
-import Header from '../../../Header/Header';
 import classes from './FindMeElseWhere.module.scss';
-import Section from '../../../Section/Section';
-import { PublicRounded } from '@material-ui/icons';
-import colors from '../../../../constants/colors';
+import Header from 'src/components/Header/Header';
+import Section from 'src/components/Section/Section';
+import colors from 'src/constants/colors';
 
 const data = [
   {

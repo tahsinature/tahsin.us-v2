@@ -1,4 +1,4 @@
-import variables from './constants/variables';
+import variables from 'src/constants/variables';
 
 class Config {
   public backEndBaseUrl = process.env.REACT_APP_API_SERVER || 'http://localhost:3001';

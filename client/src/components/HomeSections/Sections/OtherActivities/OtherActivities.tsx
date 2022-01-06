@@ -1,10 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { History } from 'history';
-import Header from '../../../Header/Header';
-import Section from '../../../Section/Section';
 import { RowingOutlined } from '@material-ui/icons';
+
 import classes from './OtherActivities.module.scss';
+import Header from 'src/components/Header/Header';
+import Section from 'src/components/Section/Section';
 
 let history: History;
 
@@ -36,7 +37,7 @@ const activities = [
   },
 ];
 
-const PersonalProjects = () => {
+const OtherActivities = () => {
   history = useHistory();
 
   return (
@@ -63,4 +64,4 @@ const PersonalProjects = () => {
   );
 };
 
-export default PersonalProjects;
+export default OtherActivities;

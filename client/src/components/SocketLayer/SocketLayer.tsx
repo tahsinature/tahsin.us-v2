@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import PageLoader from '../PageLoader/PageLoader';
-import mySocket from '../../mySocket';
-import config from '../../config';
+
+import PageLoader from 'src/components/PageLoader/PageLoader';
+import config from 'src/config';
+import mySocket from 'src/mySocket';
 
 const SocketLayer = (props: any) => {
   const [isSocketConnected, setSocketConnected] = useState(false);

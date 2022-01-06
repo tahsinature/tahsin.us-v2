@@ -1,9 +1,10 @@
 import React from 'react';
-import Header from '../../../Header/Header';
-import Section from '../../../Section/Section';
-import SeeAllButton from '../../../Buttons/SeeAllButton/SeeAllButton';
-import { IApiResponses } from '../../../../interfaces/apiResponse';
 import { BuildRounded } from '@material-ui/icons';
+
+import Header from 'src/components/Header/Header';
+import Section from 'src/components/Section/Section';
+import SeeAllButton from 'src/components/Buttons/SeeAllButton/SeeAllButton';
+import { IApiResponses } from 'src/interfaces/apiResponse';
 
 const ToolsIAmUsing = (props: { tools: IApiResponses.IGetBasicData['tools'] }) => {
   return (

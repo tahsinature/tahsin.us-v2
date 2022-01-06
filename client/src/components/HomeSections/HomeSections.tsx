@@ -1,19 +1,19 @@
 import React from 'react';
 
-import FewWordsAboutMe from './Sections/FewWordsAboutMe/FewWordsAboutMe';
-import ToolsIAmUsing from './Sections/ToolsIAmUsing/ToolsIAmUsing';
-import FrameworksAndLibraries from './Sections/FrameworksAndLibraries/FrameworksAndLibraries';
-import ProgrammingLanguages from './Sections/ProgrammingLanguages/ProgrammingLanguages';
-import MyContributions from './Sections/MyContributions/MyContributions';
-import PublishedWriting from './Sections/PublishedWriting/PublishedWriting';
+import classes from './HomeSections.module.scss';
+import FewWordsAboutMe from 'src/components/HomeSections/Sections/FewWordsAboutMe/FewWordsAboutMe';
+import ToolsIAmUsing from 'src/components/HomeSections/Sections/ToolsIAmUsing/ToolsIAmUsing';
+import FrameworksAndLibraries from 'src/components/HomeSections/Sections/FrameworksAndLibraries/FrameworksAndLibraries';
+import ProgrammingLanguages from 'src/components/HomeSections/Sections/ProgrammingLanguages/ProgrammingLanguages';
+import MyContributions from 'src/components/HomeSections/Sections/MyContributions/MyContributions';
+import PublishedWriting from 'src/components/HomeSections/Sections/PublishedWriting/PublishedWriting';
+import OtherActivities from 'src/components/HomeSections/Sections/OtherActivities/OtherActivities';
+import FindMeElseWhere from 'src/components/HomeSections/Sections/FindMeElseWhere/FindMeElseWhere';
+import Work from 'src/components/HomeSections/Sections/Work/Work';
+import HumanLanguages from 'src/components/HomeSections/Sections/HumanLanguages/HumanLanguages';
+import { IReducers } from 'src/interfaces/reducers';
 // import PublicSpeaking from './Sections/PublicSpeaking/PublicSpeaking';
 // import EventsIAmAt from './Sections/EventsIAmAt/EventsIAmAt';
-import OtherActivities from './Sections/OtherActivities/OtherActivities';
-import FindMeElseWhere from './Sections/FindMeElseWhere/FindMeElseWhere';
-import classes from './HomeSections.module.scss';
-import { IReducers } from '../../interfaces/reducers';
-import Work from './Sections/Work/Work';
-import HumanLanguages from './Sections/HumanLanguages/HumanLanguages';
 
 const HomeSections = (props: { basicData: IReducers.IAppReducer['basicData'] }) => {
   if (!props.basicData) throw new Error('basic data not found but component tried to render');

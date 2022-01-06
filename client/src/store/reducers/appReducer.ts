@@ -1,5 +1,5 @@
-import { actionTypes } from '../../actions';
-import { IReducers } from '../../interfaces/reducers';
+import { actionTypes } from 'src/actions';
+import { IReducers } from 'src/interfaces/reducers';
 
 const initialState: IReducers.IAppReducer = {
   appTheme: 'dark',

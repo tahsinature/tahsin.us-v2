@@ -3,12 +3,12 @@ import { Avatar } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import ThemeToggle from '../Buttons/ThemeToggle/ThemeToggle';
 import classes from './NavBar.module.scss';
-import { getAppVersion } from '../../util';
-import config from '../../config';
-import mySocket from '../../mySocket';
-import variables from '../../constants/variables';
+import variables from 'src/constants/variables';
+import mySocket from 'src/mySocket';
+import config from 'src/config';
+import { getAppVersion } from 'src/util';
+import ThemeToggle from 'src/components/Buttons/ThemeToggle/ThemeToggle';
 
 let totalClicked = 0;
 let currentResetter: NodeJS.Timeout;

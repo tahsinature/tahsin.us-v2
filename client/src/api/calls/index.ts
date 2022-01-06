@@ -1,4 +1,4 @@
-import axiosAdapters from '../axiosAdapters';
+import axiosAdapters from 'src/api/axiosAdapters';
 import { GetBasicData } from './getBasicData';
 import { GetList } from './getList';
 import { GetMarkdown } from './getMarkdown';

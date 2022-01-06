@@ -1,14 +1,13 @@
 import React from 'react';
 import { WorkRounded as WorkIcon } from '@material-ui/icons';
 import { PlaceRounded, BuildRounded } from '@material-ui/icons';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import Header from '../../../Header/Header';
-import Section from '../../../Section/Section';
 import classes from './Work.module.scss';
-import colors from '../../../../constants/colors';
-import { ThemeManager } from '../../../../App.theme';
+import colors from 'src/constants/colors';
+import { ThemeManager } from 'src/App.theme';
+import Section from 'src/components/Section/Section';
+import Header from 'src/components/Header/Header';
 
 interface IWorkExperience {
   company: string;
@@ -120,8 +119,4 @@ const Work = () => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  ...state.appReducer,
-});
-
-export default connect(mapStateToProps, null)(Work);
+export default Work;

@@ -1,8 +1,9 @@
 import React from 'react';
 import moment from 'moment';
-import Header from '../../../Header/Header';
-import Section from '../../../Section/Section';
 import { Person } from '@material-ui/icons';
+
+import Header from 'src/components/Header/Header';
+import Section from 'src/components/Section/Section';
 
 const FewWordsAboutMe = () => {
   return (

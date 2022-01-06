@@ -1,7 +1,7 @@
 import React from 'react';
 
-import HomeSections from '../../components/HomeSections/HomeSections';
-import { IReducers } from '../../interfaces/reducers';
+import HomeSections from 'src/components/HomeSections/HomeSections';
+import { IReducers } from 'src/interfaces/reducers';
 
 import classes from './Home.module.scss';
 

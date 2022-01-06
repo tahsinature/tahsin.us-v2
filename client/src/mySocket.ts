@@ -1,9 +1,10 @@
 import socketIOClient, { Socket } from 'socket.io-client';
-import config from './config';
 import EventEmitter from 'events';
-import { IApiResponses } from './interfaces/apiResponse';
-import storeManager from './store/storeManager';
+
+import config from './config';
 import actions from './actions';
+import { IApiResponses } from 'src/interfaces/apiResponse';
+import storeManager from 'src/store/storeManager';
 
 class MySocket {
   private socket!: Socket;

@@ -4,10 +4,10 @@ import rehypeRaw from 'rehype-raw';
 import gfm from 'remark-gfm';
 import { useParams } from 'react-router-dom';
 
-import PageLoader from '../../components/PageLoader/PageLoader';
 import classes from './Markdown.module.scss';
-import apiCalls from '../../api/calls';
-import { IApiResponses } from '../../interfaces/apiResponse';
+import { IApiResponses } from 'src/interfaces/apiResponse';
+import apiCalls from 'src/api/calls';
+import PageLoader from 'src/components/PageLoader/PageLoader';
 
 const Markdown = () => {
   const { id } = useParams<{ id: string }>();

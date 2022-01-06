@@ -10,26 +10,24 @@ import './assets/sass/main.scss';
 import classes from './App.module.scss';
 import { GlobalStyle } from './App.theme';
 
-import NavBar from './components/NavBar/NavBar';
-
-import Home from './views/Home/Home';
-import Chat from './views/Chat/Chat';
-import List from './views/List/List';
-import Error404 from './views/Error404/Error404';
-
 // import UnderDevelopment from './views/UnderDevelopment/UnderDevelopment';
-
 // import perticlesConfig from './perticles';
-import Markdown from './views/Markdown/Markdown';
 // import SocketLayer from './components/SocketLayer/SocketLayer';
-import PageLoader from './components/PageLoader/PageLoader';
-import storeManager from './store/storeManager';
+
 import actions from './actions';
-import { IReducers } from './interfaces/reducers';
-import apiCalls from './api/calls';
+import { IReducers } from 'src/interfaces/reducers';
 import config from './config';
-import JSONData from './views/JSONData/JSONData';
-import Gallery from './views/Gallery/Gallery';
+import NavBar from 'src/components/NavBar/NavBar';
+import Home from 'src/views/Home/Home';
+import Chat from 'src/views/Chat/Chat';
+import List from 'src/views/List/List';
+import Error404 from 'src/views/Error404/Error404';
+import Markdown from 'src/views/Markdown/Markdown';
+import PageLoader from 'src/components/PageLoader/PageLoader';
+import storeManager from 'src/store/storeManager';
+import apiCalls from 'src/api/calls';
+import JSONData from 'src/views/JSONData/JSONData';
+import Gallery from 'src/views/Gallery/Gallery';
 
 function App(props: any) {
   const appState: IReducers.IAppReducer = props.appState;

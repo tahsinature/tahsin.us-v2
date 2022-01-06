@@ -1,12 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-
-import Header from '../../../Header/Header';
-import Section from '../../../Section/Section';
-import SeeAllButton from '../../../Buttons/SeeAllButton/SeeAllButton';
-import classes from './PublishedWriting.module.scss';
-import { IApiResponses } from '../../../../interfaces/apiResponse';
 import { DescriptionRounded } from '@material-ui/icons';
+
+import Header from 'src/components/Header/Header';
+import Section from 'src/components/Section/Section';
+import classes from './PublishedWriting.module.scss';
+import SeeAllButton from 'src/components/Buttons/SeeAllButton/SeeAllButton';
+import { IApiResponses } from 'src/interfaces/apiResponse';
 
 const PublishedWriting = (props: { writings: IApiResponses.IGetBasicData['writings'] }) => {
   const history = useHistory();

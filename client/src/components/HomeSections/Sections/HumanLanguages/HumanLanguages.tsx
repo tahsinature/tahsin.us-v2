@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../../Header/Header';
-import Section from '../../../Section/Section';
-import classes from './HumanLanguages.module.scss';
-import { Translate } from '@material-ui/icons';
 import Typist from 'react-typist';
+import { Translate } from '@material-ui/icons';
+
+import Header from 'src/components/Header/Header';
+import Section from 'src/components/Section/Section';
+import classes from './HumanLanguages.module.scss';
 
 const languages = [
   { _id: '1', name: 'English', subOnLang: 'I am pretty fluent in English.' },

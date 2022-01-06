@@ -1,7 +1,8 @@
 import React from 'react';
-import Header from '../../../Header/Header';
-import Section from '../../../Section/Section';
 import { AssessmentRounded } from '@material-ui/icons';
+
+import Header from 'src/components/Header/Header';
+import Section from 'src/components/Section/Section';
 
 const data = [
   {
@@ -31,7 +32,7 @@ const data = [
   },
 ];
 
-const PersonalProjects = () => {
+const MyContributions = () => {
   return (
     <Section>
       <Header title="Projects" icon={<AssessmentRounded />} />
@@ -51,4 +52,4 @@ const PersonalProjects = () => {
   );
 };
 
-export default PersonalProjects;
+export default MyContributions;

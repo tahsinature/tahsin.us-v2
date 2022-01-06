@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { actionTypes } from '../../../actions';
 
+import { actionTypes } from 'src/actions';
 import classes from './ThemeToggle.module.scss';
 
 const ThemeToggle = (props: any) => {

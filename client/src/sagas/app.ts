@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import actions, { actionTypes } from '../actions';
-import apiCalls from '../api/calls';
+
+import actions, { actionTypes } from 'src/actions';
+import apiCalls from 'src/api/calls';
 
 const toggleTheme = () => {
   put(actions.app.toggleTheme());
@@ -14,7 +15,7 @@ function* handleLoadAppStart(): {} {
     yield put(actions.chat.storeMultipleMsgs(msgs));
     yield put(actions.app.loadAppDone());
   } catch (error) {
-    console.log(error.message);
+    console.log((error as any).message);
     // config.connectionId = '';
     // window.location.reload();
   }

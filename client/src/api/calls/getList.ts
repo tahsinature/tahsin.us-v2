@@ -1,5 +1,5 @@
-import { IApiResponses } from '../../interfaces/apiResponse';
-import { BaseCall } from '../baseCall';
+import { BaseCall } from 'src/api/baseCall';
+import { IApiResponses } from 'src/interfaces/apiResponse';
 
 export class GetList extends BaseCall<IApiResponses.IGetList> {
   public method = 'GET';

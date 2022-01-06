@@ -1,7 +1,8 @@
 import React from 'react';
+import Typist from 'react-typist';
+
 import classes from './PageLoader.module.scss';
 import { GlobalStyle } from './PageLoader.theme';
-import Typist from 'react-typist';
 
 const PageLoader = (props: { message?: string }) => {
   return (

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import _ from 'lodash';
 import ReactJson from 'react-json-view';
+import { useParams } from 'react-router-dom';
+
 // import JSONViewer from 'react-json-viewer';
 import classes from './JSONData.module.scss';
-import { useParams } from 'react-router-dom';
-import apiCalls from '../../api/calls';
+import apiCalls from 'src/api/calls';
 
 // import classes from './List.module.scss';
 

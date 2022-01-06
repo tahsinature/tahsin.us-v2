@@ -1,7 +1,7 @@
 /* eslint-disable */
 /* @ts-ignore */
 
-import colors from './constants/colors';
+import colors from 'src/constants/colors';
 
 /**
  *

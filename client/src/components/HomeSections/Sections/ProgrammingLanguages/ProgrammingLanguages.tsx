@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../../../Header/Header';
-import Section from '../../../Section/Section';
-import classes from './ProgrammingLanguages.module.scss';
+import React, { useState } from 'react';
 import { Code } from '@material-ui/icons';
-import Terminal from '../../../Terminal/Terminal';
-import colors from '../../../../constants/colors';
+
+import classes from './ProgrammingLanguages.module.scss';
+import colors from 'src/constants/colors';
+import Header from 'src/components/Header/Header';
+import Section from 'src/components/Section/Section';
+import Terminal from 'src/components/Terminal/Terminal';
 
 const languages = [
   {

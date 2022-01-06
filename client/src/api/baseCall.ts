@@ -1,5 +1,6 @@
 import { AxiosInstance, Method } from 'axios';
-import config from '../config';
+
+import config from 'src/config';
 
 export abstract class BaseCall<ResponseType> {
   constructor(private axios: AxiosInstance) {}

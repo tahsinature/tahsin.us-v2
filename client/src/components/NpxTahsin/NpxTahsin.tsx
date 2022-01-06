@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Terminal from '../Terminal/Terminal';
+
+import Terminal from 'src/components/Terminal/Terminal';
 
 const termLines = [
   {

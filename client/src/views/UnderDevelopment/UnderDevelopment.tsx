@@ -1,9 +1,10 @@
 // @ts-nocheck
 import React from 'react';
+import Terminal from 'react-animated-term';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import classes from './UnderDevelopment.module.scss';
-import Terminal from 'react-animated-term';
 
 const UnderDevelopment = (props: any) => {
   const { appState, progress } = props;

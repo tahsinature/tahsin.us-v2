@@ -1,4 +1,4 @@
-import { IApiResponses } from '../interfaces/apiResponse';
+import { IApiResponses } from 'src/interfaces/apiResponse';
 import { CHAT } from './actionTypes';
 
 export const storeSingleMsg = (data: IApiResponses.ISendMessage) => ({

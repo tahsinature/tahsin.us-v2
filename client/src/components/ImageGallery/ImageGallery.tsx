@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import Gallery from 'react-photo-gallery';
 import Carousel, { Modal, ModalGateway } from 'react-images';
+
 import classes from './ImageGallery.module.scss';
 
 const photos = [

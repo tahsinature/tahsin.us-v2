@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import _ from 'lodash';
 
-import PageLoader from '../../components/PageLoader/PageLoader';
 import classes from './List.module.scss';
-import apiCalls from '../../api/calls';
-import { IApiResponses } from '../../interfaces/apiResponse';
+import PageLoader from 'src/components/PageLoader/PageLoader';
+import apiCalls from 'src/api/calls';
+import { IApiResponses } from 'src/interfaces/apiResponse';
 
 const List = () => {
   const [data, setData] = useState<IApiResponses.IGetList | null>(null);

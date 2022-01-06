@@ -1,6 +1,7 @@
 import React from 'react';
-import Header from '../../../Header/Header';
 import { SettingsEthernetRounded } from '@material-ui/icons';
+
+import Header from 'src/components/Header/Header';
 
 const data = [
   {

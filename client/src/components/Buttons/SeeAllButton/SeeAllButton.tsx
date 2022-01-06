@@ -1,7 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import classes from './SeeAllButton.module.scss';
 import PropTypes from 'prop-types';
+
+import classes from './SeeAllButton.module.scss';
 
 const SeeAllButton = (props: any) => {
   const history = useHistory();

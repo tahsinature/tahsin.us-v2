@@ -1,6 +1,7 @@
 import axios from 'axios';
-import config from '../config';
 import faker from 'faker';
+
+import config from 'src/config';
 
 const backendAxios = axios.create({
   baseURL: config.backEndBaseUrl,

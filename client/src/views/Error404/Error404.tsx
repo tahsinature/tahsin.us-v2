@@ -1,8 +1,9 @@
 // @ts-nocheck
 import React from 'react';
-import { connect } from 'react-redux';
-import classes from './Error404.module.scss';
 import Terminal from 'react-animated-term';
+import { connect } from 'react-redux';
+
+import classes from './Error404.module.scss';
 
 const termLines = [
   {

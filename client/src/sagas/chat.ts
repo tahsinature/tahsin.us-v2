@@ -1,8 +1,9 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
-import actions from '../actions';
-import * as types from '../actions/actionTypes';
-import apiCalls from '../api/calls';
-import { wait } from '../util';
+
+import actions from 'src/actions';
+import * as types from 'src/actions/actionTypes';
+import apiCalls from 'src/api/calls';
+import { wait } from 'src/util';
 
 const handleIncomingMsg = (data: ReturnType<typeof actions.chat.storeSingleMsg>) => {
   put(actions.chat.storeSingleMsg(data.payload));

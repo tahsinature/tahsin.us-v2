@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import 'react-chat-elements/dist/main.css';
 import SendIcon from '@material-ui/icons/Send';
 import Loader from 'react-loader-spinner';
@@ -7,10 +8,9 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import './Chat.scss';
 import classes from './Chat.module.scss';
 import { Root, GlobalStyle } from './Chat.theme';
-import { connect } from 'react-redux';
-import storeManager from '../../store/storeManager';
-import actions from '../../actions';
-import { IReducers } from '../../interfaces/reducers';
+import storeManager from 'src/store/storeManager';
+import actions from 'src/actions';
+import { IReducers } from 'src/interfaces/reducers';
 const { MessageList } = require('react-chat-elements');
 
 const Chat = (props: any) => {
