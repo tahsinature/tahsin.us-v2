@@ -8,6 +8,8 @@ import './Chrono.scss';
 import colors from '../../../../constants/colors';
 import { PlaceRounded } from '@material-ui/icons';
 import { connect } from 'react-redux';
+import { ThemeManager } from '../../../../App.theme';
+import styled from 'styled-components';
 
 interface IFoo {
   company: string;
@@ -17,6 +19,7 @@ interface IFoo {
   url: string;
   location: string;
   specialization: string;
+  techStack: string;
 }
 
 const items: IFoo[] = [
@@ -28,6 +31,7 @@ const items: IFoo[] = [
     url: 'http://www.history.com',
     location: 'Singapore (Remote)',
     specialization: 'Go, Node.js, TypeScript',
+    techStack: 'foo-stack',
   },
   {
     timeRange: 'July 2021 - Present',
@@ -37,6 +41,7 @@ const items: IFoo[] = [
     url: 'http://www.history.com',
     location: 'Jakarta, Indonesia (Remote)',
     specialization: 'Go, React',
+    techStack: 'foo-stack',
   },
   {
     timeRange: 'Feb 2019 - June 2021',
@@ -46,50 +51,75 @@ const items: IFoo[] = [
     url: 'http://www.history.com',
     location: 'Jakarta, Indonesia',
     specialization: 'Node.js, Microservices, JavaScript, TypeScript',
+    techStack: 'foo-stack',
   },
 ];
 
-const Children = (props: IFoo) => {
-  return (
-    <div className={classes.Children}>
-      <img src={props.logo} alt={`logo of ${props.company}`} />
-      <p>
-        <b>{props.company}</b> <small>({props.timeRange})</small>
-      </p>
-      <p>{props.position}</p>
-      <div className={classes.LocationBox}>
-        <PlaceRounded fontSize="small" />
-        <p>{props.location}</p>
-      </div>
-      <p>Specialized in: {props.specialization}</p>
-    </div>
-  );
-};
+// $color-1: black;
+// $color-2: white;
 
 const Work = (props: any) => {
-  const theme = {
-    primary: '#404040',
-    secondary: '#4040402f',
-    // textColor: '#404040',
-    cardBgColor: props.appTheme === 'light' ? 'rgb(250, 250, 250)' : 'rgb(30, 30, 30)',
-    // cardForeColor: '#4040402f',
-    titleColor: colors.common.primaryGreenishColor,
+  const tm = new ThemeManager();
+  const map = {
+    dark: {
+      color1: colors.light.backgroundColor,
+      color2: colors.dark.backgroundColor,
+    },
+    light: {
+      color1: colors.dark.backgroundColor,
+      color2: colors.light.backgroundColor,
+    },
   };
+
+  const styles = map[tm.currentTheme];
+
+  const UL = styled.ul`
+    &:before {
+      background-color: ${styles.color1};
+    }
+  `;
+
+  const LABEL = styled.label`
+    background-color: ${styles.color1};
+    outline: 10px solid ${styles.color2};
+  `;
+
+  const P = styled.label`
+    color: ${styles.color2};
+    background-color: ${styles.color1};
+  `;
 
   return (
     <Section>
       <Header title="Work" icon={<WorkIcon />} />
       <div className={classes.TimeLineBox}>
-        <Chrono
-          borderLessCards
-          scrollable
-          children={items.map(item => (
-            <Children key={item.company} {...item} />
+        <UL className="timeline">
+          {items.map(item => (
+            <li key={item.company + item.position} className="timeline-event">
+              <LABEL className="timeline-event-icon"></LABEL>
+              <div className="timeline-event-copy">
+                <P className="timeline-event-thumbnail">{item.timeRange}</P>
+                <div className={classes.Logobox}>
+                  <img src={item.logo} alt="" />
+                </div>
+                <p>
+                  <strong>{item.company}</strong>
+                </p>
+                <p>{item.position}</p>
+                <p>
+                  <strong>Tech Stack</strong>
+                  <br />
+                  {item.techStack}
+                </p>
+                <p>
+                  <strong>Specialized In</strong>
+                  <br />
+                  {item.specialization}
+                </p>
+              </div>
+            </li>
           ))}
-          // items={items.map(item => ({ title: item.timeRange }))}
-          theme={theme}
-          mode="VERTICAL"
-        />
+        </UL>
       </div>
     </Section>
   );

@@ -19,3 +19,11 @@ body {
   color: ${() => GlobalStyleCSS[storeManager.getCurrentTheme()]['color']};
 }
 `;
+
+export class ThemeManager {
+  currentTheme: 'light' | 'dark';
+
+  constructor() {
+    this.currentTheme = storeManager.getCurrentTheme();
+  }
+}

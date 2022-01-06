@@ -27,3 +27,4 @@
 - [ ] other activities -> photos / music / movies
 - [ ] move all static image to local cdn
 - [ ] put NFT -> https://juliancanderson.com/nfts
+- [ ] do something on all image load on gallery
