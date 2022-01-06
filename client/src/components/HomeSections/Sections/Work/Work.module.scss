@@ -1,7 +1,5 @@
 @import '../../../../assets/sass/main.scss';
 
-$color-3: $primaryGreenish;
-
 .TimeRange {
   font-size: 60%;
   margin-left: 0.4rem;
@@ -64,17 +62,17 @@ $color-3: $primaryGreenish;
   &:hover {
     .TimelineEventIcon {
       transform: rotate(-45deg);
-      background-color: $color-3;
+      background-color: $primaryGreenish;
       transition: all 0.5s;
     }
 
     p {
-      color: $color-3;
+      color: $primaryGreenish;
     }
 
     .TimelineEventThumbnail {
-      // box-shadow: inset 40em 0 0 0 $color-3;
-      background-color: $color-3;
+      // box-shadow: inset 40em 0 0 0 $primaryGreenish;
+      background-color: $primaryGreenish;
       transition: all 0.5s;
     }
   }
@@ -93,7 +91,6 @@ $color-3: $primaryGreenish;
   padding: 2em 2em 0 6rem;
   position: relative;
   top: -1.875em;
-  // left: 4em;
   @include respond(df, mbl) {
     padding-left: 4rem;
   }

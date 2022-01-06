@@ -1,13 +1,14 @@
 import React from 'react';
-import Header from '../../../Header/Header';
-import Section from '../../../Section/Section';
 import { WorkRounded as WorkIcon } from '@material-ui/icons';
-import classes from './Work.module.scss';
-import colors from '../../../../constants/colors';
 import { PlaceRounded, BuildRounded } from '@material-ui/icons';
 import { connect } from 'react-redux';
-import { ThemeManager } from '../../../../App.theme';
 import styled from 'styled-components';
+
+import Header from '../../../Header/Header';
+import Section from '../../../Section/Section';
+import classes from './Work.module.scss';
+import colors from '../../../../constants/colors';
+import { ThemeManager } from '../../../../App.theme';
 
 interface IWorkExperience {
   company: string;
@@ -37,7 +38,7 @@ const items: IWorkExperience[] = [
     position: 'FullStack Engineer',
     logo: 'https://avatars.githubusercontent.com/u/73483466',
     url: 'http://www.history.com',
-    location: 'Jakarta, Indonesia (Remote)',
+    location: 'Indonesia (Remote)',
     specialization: 'Go, React',
     techStack: 'foo-stack',
   },
@@ -47,16 +48,13 @@ const items: IWorkExperience[] = [
     position: 'Sr. Software Engineer',
     logo: 'https://gallery.tahsin.us/uploads/big/6f8a5ec77197814a488f987410bf5135.png',
     url: 'http://www.history.com',
-    location: 'Jakarta, Indonesia',
+    location: 'Indonesia',
     specialization: 'Node.js, Microservices, JavaScript, TypeScript',
     techStack: 'foo-stack',
   },
 ];
 
-// $color-1: black;
-// $color-2: white;
-
-const Work = (props: any) => {
+const Work = () => {
   const tm = new ThemeManager();
   const map = {
     dark: {
@@ -71,18 +69,18 @@ const Work = (props: any) => {
 
   const styles = map[tm.currentTheme];
 
-  const UL = styled.ul`
+  const ListContainer = styled.ul`
     &:before {
       background-color: ${styles.color1};
     }
   `;
 
-  const LABEL = styled.label`
+  const LeftIcon = styled.label`
     background-color: ${styles.color1};
     outline: 10px solid ${styles.color2};
   `;
 
-  const P = styled.label`
+  const Title = styled.label`
     color: ${styles.color2};
     background-color: ${styles.color1};
   `;
@@ -91,14 +89,14 @@ const Work = (props: any) => {
     <Section>
       <Header title="Work" icon={<WorkIcon />} />
       <div className={classes.TimeLineBox}>
-        <UL className={classes.Timeline}>
+        <ListContainer className={classes.Timeline}>
           {items.map(item => (
             <li key={item.company + item.position} className={classes.TimelineEvent}>
-              <LABEL className={classes.TimelineEventIcon}></LABEL>
+              <LeftIcon className={classes.TimelineEventIcon}></LeftIcon>
               <div className={classes.TimelineEventCopy}>
-                <P className={classes.TimelineEventThumbnail}>
+                <Title className={classes.TimelineEventThumbnail}>
                   {item.company} <small className={classes.TimeRange}>{item.timeRange}</small>
-                </P>
+                </Title>
                 <div className={classes.Logobox}>
                   <img src={item.logo} alt="" />
                 </div>
@@ -116,7 +114,7 @@ const Work = (props: any) => {
               </div>
             </li>
           ))}
-        </UL>
+        </ListContainer>
       </div>
     </Section>
   );
