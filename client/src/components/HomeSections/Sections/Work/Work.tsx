@@ -6,7 +6,7 @@ import { Chrono } from 'react-chrono';
 import classes from './Work.module.scss';
 import './Chrono.scss';
 import colors from '../../../../constants/colors';
-import { PlaceRounded } from '@material-ui/icons';
+import { PlaceRounded, WorkRounded, BuildRounded } from '@material-ui/icons';
 import { connect } from 'react-redux';
 import { ThemeManager } from '../../../../App.theme';
 import styled from 'styled-components';
@@ -98,24 +98,23 @@ const Work = (props: any) => {
             <li key={item.company + item.position} className="timeline-event">
               <LABEL className="timeline-event-icon"></LABEL>
               <div className="timeline-event-copy">
-                <P className="timeline-event-thumbnail">{item.timeRange}</P>
+                <P className="timeline-event-thumbnail">
+                  {item.company} <small>{item.timeRange}</small>
+                </P>
                 <div className={classes.Logobox}>
                   <img src={item.logo} alt="" />
                 </div>
                 <p>
-                  <strong>{item.company}</strong>
+                  <strong>{item.position}</strong>
                 </p>
-                <p>{item.position}</p>
-                <p>
-                  <strong>Tech Stack</strong>
-                  <br />
-                  {item.techStack}
-                </p>
-                <p>
-                  <strong>Specialized In</strong>
-                  <br />
-                  {item.specialization}
-                </p>
+                <div className={classes.LocationBox}>
+                  <PlaceRounded fontSize="small" />
+                  <p>{item.location}</p>
+                </div>
+                <div className={classes.LocationBox}>
+                  <BuildRounded fontSize="small" />
+                  <p>{item.specialization}</p>
+                </div>
               </div>
             </li>
           ))}
