@@ -1,0 +1,13 @@
+.Travels {
+  display: grid;
+  grid-auto-columns: 3rem 3rem 3rem;
+  grid-gap: 1rem;
+  .Destination {
+    // height: 30vw;
+    // width: 30%;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: red;
+    // height: ;
+  }
+}

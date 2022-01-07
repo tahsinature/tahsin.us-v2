@@ -1,0 +1,47 @@
+@import '../../assets/sass/media';
+@import '../../assets/sass/colors';
+
+.Capsule {
+  min-width: 30%;
+  @include respond(df, sm) {
+    min-width: 40%;
+    padding: 0.3rem 0.6rem;
+  }
+  padding: 0.3rem 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s;
+  cursor: pointer;
+  display: flex;
+  border-radius: 4px;
+  align-items: center;
+  border: solid 1px #75757531;
+  &:hover {
+    border-color: $primaryGreenish;
+    // transform: scale(1.05);
+  }
+  p {
+    font-size: 13px;
+  }
+  small {
+    font-size: 9px;
+  }
+
+  .LogoBox {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    img {
+      height: 20px;
+      width: 20px;
+      object-fit: cover;
+    }
+  }
+  .DetailBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

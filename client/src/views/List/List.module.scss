@@ -1,9 +1,12 @@
 @import '../../assets/sass/media';
+@import '../../assets/sass/colors';
 
 .Root {
   height: 100%;
+  // height: auto;
   align-items: center;
   justify-content: center;
+  padding-bottom: 2rem;
   .ListTitle {
     text-align: center;
     margin-bottom: 3rem;
@@ -23,12 +26,13 @@
       border-radius: 5px;
       cursor: pointer;
       transition: all 0.3s;
+      border-color: rgba(81, 81, 81, 0.098);
       p {
         margin: 0;
       }
       &:hover {
-        border-color: rgba(81, 81, 81, 0.098);
-        transform: scale(1.02);
+        border-color: $primaryGreenish;
+        // transform: scale(1.02);
       }
       .ItemTop {
         display: flex;

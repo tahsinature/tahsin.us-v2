@@ -28,6 +28,7 @@ import storeManager from 'src/store/storeManager';
 import apiCalls from 'src/api/calls';
 import JSONData from 'src/views/JSONData/JSONData';
 import Gallery from 'src/views/Gallery/Gallery';
+import Travels from 'src/views/Travels/Travels';
 
 function App(props: any) {
   const appState: IReducers.IAppReducer = props.appState;
@@ -56,6 +57,7 @@ function App(props: any) {
             <Route path="/chat" component={() => <Chat />} />
             <Route path="/list" component={() => <List />} />
             <Route path="/gallery" component={() => <Gallery />} />
+            <Route path="/travels" component={() => <Travels />} />
             <Route path="/md/:id" component={() => <Markdown />} />
             <Route path="/json/:id" component={() => <JSONData />} />
             <Route component={() => <Error404 />} />

@@ -1,0 +1,14 @@
+@import '../../../../assets/sass/media';
+
+.ToolBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  @include respond(df, sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  & > div {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}

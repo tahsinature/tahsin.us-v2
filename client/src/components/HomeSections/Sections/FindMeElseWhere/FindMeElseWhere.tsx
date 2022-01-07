@@ -8,7 +8,7 @@ import { PublicRounded } from '@material-ui/icons';
 import classes from './FindMeElseWhere.module.scss';
 import Header from 'src/components/Header/Header';
 import Section from 'src/components/Section/Section';
-import colors from 'src/constants/colors';
+import Capsule from 'src/components/Capsule/Capsule';
 
 const data = [
   {
@@ -103,15 +103,7 @@ const FindMeElseWhere = () => {
 
       <div className={classes.Holder}>
         {data.map(ele => (
-          <div key={ele.platform} className={classes.Single} onClick={() => handleClick(ele.url)}>
-            <div className={classes.LogoBox}>
-              <img src={ele.logo} alt="" />
-            </div>
-            <div className={classes.DetailBox}>
-              <p>{ele.platform}</p>
-              <small style={{ color: colors.common.primaryGreenishColor }}>{ele.username}</small>
-            </div>
-          </div>
+          <Capsule clickHandler={() => handleClick(ele.url)} key={ele.platform} logo={ele.logo} title={ele.platform} subtitle={ele.username} />
         ))}
       </div>
       {/* <ScrollAnimation animateIn="fadeIn">
