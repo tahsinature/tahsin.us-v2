@@ -10,7 +10,6 @@ enum Type {
 export default function Capsule(props: { logo?: string; title: string; subtitle?: string; type?: Type; clickHandler?: () => void }) {
   let type: Type;
   type = props.type || Type.other;
-  console.log(type);
 
   const style = type === Type.button ? { justifyContent: 'center' } : {};
 
