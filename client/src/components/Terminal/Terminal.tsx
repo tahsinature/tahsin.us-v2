@@ -1,8 +1,8 @@
 // @ts-nocheck
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
 import CLI from 'react-animated-term';
 import 'react-animated-term/dist/react-animated-term.css';
+import { ThemeManager } from 'src/App.theme';
 
 const Terminal = (props: {
   height?: number;
@@ -12,11 +12,17 @@ const Terminal = (props: {
     delay?: number;
   }[];
 }) => {
-  return <CLI height={props.height || 100} lines={props.lines} interval={80} white={props.appState.appTheme === 'dark'} />;
+  const tm = new ThemeManager();
+  const [white, setWhite] = useState(tm.currentTheme === 'dark');
+
+  return (
+    <div
+      onClick={() => {
+        setWhite(!white);
+      }}>
+      <CLI height={props.height || 100} lines={props.lines} interval={80} white={white} />
+    </div>
+  );
 };
 
-const mapStateToProps = (state: any) => ({
-  appState: state.appReducer,
-});
-
-export default connect(mapStateToProps, null)(Terminal);
+export default Terminal;
