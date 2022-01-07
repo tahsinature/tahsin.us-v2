@@ -9,19 +9,25 @@
         "_id": "1f9a46ea-7cb5-4893-a808-56af27c166c7",
         "image": "https://s.appbrain.com/static/202003041452037/blob/sdk-logos/grpc.png",
         "title": "gRPC",
-        "description": "I like gRPC transport mechanism for request/response as non-persistent streaming protocol."
+        "display": true,
+        "description": "I like gRPC transport mechanism for request/response as non-persistent streaming protocol.",
+        "url": "https://grpc.io/"
       },
       {
         "_id": "f6de396e-9220-463c-b522-27a578dcb2cc",
         "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fgoogle-pub-sub.png?alt=media&token=114864ba-6c9f-4ee4-bb33-305049f5cb32",
         "title": "Google Cloud Pub/Sub",
-        "description": "GC Pub/Sub became my favt tool for event driven architecture and a good alternative to Kafka as it is backed by Google and because of it's less complexity"
+        "display": true,
+        "description": "GC Pub/Sub became my favt tool for event driven architecture and a good alternative to Kafka as it is backed by Google and because of it's less complexity",
+        "url": "https://cloud.google.com/pubsub"
       },
       {
         "_id": "78aeb921-2b40-4114-9ce1-78481b0f4363",
         "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fsocket-io-logo.svg?alt=media&token=8c692e6c-a53e-4054-b19c-6d99c5d1e643",
         "title": "Socket.IO",
-        "description": "I am using Socket.IO for bi-directional communication for quite a long now."
+        "display": true,
+        "description": "I am using Socket.IO for bi-directional communication for quite a long now.",
+        "url": "https://socket.io/"
       },
       {
         "_id": "c5b28e04-3694-42fb-82ea-0ef18ce414cb",
@@ -33,13 +39,17 @@
         "_id": "8cfebeda-149a-490d-9c26-3f5c333f8b34",
         "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fdocker-logo.png?alt=media&token=531f83a7-ace5-4a31-b825-822dbc1aa6c5",
         "title": "Docker",
-        "description": "Everyday's tool. In fact if I create a new repo now, I put it on docker first."
+        "display": true,
+        "description": "Everyday's tool. In fact if I create a new repo now, I put it on docker first.",
+        "url": "https://www.docker.com/"
       },
       {
         "_id": "0bdee134-f834-41e4-a0a6-143ca3dc9e83",
         "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fjest-logo.jpg?alt=media&token=a97a9453-7782-4a0f-bde4-915274ebbff9",
         "title": "Jest",
-        "description": "Previously I was using Jasmine for testing. Now using Jest since 2019."
+        "display": true,
+        "description": "Previously I was using Jasmine for testing. Now using Jest since 2019.",
+        "url": "https://jestjs.io/"
       },
       {
         "_id": "7e6a0b58-0e48-40b0-8a8a-6657908ae04b",
@@ -87,7 +97,9 @@
         "_id": "bbaa4c31-b95f-47a4-b2ce-75e79661cf7a",
         "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fredis-logo.png?alt=media&token=f39a4fde-2be6-407d-8e87-7f97e7c1c2dd",
         "title": "Redis",
-        "description": "I've been using Redis for caching & scheduling. I love it for those purposes."
+        "display": true,
+        "description": "I've been using Redis for caching & scheduling. I love it for those purposes.",
+        "url": "https://redis.io/"
       },
       {
         "_id": "4f0f01d0-8cab-4dee-9630-dd2d5f36e031",
@@ -105,37 +117,49 @@
         "_id": "b9dd3a54-77a1-49bb-8140-ea9503d6cf89",
         "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fsonarqube-logo.png?alt=media&token=c75b584c-77d4-4341-8c5b-71616300830d",
         "title": "SonarQube",
-        "description": "I use Sonar to inspect my code quality, detect bugs, code smells and security vulnerabilities. Really helps when I work in a team."
+        "display": true,
+        "description": "I use Sonar to inspect my code quality, detect bugs, code smells and security vulnerabilities. Really helps when I work in a team.",
+        "url": "https://www.sonarqube.org/"
       },
       {
         "_id": "99f39a13-aca5-4e23-966e-aaa5105cac90",
         "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fhashicorp-vault-logo.png?alt=media&token=950f4c59-a5b0-4eaf-8b1b-683c8889e4c4",
         "title": "HashiCorp Vault",
-        "description": "It's a single source of truth to manage credentials. I use it for storing application API keys, passwords, certificates and other sensitive data."
+        "display": true,
+        "description": "It's a single source of truth to manage credentials. I use it for storing application API keys, passwords, certificates and other sensitive data.",
+        "url": "https://www.vaultproject.io/"
       },
       {
         "_id": "99f39a13-aca5-4e23-966e-aaa5105cad99",
         "image": "https://dashboard.doppler.com/imgs/logo_color.png",
         "title": "Doppler",
-        "description": "Doppler is the easiest way to securely manage all your environment variables in one encrypted place. No more sharing secrets over Slack or copying .env."
+        "display": true,
+        "description": "Doppler is the easiest way to securely manage all your environment variables in one encrypted place. No more sharing secrets over Slack or copying .env.",
+        "url": "https://www.doppler.com/"
       },
       {
         "_id": "651038c4-1ef0-4942-9dd2-5fd931b9ef37",
         "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fselenium%20logo.png?alt=media&token=150ada39-5351-4636-8365-52064190df68",
         "title": "Selenium",
-        "description": "I use it to automate browser related stuffs as well as to write e2e test."
+        "display": true,
+        "description": "I use it to automate browser related stuffs as well as to write e2e test.",
+        "url": "https://www.selenium.dev/"
       },
       {
         "_id": "651038c4-1ef0-4942-9dd2-4fd931b9ef39",
         "image": "https://avatars.githubusercontent.com/u/44036562?s=280&v=4",
         "title": "GitHub Actions",
-        "description": "GitHub Actions is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline."
+        "display": true,
+        "description": "GitHub Actions is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline.",
+        "url": "https://github.com/features/actions"
       },
       {
         "_id": "651038c4-2ef0-4942-9dd2-4fd931b9ef38",
         "image": "https://cdn.icon-icons.com/icons2/2699/PNG/512/digitalocean_logo_icon_169273.png",
         "title": "DigitalOcean",
-        "description": "DigitalOcean is a cloud computing vendor that offers an Infrastructure as a Service (IaaS) platform for software developers."
+        "display": true,
+        "description": "DigitalOcean is a cloud computing vendor that offers an Infrastructure as a Service (IaaS) platform for software developers.",
+        "url": "https://www.digitalocean.com/"
       }
     ]
   },

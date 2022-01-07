@@ -30,6 +30,8 @@ func getJSONData(fileName string) map[string]interface{} {
 
 func (Visitor) GetBasicData(c *gin.Context) {
 	data := getJSONData("basic-data")
+	tools := getJSONData("tools")
+	data["data"].(map[string]interface{})["tools"] = tools["data"].(map[string]interface{})["list"]
 	c.JSON(200, data)
 }
 
