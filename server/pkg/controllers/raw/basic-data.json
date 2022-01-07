@@ -99,6 +99,17 @@
       },
       {
         "display": true,
+        "_id": "99f39a13-aca5-4e23-966e-aaa5105cad99",
+        "title": "Doppler",
+        "description": "Doppler is the easiest way to securely manage all your environment variables in one encrypted place. No more sharing secrets over Slack or copying .env.",
+        "image": "https://dashboard.doppler.com/imgs/logo_color.png",
+        "url": "https://www.doppler.com/",
+        "__v": 0,
+        "createdAt": "2021-05-06T18:19:57.963Z",
+        "updatedAt": "2021-05-06T18:19:57.963Z"
+      },
+      {
+        "display": true,
         "_id": "6094334de9de5f3f9a9505e0",
         "title": "Docker",
         "description": "Everyday's tool. In fact if I create a new repo now, I put it on docker first.",
@@ -110,11 +121,55 @@
       },
       {
         "display": true,
+        "url": "https://github.com/features/actions",
+        "__v": 0,
+        "createdAt": "2021-05-06T18:19:57.961Z",
+        "updatedAt": "2021-05-06T18:19:57.961Z",
+        "_id": "651038c4-1ef0-4942-9dd2-4fd931b9ef39",
+        "image": "https://avatars.githubusercontent.com/u/44036562?s=280&v=4",
+        "title": "GitHub Actions",
+        "description": "GitHub Actions is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline."
+      },
+      {
+        "display": true,
         "_id": "6094334de9de5f3f9a9505e1",
         "title": "Jest",
         "description": "Previously I was using Jasmine for testing. Now using Jest since 2019.",
         "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fjest-logo.jpg?alt=media&token=a97a9453-7782-4a0f-bde4-915274ebbff9",
         "url": "https://jestjs.io/",
+        "__v": 0,
+        "createdAt": "2021-05-06T18:19:57.961Z",
+        "updatedAt": "2021-05-06T18:19:57.961Z"
+      },
+      {
+        "_id": "78aeb921-2b40-4114-9ce1-78481b0f4363",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fsocket-io-logo.svg?alt=media&token=8c692e6c-a53e-4054-b19c-6d99c5d1e643",
+        "title": "Socket.IO",
+        "description": "I am using Socket.IO for bi-directional communication for quite a long now.",
+        "display": true,
+        "url": "https://socket.io/",
+        "__v": 0,
+        "createdAt": "2021-05-06T18:19:57.961Z",
+        "updatedAt": "2021-05-06T18:19:57.961Z"
+      },
+      {
+        "_id": "bbaa4c31-b95f-47a4-b2ce-75e79661cf7a",
+        "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fredis-logo.png?alt=media&token=f39a4fde-2be6-407d-8e87-7f97e7c1c2dd",
+        "title": "Redis",
+        "description": "I've been using Redis for caching & scheduling. I love it for those purposes.",
+        "display": true,
+        "url": "https://redis.io/",
+        "__v": 0,
+        "createdAt": "2021-05-06T18:19:57.961Z",
+        "updatedAt": "2021-05-06T18:19:57.961Z"
+      },
+      {
+        "_id": "651038c4-2ef0-4942-9dd2-4fd931b9ef38",
+        "image": "https://cdn.icon-icons.com/icons2/2699/PNG/512/digitalocean_logo_icon_169273.png",
+        "title": "DigitalOcean",
+        "description": "DigitalOcean is a cloud computing vendor that offers an Infrastructure as a Service (IaaS) platform for software developers.",
+        "display": true,
+        "url": "https://www.digitalocean.com/",
         "__v": 0,
         "createdAt": "2021-05-06T18:19:57.961Z",
         "updatedAt": "2021-05-06T18:19:57.961Z"

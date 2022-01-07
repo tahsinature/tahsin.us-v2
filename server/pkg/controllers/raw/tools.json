@@ -114,10 +114,28 @@
         "description": "It's a single source of truth to manage credentials. I use it for storing application API keys, passwords, certificates and other sensitive data."
       },
       {
+        "_id": "99f39a13-aca5-4e23-966e-aaa5105cad99",
+        "image": "https://dashboard.doppler.com/imgs/logo_color.png",
+        "title": "Doppler",
+        "description": "Doppler is the easiest way to securely manage all your environment variables in one encrypted place. No more sharing secrets over Slack or copying .env."
+      },
+      {
         "_id": "651038c4-1ef0-4942-9dd2-5fd931b9ef37",
         "image": "https://firebasestorage.googleapis.com/v0/b/global-daf32.appspot.com/o/me%2Fselenium%20logo.png?alt=media&token=150ada39-5351-4636-8365-52064190df68",
         "title": "Selenium",
         "description": "I use it to automate browser related stuffs as well as to write e2e test."
+      },
+      {
+        "_id": "651038c4-1ef0-4942-9dd2-4fd931b9ef39",
+        "image": "https://avatars.githubusercontent.com/u/44036562?s=280&v=4",
+        "title": "GitHub Actions",
+        "description": "GitHub Actions is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline."
+      },
+      {
+        "_id": "651038c4-2ef0-4942-9dd2-4fd931b9ef38",
+        "image": "https://cdn.icon-icons.com/icons2/2699/PNG/512/digitalocean_logo_icon_169273.png",
+        "title": "DigitalOcean",
+        "description": "DigitalOcean is a cloud computing vendor that offers an Infrastructure as a Service (IaaS) platform for software developers."
       }
     ]
   },
