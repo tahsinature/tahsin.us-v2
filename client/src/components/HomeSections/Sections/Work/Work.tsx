@@ -53,47 +53,48 @@ const items: IWorkExperience[] = [
   },
 ];
 
+const map = {
+  dark: {
+    color1: colors.light.backgroundColor,
+    color2: colors.dark.backgroundColor,
+  },
+  light: {
+    color1: colors.dark.backgroundColor,
+    color2: colors.light.backgroundColor,
+  },
+};
+
+const ListContainer = styled.ul<{ backgroundColor: string }>`
+  &:before {
+    background-color: ${props => props.backgroundColor};
+  }
+`;
+
+const LeftIcon = styled.label<{ backgroundColor: string; outlineColor: string }>`
+  background-color: ${props => props.backgroundColor};
+  outline: 10px solid ${props => props.outlineColor};
+`;
+
+const Title = styled.label<{ color: string; backgroundColor: string }>`
+  color: ${props => props.color};
+  background-color: ${props => props.backgroundColor};
+`;
+
 const Work = () => {
   const tm = new ThemeManager();
-  const map = {
-    dark: {
-      color1: colors.light.backgroundColor,
-      color2: colors.dark.backgroundColor,
-    },
-    light: {
-      color1: colors.dark.backgroundColor,
-      color2: colors.light.backgroundColor,
-    },
-  };
 
   const styles = map[tm.currentTheme];
-
-  const ListContainer = styled.ul`
-    &:before {
-      background-color: ${styles.color1};
-    }
-  `;
-
-  const LeftIcon = styled.label`
-    background-color: ${styles.color1};
-    outline: 10px solid ${styles.color2};
-  `;
-
-  const Title = styled.label`
-    color: ${styles.color2};
-    background-color: ${styles.color1};
-  `;
 
   return (
     <Section>
       <Header title="Work" icon={<WorkIcon />} />
       <div className={classes.TimeLineBox}>
-        <ListContainer className={classes.Timeline}>
+        <ListContainer backgroundColor={styles.color1} className={classes.Timeline}>
           {items.map(item => (
             <li key={item.company + item.position} className={classes.TimelineEvent}>
-              <LeftIcon className={classes.TimelineEventIcon}></LeftIcon>
+              <LeftIcon backgroundColor={styles.color1} outlineColor={styles.color2} className={classes.TimelineEventIcon}></LeftIcon>
               <div className={classes.TimelineEventCopy}>
-                <Title className={classes.TimelineEventThumbnail}>
+                <Title color={styles.color2} backgroundColor={styles.color1} className={classes.TimelineEventThumbnail}>
                   {item.company} <small className={classes.TimeRange}>{item.timeRange}</small>
                 </Title>
                 <div className={classes.Logobox}>
