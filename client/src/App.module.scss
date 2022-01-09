@@ -13,12 +13,13 @@
 }
 
 .Content {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
   padding-bottom: 3rem;
-  filter: blur(0.2px);
+  // filter: blur(0.2px);
   height: 100%;
 }
 
