@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import Gallery from 'react-photo-gallery';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 
@@ -54,6 +54,9 @@ const photos = [
 ];
 
 const ImageGallery = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { connect } from 'react-redux';
 import { Container } from '@material-ui/core';
@@ -17,18 +17,20 @@ import { GlobalStyle } from './App.theme';
 import actions from './actions';
 import { IReducers } from 'src/interfaces/reducers';
 import config from './config';
-import NavBar from 'src/components/NavBar/NavBar';
-import Home from 'src/views/Home/Home';
-import Chat from 'src/views/Chat/Chat';
-import List from 'src/views/List/List';
-import Error404 from 'src/views/Error404/Error404';
-import Markdown from 'src/views/Markdown/Markdown';
-import PageLoader from 'src/components/PageLoader/PageLoader';
 import storeManager from 'src/store/storeManager';
 import apiCalls from 'src/api/calls';
-import JSONData from 'src/views/JSONData/JSONData';
-import Gallery from 'src/views/Gallery/Gallery';
-import Travels from 'src/views/Travels/Travels';
+
+import NavBar from 'src/components/NavBar/NavBar';
+import PageLoader from 'src/components/PageLoader/PageLoader';
+
+const Home = lazy(() => import('src/views/Home/Home'));
+const Chat = lazy(() => import('src/views/Chat/Chat'));
+const List = lazy(() => import('src/views/List/List'));
+const Error404 = lazy(() => import('src/views/Error404/Error404'));
+const Markdown = lazy(() => import('src/views/Markdown/Markdown'));
+const JSONData = lazy(() => import('src/views/JSONData/JSONData'));
+const Gallery = lazy(() => import('src/views/Gallery/Gallery'));
+const Travels = lazy(() => import('src/views/Travels/Travels'));
 
 function App(props: any) {
   const appState: IReducers.IAppReducer = props.appState;
@@ -52,16 +54,18 @@ function App(props: any) {
       <>
         <NavBar />
         <div className={classes.Content}>
-          <Switch>
-            <Route exact path={['/']} component={() => <Home basicData={basicData} />} />
-            <Route path="/chat" component={() => <Chat />} />
-            <Route path="/list" component={() => <List />} />
-            <Route path="/gallery" component={() => <Gallery />} />
-            <Route path="/travels" component={() => <Travels />} />
-            <Route path="/md/:id" component={() => <Markdown />} />
-            <Route path="/json/:id" component={() => <JSONData />} />
-            <Route component={() => <Error404 />} />
-          </Switch>
+          <Suspense fallback={<PageLoader message={'Fetching Data...'} />}>
+            <Switch>
+              <Route exact path={['/']} component={() => <Home basicData={basicData} />} />
+              <Route path="/chat" component={() => <Chat />} />
+              <Route path="/list" component={() => <List />} />
+              <Route path="/gallery" component={() => <Gallery />} />
+              <Route path="/travels" component={() => <Travels />} />
+              <Route path="/md/:id" component={() => <Markdown />} />
+              <Route path="/json/:id" component={() => <JSONData />} />
+              <Route component={() => <Error404 />} />
+            </Switch>
+          </Suspense>
         </div>
       </>
     );
@@ -74,9 +78,6 @@ function App(props: any) {
         <ThemeProvider theme={{ mode: appState.appTheme }}>
           <GlobalStyle />
           <div className={['App', classes.App].join(' ')}>{isAppLoaded ? getContentComponent() : <PageLoader message={'Fetching Data...'} />}</div>
-          {/* <SocketLayer>
-            
-          </SocketLayer> */}
         </ThemeProvider>
       </Container>
     </Router>
