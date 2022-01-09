@@ -10,7 +10,7 @@ const ThemeToggle = (props: any) => {
   const currentBtnClass = appState.appTheme === 'dark' ? classes.dawn : classes.dusk;
 
   return (
-    <button className={[classes.ThemeToggle, currentBtnClass].join(' ')} onClick={toggleTheme}>
+    <button className={[classes.ThemeToggle, currentBtnClass].join(' ')} onClick={toggleTheme} aria-label="theme change">
       <div className={classes['toggle-glyph']}>
         <svg width="24" height="64" viewBox="0 0 24 64">
           <circle cx="12" cy="16" r="4" />

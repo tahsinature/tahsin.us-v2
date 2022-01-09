@@ -46,7 +46,7 @@ Connection ID: ${connectionId}
 
   return (
     <nav className={classes.NavBar}>
-      <button className={classes.Button} onClick={handleShowVersion}>
+      <button className={classes.Button} onClick={handleShowVersion} aria-label="home">
         <Avatar style={{ cursor: 'pointer', backgroundColor: appState.appTheme === 'dark' ? '#fff' : '#000' }} onClick={() => history.push('/')}>
           <p style={{ color: appState.appTheme === 'dark' ? '#000' : '#fff', paddingTop: '3px' }}>T</p>
         </Avatar>

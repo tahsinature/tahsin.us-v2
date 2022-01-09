@@ -5,7 +5,7 @@ import { DescriptionRounded } from '@material-ui/icons';
 import Header from 'src/components/Header/Header';
 import Section from 'src/components/Section/Section';
 import classes from './PublishedWriting.module.scss';
-import SeeAllButton from 'src/components/Buttons/SeeAllButton/SeeAllButton';
+// import SeeAllButton from 'src/components/Buttons/SeeAllButton/SeeAllButton';
 import { IApiResponses } from 'src/interfaces/apiResponse';
 
 const PublishedWriting = (props: { writings: IApiResponses.IGetBasicData['writings'] }) => {
@@ -26,7 +26,7 @@ const PublishedWriting = (props: { writings: IApiResponses.IGetBasicData['writin
             </p>
           </li>
         ))}
-        <SeeAllButton path={'writings'} />
+        {/* <SeeAllButton path={'writings'} /> */}
       </ul>
     </Section>
   );
