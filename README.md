@@ -16,10 +16,18 @@
 
 ### Todo
 
+##### Done
+
 - [x] ip lookup
 - [x] frontend grid view
 - [x] find me elsewhere grid view
 - [x] programming languages -> side monitor on click
+- [x] things seems blurry on ios
+
+##### Important
+
+##### Normal
+
 - [ ] if no changes on the image, do not build
 - [ ] put latest source code on the host machine
 - [ ] try to put in kubernetes
