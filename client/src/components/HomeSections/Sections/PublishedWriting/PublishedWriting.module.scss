@@ -1,8 +1,46 @@
-.PublishedWriting {
-  li {
-    list-style-type: circle;
-    p {
-      cursor: pointer;
-    }
+@import '../../../../assets/sass/colors';
+
+.Boxes {
+  overflow: auto;
+  white-space: nowrap;
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+}
+
+.Box {
+  display: inline-block;
+  border: 2px solid #7c7c7c21;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  flex: 0 0 200px;
+
+  img {
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &:not(:last-child) {
+    margin-right: 1rem;
+  }
+  &:hover {
+    border-color: $primaryGreenish;
+  }
+}
+
+.BoxContent {
+  display: inline-block;
+  text-align: center;
+}
+
+.TextBox {
+  white-space: normal;
+  // border: 2px solid #7c7c7c21;
+  // height: 6em;
+  padding: 0.3rem 0;
+  p {
+    font-size: 80%;
   }
 }
