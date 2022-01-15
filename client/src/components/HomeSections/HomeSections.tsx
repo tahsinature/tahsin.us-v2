@@ -11,22 +11,19 @@ import OtherActivities from 'src/components/HomeSections/Sections/OtherActivitie
 import FindMeElseWhere from 'src/components/HomeSections/Sections/FindMeElseWhere/FindMeElseWhere';
 import Work from 'src/components/HomeSections/Sections/Work/Work';
 import HumanLanguages from 'src/components/HomeSections/Sections/HumanLanguages/HumanLanguages';
-import { IReducers } from 'src/interfaces/reducers';
 // import PublicSpeaking from './Sections/PublicSpeaking/PublicSpeaking';
 // import EventsIAmAt from './Sections/EventsIAmAt/EventsIAmAt';
 
-const HomeSections = (props: { basicData: IReducers.IAppReducer['basicData'] }) => {
-  if (!props.basicData) throw new Error('basic data not found but component tried to render');
-
+const HomeSections = () => {
   return (
     <div className={classes.HomeSections}>
       <FewWordsAboutMe />
       <Work />
-      <ToolsIAmUsing tools={props.basicData.tools} />
+      <ToolsIAmUsing />
       <FrameworksAndLibraries />
       <ProgrammingLanguages />
       <MyContributions />
-      <PublishedWriting writings={props.basicData.writings} />
+      <PublishedWriting />
       <HumanLanguages />
       {/* <PublicSpeaking /> */}
       {/* <EventsIAmAt /> */}

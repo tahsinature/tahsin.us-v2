@@ -34,42 +34,19 @@ const Travels = lazy(() => import('src/views/Travels/Travels'));
 
 function App(props: any) {
   const appState: IReducers.IAppReducer = props.appState;
-  const { basicData, isAppLoaded } = appState;
+  // const { basicData, isAppLoaded } = appState;
 
-  useEffect(() => {
-    apiCalls.initConnection.call(config.connectionId).then(({ data: connectionData }) => {
-      if (connectionData.isNewConnection) {
-        config.connectionId = connectionData.connection._id;
-        window.location.reload();
-      }
-      if (!isAppLoaded) storeManager.dispatch(actions.app.loadAppStart());
-    });
+  // useEffect(() => {
+  //   apiCalls.initConnection.call(config.connectionId).then(({ data: connectionData }) => {
+  //     if (connectionData.isNewConnection) {
+  //       config.connectionId = connectionData.connection._id;
+  //       window.location.reload();
+  //     }
+  //     if (!isAppLoaded) storeManager.dispatch(actions.app.loadAppStart());
+  //   });
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const getContentComponent = () => {
-    if (!basicData) throw new Error('basic data not loaded but component trying to render');
-    return (
-      <>
-        <NavBar />
-        <div className={classes.Content}>
-          <Suspense fallback={<PageLoader message={'Fetching Data...'} />}>
-            <Switch>
-              <Route exact path={['/']} component={() => <Home basicData={basicData} />} />
-              <Route path="/chat" component={() => <Chat />} />
-              <Route path="/list" component={() => <List />} />
-              <Route path="/gallery" component={() => <Gallery />} />
-              <Route path="/travels" component={() => <Travels />} />
-              <Route path="/md/:id" component={() => <Markdown />} />
-              <Route path="/json/:id" component={() => <JSONData />} />
-              <Route component={() => <Error404 />} />
-            </Switch>
-          </Suspense>
-        </div>
-      </>
-    );
-  };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <Router>
@@ -77,7 +54,23 @@ function App(props: any) {
       <Container className={classes.Container} maxWidth="md">
         <ThemeProvider theme={{ mode: appState.appTheme }}>
           <GlobalStyle />
-          <div className={['App', classes.App].join(' ')}>{isAppLoaded ? getContentComponent() : <PageLoader message={'Fetching Data...'} />}</div>
+          <div className={['App', classes.App].join(' ')}>
+            <NavBar />
+            <div className={classes.Content}>
+              <Suspense fallback={<PageLoader message={'Fetching Data...'} />}>
+                <Switch>
+                  <Route exact path={['/']} component={() => <Home />} />
+                  <Route path="/chat" component={() => <Chat />} />
+                  <Route path="/list" component={() => <List />} />
+                  <Route path="/gallery" component={() => <Gallery />} />
+                  <Route path="/travels" component={() => <Travels />} />
+                  <Route path="/md/:id" component={() => <Markdown />} />
+                  <Route path="/json/:id" component={() => <JSONData />} />
+                  <Route component={() => <Error404 />} />
+                </Switch>
+              </Suspense>
+            </div>
+          </div>
         </ThemeProvider>
       </Container>
     </Router>

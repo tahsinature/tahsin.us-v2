@@ -1,21 +1,20 @@
 import React from 'react';
+import data from 'src/api/data';
 
 import HomeSections from 'src/components/HomeSections/HomeSections';
-import { IReducers } from 'src/interfaces/reducers';
-
 import classes from './Home.module.scss';
 
-const Home = (props: { basicData: IReducers.IAppReducer['basicData'] }) => {
-  if (!props.basicData) throw new Error('basic data not found but component tried to render');
+const Home = () => {
+  // if (!props.basicData) throw new Error('basic data not found but component tried to render');
   return (
     <div className={classes.Home}>
       <header className="tc pv4 pv5-ns">
-        <img src={props.basicData.personal.avatar} className="br-100 pa1 ba b--black-10 h3 w3" alt="avatar" />
-        <h1 className="f5 f4-ns fw6 avenir">{props.basicData.personal.name}</h1>
-        <h2 className="f6 ttu tracked">{props.basicData.personal.profession}</h2>
-        <small className="tracked">{props.basicData.personal.email}</small>
+        <img src={data.basicData.personal.avatar} className="br-100 pa1 ba b--black-10 h3 w3" alt="avatar" />
+        <h1 className="f5 f4-ns fw6 avenir">{data.basicData.personal.name}</h1>
+        <h2 className="f6 ttu tracked">{data.basicData.personal.profession}</h2>
+        <small className="tracked">{data.basicData.personal.email}</small>
       </header>
-      <HomeSections basicData={props.basicData} />
+      <HomeSections />
     </div>
   );
 };
