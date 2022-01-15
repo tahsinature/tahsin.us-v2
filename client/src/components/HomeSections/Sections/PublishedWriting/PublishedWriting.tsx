@@ -4,7 +4,7 @@ import { DescriptionRounded } from '@material-ui/icons';
 import Header from 'src/components/Header/Header';
 import Section from 'src/components/Section/Section';
 import classes from './PublishedWriting.module.scss';
-import data from 'src/api/data';
+import data from 'src/api/data/index';
 
 const PublishedWriting = () => {
   const handleClick = (url: string) => {

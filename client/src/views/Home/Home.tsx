@@ -5,7 +5,6 @@ import data from 'src/api/data/index';
 import classes from './Home.module.scss';
 
 const Home = () => {
-  // if (!props.basicData) throw new Error('basic data not found but component tried to render');
   return (
     <div className={classes.Home}>
       <header className="tc pv4 pv5-ns">

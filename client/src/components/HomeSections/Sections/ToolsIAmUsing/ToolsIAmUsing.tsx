@@ -6,7 +6,7 @@ import Header from 'src/components/Header/Header';
 import Section from 'src/components/Section/Section';
 import Capsule from 'src/components/Capsule/Capsule';
 import classes from './ToolsIAmUsing.module.scss';
-import data from 'src/api/data';
+import data from 'src/api/data/index';
 
 const ToolsIAmUsing = () => {
   const history = useHistory();
