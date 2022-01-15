@@ -8,6 +8,7 @@ import colors from 'src/constants/colors';
 import { ThemeManager } from 'src/App.theme';
 import Section from 'src/components/Section/Section';
 import Header from 'src/components/Header/Header';
+import images from 'src/assets/images';
 
 interface IWorkExperience {
   company: string;
@@ -25,7 +26,7 @@ const items: IWorkExperience[] = [
     timeRange: 'July 2021 - Present',
     company: 'Bountie',
     position: 'FullStack Engineer',
-    logo: 'https://gallery.tahsin.us/uploads/big/85fa136d474db39c33d638b6a6ed1402.png',
+    logo: images.logogs.work.bountie.justLogo,
     url: 'http://www.history.com',
     location: 'Singapore (Remote)',
     specialization: 'Go, Node.js, TypeScript',
@@ -35,7 +36,7 @@ const items: IWorkExperience[] = [
     timeRange: 'July 2021 - Present',
     company: 'TerasWork',
     position: 'FullStack Engineer',
-    logo: 'https://avatars.githubusercontent.com/u/73483466',
+    logo: images.logogs.work.teras,
     url: 'http://www.history.com',
     location: 'Indonesia (Remote)',
     specialization: 'Go, React',
@@ -45,7 +46,7 @@ const items: IWorkExperience[] = [
     timeRange: 'Feb 2019 - June 2021',
     company: 'HaloJasa',
     position: 'Sr. Software Engineer',
-    logo: 'https://gallery.tahsin.us/uploads/big/6f8a5ec77197814a488f987410bf5135.png',
+    logo: images.logogs.work.halojasa,
     url: 'http://www.history.com',
     location: 'Indonesia',
     specialization: 'Node.js, Microservices, JavaScript, TypeScript',

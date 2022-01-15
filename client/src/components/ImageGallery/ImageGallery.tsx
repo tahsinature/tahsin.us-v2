@@ -56,6 +56,13 @@ const photos = [
 const ImageGallery = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    document.addEventListener('', () => {
+      console.log('loaded');
+    });
+    document.addEventListener('load', () => {
+      console.log('loaded');
+    });
   });
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);

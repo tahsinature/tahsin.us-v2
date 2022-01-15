@@ -36,3 +36,6 @@
 - [ ] move all static image to local cdn
 - [ ] put NFT -> https://juliancanderson.com/nfts
 - [ ] do something on all image load on gallery
+
+- `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@tahsinature`
+- `https://dev.to/api/articles?username=tahsinature`
