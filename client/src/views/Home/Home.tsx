@@ -1,8 +1,12 @@
 import React from 'react';
 
 import HomeSections from 'src/components/HomeSections/HomeSections';
-import data from 'src/api/data/index';
+import basicData from '../../api/data/basicData';
 import classes from './Home.module.scss';
+
+const data = {
+  basicData,
+};
 
 const Home = () => {
   return (
