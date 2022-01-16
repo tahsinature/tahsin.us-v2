@@ -1,32 +1,41 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import _ from 'lodash';
 
 import classes from './List.module.scss';
-import PageLoader from 'src/components/PageLoader/PageLoader';
-import apiCalls from 'src/api/calls';
 import { IApiResponses } from 'src/interfaces/apiResponse';
+import data from 'src/api/data';
+
+const map = {
+  tools: {
+    title: "Tools I'm using nowadays",
+    list: data.tools,
+  },
+};
 
 const List = () => {
-  const [data, setData] = useState<IApiResponses.IGetList | null>(null);
+  const location = useLocation<IApiResponses.IGetList>();
 
   const voidFn = () => {};
 
   const history = useHistory();
-  const map = {
-    tools: {},
-    writings: {
-      fn: (id: string) => {
-        history.push(`/md/${id}`);
-      },
-    },
-  };
-  const listType = _.last(history.location.pathname.split('/'));
-  if (!listType) throw new Error('listType is undefined');
-  const fn = _.get(map, `${listType}.fn`, voidFn);
+  // const map = {
+  //   tools: {
+  //     fn: () => {},
+  //   },
+  //   writings: {
+  //     fn: (id: string) => {
+  //       history.push(`/md/${id}`);
+  //     },
+  //   },
+  // };
+  const listType: any = _.last(history.location.pathname.split('/'));
+  // if (!listType) throw new Error('listType is undefined');
+  // const fn = _.get(map, `${listType}.fn`, voidFn);
+  const { title, list } = map.tools;
 
   const getLiElement = (item: IApiResponses.IGetList['list'][0]) => (
-    <li key={item._id} onClick={() => fn(item._id)}>
+    <li key={item._id}>
       <div className={classes.ItemTop}>
         <img src={item.image} alt="" />
         <h4>{item.title}</h4>
@@ -35,23 +44,10 @@ const List = () => {
     </li>
   );
 
-  useEffect(() => {
-    apiCalls.getList.call(listType).then(data => {
-      setData(data.data);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <div className={classes.Root}>
-      {!data ? (
-        <PageLoader />
-      ) : (
-        <>
-          <h1 className={classes.ListTitle}>{data.title}</h1>
-          <ul className={classes.List}>{data.list.map(ele => getLiElement(ele))}</ul>
-        </>
-      )}
+      <h1 className={classes.ListTitle}>{title}</h1>
+      <ul className={classes.List}>{list.map(ele => getLiElement(ele as any))}</ul>
     </div>
   );
 };
