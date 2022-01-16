@@ -1,7 +1,7 @@
 import React from 'react';
 
 import HomeSections from 'src/components/HomeSections/HomeSections';
-import data from 'src/api/data/index';
+import data from '../../api/data';
 import classes from './Home.module.scss';
 
 const Home = () => {
