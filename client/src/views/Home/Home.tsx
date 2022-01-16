@@ -1,11 +1,18 @@
 import React from 'react';
 
 import HomeSections from 'src/components/HomeSections/HomeSections';
-import basicData from '../../api/data/basicData';
+// import basicData from '../../api/data/basicData';
 import classes from './Home.module.scss';
 
 const data = {
-  basicData,
+  basicData: {
+    personal: {
+      name: 'Mohammad Tahsin',
+      email: 'work.tahsin@gmail.com',
+      profession: 'Software Engineer',
+      avatar: 'https://avatars2.githubusercontent.com/u/41298152',
+    },
+  },
 };
 
 const Home = () => {
