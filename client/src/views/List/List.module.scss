@@ -16,7 +16,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 1rem;
-    padding: 0;
+    padding: 0 0 2rem 0;
     @include respond(mf, tab-l) {
       grid-template-columns: 1fr 1fr;
     }
