@@ -14,11 +14,11 @@ import { GlobalStyle } from './App.theme';
 // import perticlesConfig from './perticles';
 // import SocketLayer from './components/SocketLayer/SocketLayer';
 
-import actions from './actions';
 import { IReducers } from 'src/interfaces/reducers';
-import config from './config';
-import storeManager from 'src/store/storeManager';
-import apiCalls from 'src/api/calls';
+// import actions from './actions';
+// import config from './config';
+// import storeManager from 'src/store/storeManager';
+// import apiCalls from 'src/api/calls';
 
 import NavBar from 'src/components/NavBar/NavBar';
 import PageLoader from 'src/components/PageLoader/PageLoader';
