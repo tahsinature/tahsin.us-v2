@@ -1,12 +1,26 @@
 import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import _ from 'lodash';
 
 import classes from './List.module.scss';
-import { IApiResponses } from 'src/interfaces/apiResponse';
 import data from 'src/api/data';
 
-const map = {
+type KeyTypes = 'tools';
+type ListType = {
+  _id: string;
+  image: string;
+  title: string;
+  display?: boolean;
+  description: string;
+  url?: string;
+};
+
+const map: {
+  [key: string]: {
+    title: string;
+    list: ListType[];
+  };
+} = {
   tools: {
     title: "Tools I'm using nowadays",
     list: data.tools,
@@ -14,27 +28,12 @@ const map = {
 };
 
 const List = () => {
-  const location = useLocation<IApiResponses.IGetList>();
-
-  const voidFn = () => {};
-
   const history = useHistory();
-  // const map = {
-  //   tools: {
-  //     fn: () => {},
-  //   },
-  //   writings: {
-  //     fn: (id: string) => {
-  //       history.push(`/md/${id}`);
-  //     },
-  //   },
-  // };
-  const listType: any = _.last(history.location.pathname.split('/'));
-  // if (!listType) throw new Error('listType is undefined');
-  // const fn = _.get(map, `${listType}.fn`, voidFn);
-  const { title, list } = map.tools;
 
-  const getLiElement = (item: IApiResponses.IGetList['list'][0]) => (
+  const listType = _.last(history.location.pathname.split('/')) as KeyTypes;
+  const { title, list } = map[listType];
+
+  const getLiElement = (item: ListType) => (
     <li key={item._id}>
       <div className={classes.ItemTop}>
         <img src={item.image} alt="" />
@@ -47,7 +46,7 @@ const List = () => {
   return (
     <div className={classes.Root}>
       <h1 className={classes.ListTitle}>{title}</h1>
-      <ul className={classes.List}>{list.map(ele => getLiElement(ele as any))}</ul>
+      <ul className={classes.List}>{list.map(ele => getLiElement(ele))}</ul>
     </div>
   );
 };
