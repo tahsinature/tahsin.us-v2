@@ -15,6 +15,7 @@ require (
 	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1 // indirect
 	github.com/golang-jwt/jwt/v4 v4.1.0
 	github.com/golang/protobuf v1.5.2 // indirect
+	github.com/googollee/go-socket.io v1.6.1 // indirect
 	github.com/jinzhu/now v1.1.3 // indirect
 	github.com/joho/godotenv v1.3.0
 	github.com/json-iterator/go v1.1.11 // indirect
