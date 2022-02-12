@@ -21,6 +21,7 @@ func (*Application) Setup() {
 
 func (*Application) Listen(engine *gin.Engine) {
 	fmt.Println("Server started on port:", config.App.Port)
+
 	if err := engine.Run(":" + config.App.Port); err != nil {
 		panic(err)
 	}
