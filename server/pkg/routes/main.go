@@ -5,6 +5,7 @@ import (
 
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
+
 	"github.com/tahsinature/future-proof-gin/pkg/controllers"
 	"github.com/tahsinature/future-proof-gin/pkg/exception"
 	"github.com/tahsinature/future-proof-gin/pkg/middlewares"
@@ -22,7 +23,6 @@ func Setup() *gin.Engine {
 	engine.Use(middlewares.RequestID)
 	engine.Use(gzip.Gzip(gzip.DefaultCompression))
 	engine.Use(gin.Logger())
-	engine.Use(middlewares.LogNewUser)
 
 	new(Ping).setup(engine.Group("/ping"))
 	new(Visitor).setup(engine.Group("/visitor"))
