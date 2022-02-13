@@ -22,6 +22,7 @@ import { IReducers } from 'src/interfaces/reducers';
 
 import NavBar from 'src/components/NavBar/NavBar';
 import PageLoader from 'src/components/PageLoader/PageLoader';
+import mySocket from 'src/mySocket';
 
 const Home = lazy(() => import('src/views/Home/Home'));
 const Chat = lazy(() => import('src/views/Chat/Chat'));
@@ -47,6 +48,10 @@ function App(props: any) {
 
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
+
+  useEffect(() => {
+    mySocket.init();
+  });
 
   return (
     <Router>
