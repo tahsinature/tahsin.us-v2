@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 import classes from './List.module.scss';
 import data from 'src/api/data';
+import ResizableImage from 'src/components/ResizableImage/ResizableImage';
 
 type KeyTypes = 'tools';
 type ListType = {
@@ -36,7 +37,8 @@ const List = () => {
   const getLiElement = (item: ListType) => (
     <li key={item._id}>
       <div className={classes.ItemTop}>
-        <img src={item.image} alt="" />
+        {/* <img src={item.image} alt="" /> */}
+        <ResizableImage src={item.image} />
         <h4>{item.title}</h4>
       </div>
       <p>{item.description}</p>
