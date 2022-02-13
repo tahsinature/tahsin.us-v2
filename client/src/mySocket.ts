@@ -1,3 +1,4 @@
+// @ts-nocheck
 import socketIOClient, { Socket } from 'socket.io-client';
 import EventEmitter from 'events';
 
@@ -15,19 +16,12 @@ class MySocket {
   e = new EventEmitter();
 
   async init(): Promise<Socket> {
-    this.socket = socketIOClient(`${config.backEndBaseUrl}/visitor`, {
+    this.socket = socketIOClient(config.backEndBaseUrl, {
       withCredentials: true,
-      extraHeaders: { 'connection-id': config.connectionId },
-      // path: '/socket.io',
     });
 
     const socket = this.socket;
 
-    // socket.on('*', ({ data }) => {
-    //   const [eventName, message] = data;
-    //   this.e.emit(eventName, message);
-    //   console.log(eventName, message);
-    // });
     socket.on('connect', () => {
       console.log(`socket connection established: ${this.socket.id}`);
     });
