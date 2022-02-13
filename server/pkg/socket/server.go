@@ -54,6 +54,7 @@ func Setup(engine *gin.Engine) {
 	server := socketio.NewServer(nil)
 
 	server.OnConnect("/", func(s socketio.Conn) error {
+		s.Emit("SOCKET_CONNECTED")
 		fmt.Println("connected:", s.ID())
 		return nil
 	})
