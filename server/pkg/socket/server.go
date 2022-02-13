@@ -9,53 +9,55 @@ import (
 	"github.com/tahsinature/future-proof-gin/pkg/services"
 )
 
-var dataMap = make(map[string]interface{})
-
 var (
 	telegramService = new(services.Telegram)
 	ipService       = new(services.IP)
 )
 
-func LogNewUser(ip string) {
-	if dataMap[ip] == nil {
+func LogNewUser(ip string, joined time.Time) {
+	elappsed := time.Since(joined)
 
-		ipData := ipService.Lookup(ip)
-		msg := fmt.Sprintf(`
+	ipData := ipService.Lookup(ip)
+	msg := fmt.Sprintf(`
 ip: %s
 city: %s
 country: %s
 org: %s
 asn: %s
 error: %t
+stayed: %s
 more1: https://freegeoip.app/json/%s
 more2: ip2location.com/%s
 `,
-			ipData.Ip,
-			ipData.City,
-			ipData.CountryName,
-			ipData.Org,
-			ipData.ASN,
-			ipData.Error,
-			ip,
-			ip)
+		ipData.Ip,
+		ipData.City,
+		ipData.CountryName,
+		ipData.Org,
+		ipData.ASN,
+		ipData.Error,
+		elappsed,
+		ip,
+		ip)
 
-		telegramService.SendMessage(msg)
-		fmt.Println(msg)
-
-		dataMap[ip] = ipData
-
-		time.AfterFunc(time.Minute*5, func() {
-			dataMap[ip] = nil
-		})
-	}
+	telegramService.SendMessage(msg)
 }
+
+type ConnectionDetails struct {
+	IP     string
+	Joined time.Time
+}
+
+var socketData = make(map[string]ConnectionDetails)
 
 func Setup(engine *gin.Engine) {
 	server := socketio.NewServer(nil)
 
 	server.OnConnect("/", func(s socketio.Conn) error {
+		socketData[s.ID()] = ConnectionDetails{
+			Joined: time.Now(),
+		}
+
 		s.Emit("SOCKET_CONNECTED")
-		fmt.Println("connected:", s.ID())
 		return nil
 	})
 
@@ -64,13 +66,25 @@ func Setup(engine *gin.Engine) {
 	})
 
 	server.OnDisconnect("/", func(s socketio.Conn, reason string) {
-		ip := s.RemoteAddr().String()
-		LogNewUser(ip)
-		fmt.Println("closed", reason)
+		if val, ok := socketData[s.ID()]; ok {
+			LogNewUser(val.IP, val.Joined)
+		}
+
+		delete(socketData, s.ID())
 	})
 
-	engine.GET("/socket.io/*any", gin.WrapH(server))
-	engine.POST("/socket.io/*any", gin.WrapH(server))
+	socketRoutes := engine.Group("/socket.io")
+	socketRoutes.Use(func(c *gin.Context) {
+		sid := c.Query("sid")
+
+		if val, ok := socketData[sid]; ok {
+			val.IP = c.ClientIP()
+			socketData[sid] = val
+		}
+	})
+
+	socketRoutes.GET("/*any", gin.WrapH(server))
+	socketRoutes.POST("/*any", gin.WrapH(server))
 
 	go server.Serve()
 }

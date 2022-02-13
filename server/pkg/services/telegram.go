@@ -30,6 +30,7 @@ func (tgbot Telegram) Init() {
 }
 
 func (tgbot Telegram) SendMessage(text string) {
+	fmt.Println("sending TG msg...")
 	if config.Telegram.SEND {
 		msg := tgbotapi.NewMessage(TELEGRAM_BOT_CHAT_ID, text)
 		msg.DisableWebPagePreview = true
