@@ -48,6 +48,7 @@ func Validate() {
 		SSL:          os.Getenv("SSL") == "TRUE",
 		IsProduction: os.Getenv("ENV") == "PRODUCTION",
 		APIVersion:   os.Getenv("API_VERSION"),
+		FrontendURL:  os.Getenv("FRONTEND_URL"),
 	}
 
 	JWT = jwtConfig{

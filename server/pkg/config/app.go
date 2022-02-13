@@ -6,4 +6,5 @@ type appConfig = struct {
 	SSL          bool
 	IsProduction bool
 	APIVersion   string `validate:"required"`
+	FrontendURL  string `validate:"required"`
 }
