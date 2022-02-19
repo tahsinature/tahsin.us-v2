@@ -44,3 +44,16 @@
     font-size: 80%;
   }
 }
+
+.Buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: end;
+  button {
+    padding: 0 1rem;
+
+    &:last-child {
+      margin-left: 1rem;
+    }
+  }
+}

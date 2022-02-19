@@ -5,6 +5,7 @@ import Header from 'src/components/Header/Header';
 import Section from 'src/components/Section/Section';
 import classes from './PublishedWriting.module.scss';
 import data from 'src/api/data';
+import ReadMoreButton from 'src/components/HomeSections/Sections/PublishedWriting/ReadMoreButton/ReadMoreButton';
 
 const PublishedWriting = () => {
   const postsBox = useRef(null);
@@ -14,14 +15,12 @@ const PublishedWriting = () => {
     win?.focus();
   };
 
-  const goRight = () => {
+  const readMore = () => {
     const ele: any = postsBox.current;
-    if (ele !== null) ele.scroll(ele.scrollLeft + 100, 0);
-  };
-
-  const goLeft = () => {
-    const ele: any = postsBox.current;
-    if (ele !== null) ele.scroll(ele.scrollLeft - 100, 0);
+    if (ele) {
+      if (ele.scrollLeft + ele.clientWidth >= ele.scrollWidth) ele.scroll(0, 0);
+      else ele.scroll(ele.scrollLeft + 100, 0);
+    }
   };
 
   return (
@@ -46,8 +45,7 @@ const PublishedWriting = () => {
         ))}
       </div>
       <div className={classes.Buttons}>
-        <button onClick={goLeft}>Previous</button>
-        <button onClick={goRight}>Next</button>
+        <ReadMoreButton clickHandler={readMore} />
       </div>
     </Section>
   );
