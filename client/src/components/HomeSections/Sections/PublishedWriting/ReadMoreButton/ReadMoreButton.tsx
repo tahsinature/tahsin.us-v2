@@ -7,7 +7,7 @@ import classes from './ReadMoreButton.module.scss';
 export default function ReadMoreButton(props: { clickHandler: () => void }) {
   return (
     <div className={classes.ReadMoreButton} onClick={props.clickHandler}>
-      <a href="javascript:;">
+      <a href="#">
         <svg className={[classes['icon-arrow'], classes['before']].join(' ')}>
           <use xlinkHref="#arrow"></use>
         </svg>
