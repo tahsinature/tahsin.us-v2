@@ -9,12 +9,15 @@ import Section from 'src/components/Section/Section';
 import images from 'src/assets/images';
 
 let history: History;
+const addSoon = () => {
+  alert('I will add soon.');
+};
 
 const activities = [
   {
     name: 'Books',
     image: images.otherActivities.books,
-    clickHandler: () => alert('I will add soon.'),
+    clickHandler: addSoon,
   },
   {
     name: 'Photography',
@@ -24,17 +27,17 @@ const activities = [
   {
     name: 'Movies & TV Series',
     image: images.otherActivities.movies,
-    clickHandler: () => alert('I will add soon.'),
+    clickHandler: addSoon,
   },
   {
     name: 'Music',
     image: images.otherActivities.music,
-    clickHandler: () => alert('I will add soon.'),
+    clickHandler: addSoon,
   },
   {
     name: 'Travel',
     image: images.otherActivities.travel,
-    clickHandler: () => history.push('/travels'),
+    clickHandler: addSoon,
   },
 ];
 
