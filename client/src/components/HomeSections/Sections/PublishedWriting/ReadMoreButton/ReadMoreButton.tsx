@@ -7,7 +7,7 @@ import classes from './ReadMoreButton.module.scss';
 export default function ReadMoreButton(props: { clickHandler: () => void }) {
   return (
     <div className={classes.ReadMoreButton} onClick={props.clickHandler}>
-      <a href="#">
+      <button>
         <svg className={[classes['icon-arrow'], classes['before']].join(' ')}>
           <use xlinkHref="#arrow"></use>
         </svg>
@@ -15,7 +15,7 @@ export default function ReadMoreButton(props: { clickHandler: () => void }) {
         <svg className={[classes['icon-arrow'], classes['after']].join(' ')}>
           <use xlinkHref="#arrow"></use>
         </svg>
-      </a>
+      </button>
       <svg style={{ display: 'none' }}>
         <defs>
           <symbol id="arrow" viewBox="0 0 35 15">

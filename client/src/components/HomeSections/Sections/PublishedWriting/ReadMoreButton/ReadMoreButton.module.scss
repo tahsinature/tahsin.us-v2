@@ -1,7 +1,7 @@
 .ReadMoreButton {
   transform: scale(0.7);
   position: relative;
-  a {
+  button {
     position: absolute;
     right: -40px;
     border: 4px solid #3f3f3f;
@@ -11,25 +11,27 @@
     font-weight: bold;
     // line-height: 24px;
     margin: auto;
-    padding: 12px 32px 12px 82px;
+    padding: 15px 32px 15px 82px;
     position: relative;
     text-decoration: none;
     border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
   }
 
-  a .label,
-  a .icon-arrow {
+  button .label,
+  button .icon-arrow {
     backface-visibility: hidden;
     transform: translateZ(0);
     perspective: 1000;
   }
 
-  a .label {
+  button .label {
     display: inline-block;
     transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
   }
 
-  a .icon-arrow {
+  button .icon-arrow {
     fill: #3f3f3f;
     height: 15px;
     top: 17px;
@@ -37,14 +39,14 @@
     width: 35px;
   }
 
-  a .icon-arrow.before {
+  button .icon-arrow.before {
     left: 32px;
     margin-right: 15px;
     position: absolute;
     transform-origin: left center;
   }
 
-  a .icon-arrow.after {
+  button .icon-arrow.after {
     margin-left: 15px;
     opacity: 0;
     position: absolute;
@@ -53,26 +55,26 @@
     transform-origin: right center;
   }
 
-  a:hover .label {
+  button:hover .label {
     transform: translateX(-52px);
   }
 
-  a:hover .icon-arrow.before {
+  button:hover .icon-arrow.before {
     opacity: 0;
     transform: translateX(-75%) scaleX(0.1);
   }
 
-  a:hover .icon-arrow.after {
+  button:hover .icon-arrow.after {
     opacity: 1;
     transform: translateX(0) scaleX(1);
   }
 
-  a:active {
+  button:active {
     border-color: #fd6154;
     color: #fd6154;
   }
 
-  a:active .icon-arrow {
+  button:active .icon-arrow {
     fill: #fd6154;
   }
 }
