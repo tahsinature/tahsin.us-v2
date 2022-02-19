@@ -1,5 +1,10 @@
 const articles = [
   {
+    title: 'The impact of sharing sessions in an engineering team',
+    thumb: 'https://miro.medium.com/max/1400/1*w5XE-3F7AzXeBwBoRuAjXA.png',
+    url: 'https://tahsinature.medium.com/the-impact-of-sharing-sessions-in-an-engineering-team-f37aa626f9ac',
+  },
+  {
     title: 'Why building something with what we’ve learned is important?',
     thumb: 'https://cdn-images-1.medium.com/max/1024/1*nGRZbHUHg0NIQUA5CtxOjw.png',
     url: 'https://tahsinature.medium.com/why-building-something-with-what-weve-learned-is-important-8c49e54b33?source=rss-313d040dd460------2',
