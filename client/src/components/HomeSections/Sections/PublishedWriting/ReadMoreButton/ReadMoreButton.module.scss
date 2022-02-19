@@ -1,6 +1,7 @@
 .ReadMoreButton {
   transform: scale(0.7);
   position: relative;
+  touch-action: manipulation;
   button {
     position: absolute;
     right: -40px;
