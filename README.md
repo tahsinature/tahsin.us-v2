@@ -1,5 +1,5 @@
 ![ci](https://github.com/tahsinature/tahsin.us/actions/workflows/ci.yml/badge.svg)
-![build](https://img.shields.io/docker/image-size/tahsinature/tahsin-us/latest?label=image)
+![build](https://img.shields.io/docker/image-size/tahsinature/tahsin-us/latest?label=docker-image)
 
 ### Frontend
 
