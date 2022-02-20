@@ -18,6 +18,7 @@ var (
 
 func Setup() *gin.Engine {
 	staticEngine := gin.New()
+	staticEngine.Use(middlewares.Cors)
 	staticEngine.Static("/", "./public")
 	staticEngine.Use(gzip.Gzip(gzip.DefaultCompression))
 
