@@ -3,7 +3,7 @@ version: "3"
 services:
   tahsinus:
     container_name: tahsin.us
-    image: tahsinature/me-back:latest
+    image: tahsinature/tahsin-us:latest
     networks: [traefik]
     volumes:
       - ./scripts/doppler:/app/get-env
