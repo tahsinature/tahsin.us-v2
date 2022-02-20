@@ -7,6 +7,8 @@ import classes from './PublishedWriting.module.scss';
 import data from 'src/api/data';
 import ReadMoreButton from 'src/components/HomeSections/Sections/PublishedWriting/ReadMoreButton/ReadMoreButton';
 
+let intervalId: NodeJS.Timeout;
+
 const PublishedWriting = () => {
   const postsBox = useRef(null);
 
@@ -15,12 +17,22 @@ const PublishedWriting = () => {
     win?.focus();
   };
 
-  const readMore = () => {
+  const readMore = (scrollDistance: number) => {
     const ele: any = postsBox.current;
     if (ele) {
       if (ele.scrollLeft + ele.clientWidth >= ele.scrollWidth) ele.scroll(0, 0);
-      else ele.scroll(ele.scrollLeft + 100, 0);
+      else ele.scroll(ele.scrollLeft + scrollDistance, 0);
     }
+  };
+
+  const handleHold = () => {
+    intervalId = setInterval(() => {
+      readMore(100);
+    }, 100);
+  };
+
+  const handleCancelHold = () => {
+    clearInterval(intervalId);
   };
 
   return (
@@ -45,7 +57,7 @@ const PublishedWriting = () => {
         ))}
       </div>
       <div className={classes.Buttons}>
-        <ReadMoreButton clickHandler={readMore} />
+        <ReadMoreButton clickHandler={() => readMore(100)} onHoldHandler={handleHold} holdReleaseHandler={handleCancelHold} />
       </div>
     </Section>
   );

@@ -4,9 +4,27 @@ import React from 'react';
 
 import classes from './ReadMoreButton.module.scss';
 
-export default function ReadMoreButton(props: { clickHandler: () => void }) {
+let hold = false;
+let timeOutId: NodeJS.Timeout;
+
+export default function ReadMoreButton(props: { clickHandler: () => void; onHoldHandler?: () => void; holdReleaseHandler?: () => void }) {
+  const handleMouseDown = () => {
+    timeOutId = setTimeout(() => {
+      if (hold) return;
+      if (props.onHoldHandler) props.onHoldHandler();
+      hold = true;
+    }, 100);
+  };
+
+  const handleMouseUp = () => {
+    clearTimeout(timeOutId);
+    if (!hold) return;
+    if (props.holdReleaseHandler) props.holdReleaseHandler();
+    hold = false;
+  };
+
   return (
-    <div className={classes.ReadMoreButton} onClick={props.clickHandler}>
+    <div className={classes.ReadMoreButton} onTouchStart={handleMouseDown} onTouchEnd={handleMouseUp} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onClick={props.clickHandler}>
       <button>
         <svg className={[classes['icon-arrow'], classes['before']].join(' ')}>
           <use xlinkHref="#arrow"></use>
