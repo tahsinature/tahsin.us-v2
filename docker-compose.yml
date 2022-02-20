@@ -35,7 +35,7 @@ services:
       DB_HOST: db
       REDIS_HOST: redis
       DOPPLER_TOKEN: $DOPPLER_TOKEN_MY_PERSONAL
-      DOPPLER_PROJECT: tahsin-us-back
+      DOPPLER_PROJECT: tahsin-us
       DOPPLER_CONFIG: dev
     # command: sh -c './scripts/wait-for -t 30 db:5432 redis:6379 -- make run-watch'
     command: sh -c './scripts/doppler && make run-watch'

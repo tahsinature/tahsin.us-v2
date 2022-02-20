@@ -1,19 +1,7 @@
 version: "3"
 
 services:
-  tahsinus-front:
-    container_name: tahsin.us
-    image: tahsinature/me-front:latest
-    networks: [traefik]
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.tahsinus-front.rule=Host(`tahsin.us`)
-      - traefik.http.services.tahsinus-front.loadbalancer.server.port=80
-      - traefik.http.routers.tahsinus-front.tls=true
-      - traefik.http.routers.tahsinus-front.entrypoints=websecure
-      - traefik.http.routers.tahsinus-front.tls.certresolver=myresolver
-
-  tahsinus-back:
+  tahsinus:
     container_name: back.tahsin.us
     image: tahsinature/me-back:latest
     networks: [traefik]
@@ -21,7 +9,7 @@ services:
       - ./scripts/doppler:/app/get-env
     environment:
       DOPPLER_TOKEN: $DOPPLER_TOKEN_MY_PERSONAL
-      DOPPLER_PROJECT: tahsin-us-back
+      DOPPLER_PROJECT: tahsin-us
       DOPPLER_CONFIG: prd
     entrypoint: sh -c './get-env && ./main -r'
     labels:

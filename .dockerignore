@@ -1,0 +1,7 @@
+/client/.git
+/client/*Dockerfile*
+/client/*docker-compose*
+/client/node_modules
+
+/server/bin
+/server/tmp
