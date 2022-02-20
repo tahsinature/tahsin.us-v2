@@ -14,7 +14,7 @@ services:
     entrypoint: sh -c './get-env && ./main -r'
     labels:
       - traefik.enable=true
-      - traefik.http.routers.tahsinus-back.rule=Host(`back.tahsin.us`)
+      - traefik.http.routers.tahsinus-back.rule=Host(`tahsin.us`)
       - traefik.http.services.tahsinus-back.loadbalancer.server.port=3001
       - traefik.http.routers.tahsinus-back.tls=true
       - traefik.http.routers.tahsinus-back.entrypoints=websecure
