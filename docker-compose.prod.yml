@@ -2,7 +2,7 @@ version: "3"
 
 services:
   tahsinus:
-    container_name: back.tahsin.us
+    container_name: tahsin.us
     image: tahsinature/me-back:latest
     networks: [traefik]
     volumes:
