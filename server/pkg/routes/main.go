@@ -17,18 +17,25 @@ var (
 )
 
 func Setup() *gin.Engine {
+	staticEngine := gin.New()
+	staticEngine.Static("/", "./public")
+	staticEngine.Use(gzip.Gzip(gzip.DefaultCompression))
+
+	staticEngine.NoRoute(func(c *gin.Context) {
+		controllers.Response.FromError(c, exception.Response{HTTPCode: http.StatusNotFound, Message: "Seems like you are lost.", Flag: exception.Flags.Get("ROUTE_NOT_FOUNT")})
+	})
+
 	engine := gin.New()
 
 	engine.Use(middlewares.Cors)
 	engine.Use(middlewares.RequestID)
-	engine.Use(gzip.Gzip(gzip.DefaultCompression))
 	engine.Use(gin.Logger())
 
 	new(Ping).setup(engine.Group("/ping"))
 	new(Visitor).setup(engine.Group("/visitor"))
 
 	engine.NoRoute(func(c *gin.Context) {
-		controllers.Response.FromError(c, exception.Response{HTTPCode: http.StatusNotFound, Message: "Seems like you are lost.", Flag: exception.Flags.Get("ROUTE_NOT_FOUNT")})
+		staticEngine.HandleContext(c)
 	})
 
 	return engine
