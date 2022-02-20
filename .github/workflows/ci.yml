@@ -6,22 +6,22 @@ on:
       - "master"
 
 jobs:
-  frontend-build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build and push (Frontent)
-        uses: docker/build-push-action@v2
-        with:
-          context: ./client
-          push: true
-          tags: tahsinature/me-front:latest
+  # frontend-build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #     - name: Login to DockerHub
+  #       uses: docker/login-action@v1
+  #       with:
+  #         username: ${{ secrets.DOCKERHUB_USERNAME }}
+  #         password: ${{ secrets.DOCKERHUB_TOKEN }}
+  #     - name: Build and push (Frontent)
+  #       uses: docker/build-push-action@v2
+  #       with:
+  #         context: ./client
+  #         push: true
+  #         tags: tahsinature/me-front:latest
 
   backend-build:
     runs-on: ubuntu-latest
@@ -36,6 +36,6 @@ jobs:
       - name: Build and push (Backend)
         uses: docker/build-push-action@v2
         with:
-          context: ./server
+          context: .
           push: true
           tags: tahsinature/me-back:latest
