@@ -27,6 +27,12 @@ const articles = [
     url: 'https://dev.to/tahsinature/get-lazy-with-lazygit-4h37',
   },
   {
+    title: 'Get productive with docker using: lazydocker',
+    thumb:
+      'https://res.cloudinary.com/practicaldev/image/fetch/s--dG3g5Ur---/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nmu1952db68onjd9jx9t.jpg',
+    url: 'https://dev.to/tahsinature/get-productive-with-docker-using-lazydocker-4on2',
+  },
+  {
     title: 'Make Life Easier with Relational Database & Node.js with sequelize-utility',
     thumb: 'https://cdn-images-1.medium.com/max/800/1*cndbleNCmua6nXRK2K3k0w.jpeg',
     url: 'https://tahsinature.medium.com/make-life-easier-with-relational-database-node-js-with-sequelize-utility-42af652c909f?source=rss-313d040dd460------2',
