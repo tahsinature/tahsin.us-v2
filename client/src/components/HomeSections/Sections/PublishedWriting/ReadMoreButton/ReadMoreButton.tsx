@@ -11,7 +11,7 @@ export default function ReadMoreButton(props: { clickHandler: () => void }) {
         <svg className={[classes['icon-arrow'], classes['before']].join(' ')}>
           <use xlinkHref="#arrow"></use>
         </svg>
-        <span className={classes['label']}>Read More</span>
+        <span className={classes['label']}>Show More</span>
         <svg className={[classes['icon-arrow'], classes['after']].join(' ')}>
           <use xlinkHref="#arrow"></use>
         </svg>
