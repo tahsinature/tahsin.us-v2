@@ -5,9 +5,10 @@ const articles = [
     url: 'https://tahsinature.medium.com/the-impact-of-sharing-sessions-in-an-engineering-team-f37aa626f9ac',
   },
   {
-    title: 'Why building something with what we’ve learned is important?',
-    thumb: 'https://cdn-images-1.medium.com/max/1024/1*nGRZbHUHg0NIQUA5CtxOjw.png',
-    url: 'https://tahsinature.medium.com/why-building-something-with-what-weve-learned-is-important-8c49e54b33?source=rss-313d040dd460------2',
+    title: 'Get productive with docker using: lazydocker',
+    thumb:
+      'https://res.cloudinary.com/practicaldev/image/fetch/s--dG3g5Ur---/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nmu1952db68onjd9jx9t.jpg',
+    url: 'https://dev.to/tahsinature/get-productive-with-docker-using-lazydocker-4on2',
   },
   {
     title: 'Tired of circular dependency in Typescript/Node.js?',
@@ -27,10 +28,9 @@ const articles = [
     url: 'https://dev.to/tahsinature/get-lazy-with-lazygit-4h37',
   },
   {
-    title: 'Get productive with docker using: lazydocker',
-    thumb:
-      'https://res.cloudinary.com/practicaldev/image/fetch/s--dG3g5Ur---/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nmu1952db68onjd9jx9t.jpg',
-    url: 'https://dev.to/tahsinature/get-productive-with-docker-using-lazydocker-4on2',
+    title: 'Why building something with what we’ve learned is important?',
+    thumb: 'https://cdn-images-1.medium.com/max/1024/1*nGRZbHUHg0NIQUA5CtxOjw.png',
+    url: 'https://tahsinature.medium.com/why-building-something-with-what-weve-learned-is-important-8c49e54b33?source=rss-313d040dd460------2',
   },
   {
     title: 'Make Life Easier with Relational Database & Node.js with sequelize-utility',
