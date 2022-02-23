@@ -27,13 +27,14 @@ func Setup() *gin.Engine {
 	})
 
 	engine := gin.New()
-
 	engine.Use(middlewares.Cors)
-	engine.Use(middlewares.RequestID)
-	engine.Use(gin.Logger())
 
-	new(Ping).setup(engine.Group("/ping"))
-	new(Visitor).setup(engine.Group("/visitor"))
+	api := engine.Group("/api")
+	api.Use(middlewares.RequestID)
+	api.Use(gin.Logger())
+
+	new(Ping).setup(api.Group("/ping"))
+	new(Visitor).setup(api.Group("/visitor"))
 
 	engine.NoRoute(func(c *gin.Context) {
 		staticEngine.HandleContext(c)

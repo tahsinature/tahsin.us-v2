@@ -7,10 +7,12 @@ import (
 )
 
 var Cors = cors.New(cors.Config{
-	AllowOrigins:     []string{"http://localhost:3001/", "http://localhost:3000/"},
-	AllowMethods:     []string{"POST, OPTIONS, GET, PUT, DELETE"},
-	AllowHeaders:     []string{"Origin"},
+	AllowOrigins:     []string{"http://localhost:3000"},
+	AllowMethods:     []string{"*"},
+	AllowHeaders:     []string{"*"},
 	ExposeHeaders:    []string{"Content-Length"},
 	AllowCredentials: true,
 	MaxAge:           12 * time.Hour,
 })
+
+// var Cors = cors.Default()
