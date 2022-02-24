@@ -50,8 +50,10 @@ function App(props: any) {
   // }, []);
 
   useEffect(() => {
-    mySocket.init();
-  });
+    mySocket.init().then(() => {
+      console.log('success socket');
+    });
+  }, []);
 
   return (
     <Router>
