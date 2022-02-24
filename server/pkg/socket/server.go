@@ -20,9 +20,7 @@ const (
 	SEC_TO_WAIT_FOR_RECONNECTION = 60
 )
 
-func LogNewUser(ip string, joined time.Time) {
-	elappsed := time.Since(joined)
-
+func LogNewUser(ip string, stayed *durafmt.Durafmt) {
 	ipData := ipService.Lookup(ip)
 	msg := fmt.Sprintf(`
 ip: %s
@@ -41,7 +39,7 @@ more2: ip2location.com/%s
 		ipData.Org,
 		ipData.ASN,
 		ipData.Error,
-		elappsed,
+		stayed,
 		ip,
 		ip)
 
@@ -135,7 +133,7 @@ func triggerSchedulerForDisconn(s socketio.Conn) {
 	if val, ok := socketData[ip]; ok && val.Socket == nil {
 		stayed := durafmt.ParseShort(time.Since(val.Joined) - time.Second*SEC_TO_WAIT_FOR_RECONNECTION)
 		fmt.Printf("socket data removed: %s (%s) -> %s\n", s.ID(), ip, stayed)
-		LogNewUser(ip, val.Joined)
+		LogNewUser(ip, stayed)
 		delete(socketData, ip)
 	}
 }
