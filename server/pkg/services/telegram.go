@@ -36,7 +36,7 @@ func (tgbot Telegram) SendMessage(text string) {
 		msg.DisableWebPagePreview = true
 		_, err := bot.Send(msg)
 		if err != nil {
-			panic(err)
+			fmt.Printf("error sending TG msg: %s", err)
 		}
 	}
 }
