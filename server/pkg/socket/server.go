@@ -44,7 +44,6 @@ more2: ip2location.com/%s
 }
 
 type ConnectionDetails struct {
-	// SID     string
 	Joined time.Time
 	Active bool
 }
@@ -62,6 +61,8 @@ func Setup(engine *gin.Engine) {
 			Active: true,
 		}
 
+		fmt.Printf("socket connected: %s (%s)\n", s.ID(), ip)
+
 		s.Emit("SOCKET_CONNECTED")
 		return nil
 	})
@@ -72,11 +73,14 @@ func Setup(engine *gin.Engine) {
 
 	server.OnDisconnect("/", func(s socketio.Conn, reason string) {
 		ip := getIpFromSocket(s)
+
+		fmt.Printf("socket disconnected: %s (%s)\n", s.ID(), ip)
+
 		socketData[ip] = ConnectionDetails{
 			Active: false,
 		}
 
-		handleSocketDisconnect(s)
+		triggerSchedulerForDisconn(s)
 	})
 
 	socketRoutes := engine.Group("/socket.io")
@@ -103,13 +107,14 @@ func setIpToSocketRequest(c *gin.Context) {
 	c.Request.URL.RawQuery = modifiedQuery.Encode()
 }
 
-func handleSocketDisconnect(s socketio.Conn) {
+func triggerSchedulerForDisconn(s socketio.Conn) {
 	ip := getIpFromSocket(s)
 
-	time.AfterFunc(time.Second*5, func() {
+	time.AfterFunc(time.Second*10, func() {
 		if val, ok := socketData[ip]; ok && !val.Active {
 			delete(socketData, ip)
-			// LogNewUser(val.IP, val.Joined)
+			fmt.Printf("socket data removed: %s (%s)\n", s.ID(), ip)
+			LogNewUser(ip, val.Joined)
 		}
 	})
 }
