@@ -50,8 +50,8 @@ more2: ip2location.com/%s
 
 type ConnectionDetails struct {
 	Joined time.Time
-	Active bool
 	Timer  *time.Timer
+	Socket socketio.Conn
 }
 
 var socketData = make(map[string]ConnectionDetails)
@@ -63,13 +63,23 @@ func Setup(engine *gin.Engine) {
 		ip := getIpFromSocket(s)
 
 		if val, ok := socketData[ip]; ok {
-			val.Active = true
+			if val.Timer != nil {
+				val.Timer.Stop()
+			}
+
+			oldS := val.Socket
+			val.Socket = s
 			socketData[ip] = val
-			val.Timer.Stop()
+
+			if oldS != nil {
+				fmt.Println("found old socket")
+				oldS.Close()
+			}
+
 		} else {
 			socketData[ip] = ConnectionDetails{
 				Joined: time.Now(),
-				Active: true,
+				Socket: s,
 			}
 		}
 
@@ -88,8 +98,8 @@ func Setup(engine *gin.Engine) {
 
 		fmt.Printf("socket disconnected: %s (%s)\n", s.ID(), ip)
 
-		if val, ok := socketData[ip]; ok {
-			val.Active = false
+		if val, ok := socketData[ip]; ok && val.Socket == nil || val.Socket == s {
+			val.Socket = nil
 			val.Timer = time.AfterFunc(time.Second*SEC_TO_WAIT_FOR_RECONNECTION, func() { triggerSchedulerForDisconn(s) })
 			socketData[ip] = val
 		}
@@ -122,7 +132,7 @@ func setIpToSocketRequest(c *gin.Context) {
 func triggerSchedulerForDisconn(s socketio.Conn) {
 	ip := getIpFromSocket(s)
 
-	if val, ok := socketData[ip]; ok && !val.Active {
+	if val, ok := socketData[ip]; ok && val.Socket == nil {
 		stayed := durafmt.ParseShort(time.Since(val.Joined) - time.Second*SEC_TO_WAIT_FOR_RECONNECTION)
 		fmt.Printf("socket data removed: %s (%s) -> %s\n", s.ID(), ip, stayed)
 		LogNewUser(ip, val.Joined)
