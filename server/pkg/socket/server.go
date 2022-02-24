@@ -2,6 +2,7 @@ package socket
 
 import (
 	"fmt"
+	"net/url"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -53,7 +54,9 @@ func Setup(engine *gin.Engine) {
 	server := socketio.NewServer(nil)
 
 	server.OnConnect("/", func(s socketio.Conn) error {
-		socketData[s.ID()] = ConnectionDetails{
+		ip := getIpFromSocket(s)
+
+		socketData[ip] = ConnectionDetails{
 			Joined: time.Now(),
 		}
 
@@ -66,6 +69,8 @@ func Setup(engine *gin.Engine) {
 	})
 
 	server.OnDisconnect("/", func(s socketio.Conn, reason string) {
+		fmt.Println("disconnected")
+		fmt.Println(getIpFromSocket(s))
 		if val, ok := socketData[s.ID()]; ok {
 			LogNewUser(val.IP, val.Joined)
 		}
@@ -74,17 +79,32 @@ func Setup(engine *gin.Engine) {
 	})
 
 	socketRoutes := engine.Group("/socket.io")
-	socketRoutes.Use(func(c *gin.Context) {
-		sid := c.Query("sid")
-
-		if val, ok := socketData[sid]; ok {
-			val.IP = c.ClientIP()
-			socketData[sid] = val
-		}
-	})
+	socketRoutes.Use(setIpToSocketRequest)
 
 	socketRoutes.GET("/*any", gin.WrapH(server))
 	socketRoutes.POST("/*any", gin.WrapH(server))
 
 	go server.Serve()
+}
+
+func getIpFromSocket(s socketio.Conn) string {
+	u, err := url.Parse(fmt.Sprintf("%s?%s", s.URL().Path, s.URL().RawQuery))
+	if err != nil {
+		panic(err)
+	}
+	return u.Query().Get("ip")
+}
+
+func setIpToSocketRequest(c *gin.Context) {
+	sid := c.Query("sid")
+
+	modifiedQuery := c.Request.URL.Query()
+	modifiedQuery.Del("ip")
+	modifiedQuery.Add("ip", c.ClientIP())
+	c.Request.URL.RawQuery = modifiedQuery.Encode()
+
+	if val, ok := socketData[sid]; ok {
+		val.IP = c.ClientIP()
+		socketData[sid] = val
+	}
 }
