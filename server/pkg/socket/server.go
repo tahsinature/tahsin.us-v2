@@ -7,12 +7,17 @@ import (
 
 	"github.com/gin-gonic/gin"
 	socketio "github.com/googollee/go-socket.io"
+	"github.com/hako/durafmt"
 	"github.com/tahsinature/future-proof-gin/pkg/services"
 )
 
 var (
 	telegramService = new(services.Telegram)
 	ipService       = new(services.IP)
+)
+
+const (
+	SEC_TO_WAIT_FOR_RECONNECTION = 60
 )
 
 func LogNewUser(ip string, joined time.Time) {
@@ -46,6 +51,7 @@ more2: ip2location.com/%s
 type ConnectionDetails struct {
 	Joined time.Time
 	Active bool
+	Timer  *time.Timer
 }
 
 var socketData = make(map[string]ConnectionDetails)
@@ -56,9 +62,15 @@ func Setup(engine *gin.Engine) {
 	server.OnConnect("/", func(s socketio.Conn) error {
 		ip := getIpFromSocket(s)
 
-		socketData[ip] = ConnectionDetails{
-			Joined: time.Now(),
-			Active: true,
+		if val, ok := socketData[ip]; ok {
+			val.Active = true
+			socketData[ip] = val
+			val.Timer.Stop()
+		} else {
+			socketData[ip] = ConnectionDetails{
+				Joined: time.Now(),
+				Active: true,
+			}
 		}
 
 		fmt.Printf("socket connected: %s (%s)\n", s.ID(), ip)
@@ -76,11 +88,11 @@ func Setup(engine *gin.Engine) {
 
 		fmt.Printf("socket disconnected: %s (%s)\n", s.ID(), ip)
 
-		socketData[ip] = ConnectionDetails{
-			Active: false,
+		if val, ok := socketData[ip]; ok {
+			val.Active = false
+			val.Timer = time.AfterFunc(time.Second*SEC_TO_WAIT_FOR_RECONNECTION, func() { triggerSchedulerForDisconn(s) })
+			socketData[ip] = val
 		}
-
-		triggerSchedulerForDisconn(s)
 	})
 
 	socketRoutes := engine.Group("/socket.io")
@@ -110,11 +122,10 @@ func setIpToSocketRequest(c *gin.Context) {
 func triggerSchedulerForDisconn(s socketio.Conn) {
 	ip := getIpFromSocket(s)
 
-	time.AfterFunc(time.Second*10, func() {
-		if val, ok := socketData[ip]; ok && !val.Active {
-			delete(socketData, ip)
-			fmt.Printf("socket data removed: %s (%s)\n", s.ID(), ip)
-			LogNewUser(ip, val.Joined)
-		}
-	})
+	if val, ok := socketData[ip]; ok && !val.Active {
+		stayed := durafmt.ParseShort(time.Since(val.Joined) - time.Second*SEC_TO_WAIT_FOR_RECONNECTION)
+		fmt.Printf("socket data removed: %s (%s) -> %s\n", s.ID(), ip, stayed)
+		LogNewUser(ip, val.Joined)
+		delete(socketData, ip)
+	}
 }
