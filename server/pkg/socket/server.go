@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	socketio "github.com/googollee/go-socket.io"
 	"github.com/hako/durafmt"
+	"github.com/tahsinature/future-proof-gin/pkg/log"
 	"github.com/tahsinature/future-proof-gin/pkg/services"
 )
 
@@ -70,7 +71,7 @@ func Setup(engine *gin.Engine) {
 			socketData[ip] = val
 
 			if oldS != nil {
-				fmt.Println("found old socket")
+				log.Socket.Info("found old socket")
 				oldS.Close()
 			}
 
@@ -81,20 +82,20 @@ func Setup(engine *gin.Engine) {
 			}
 		}
 
-		fmt.Printf("socket connected: %s (%s)\n", s.ID(), ip)
+		log.Socket.Info(fmt.Sprintf("socket connected: %s (%s)\n", s.ID(), ip))
 
 		s.Emit("SOCKET_CONNECTED")
 		return nil
 	})
 
 	server.OnError("/", func(s socketio.Conn, e error) {
-		fmt.Println("meet error:", e)
+		log.Socket.Error(e)
 	})
 
 	server.OnDisconnect("/", func(s socketio.Conn, reason string) {
 		ip := getIpFromSocket(s)
 
-		fmt.Printf("socket disconnected: %s (%s)\n", s.ID(), ip)
+		log.Socket.Info(fmt.Sprintf("socket disconnected: %s (%s)\n", s.ID(), ip))
 
 		if val, ok := socketData[ip]; ok && val.Socket == nil || val.Socket == s {
 			val.Socket = nil
@@ -132,7 +133,7 @@ func triggerSchedulerForDisconn(s socketio.Conn) {
 
 	if val, ok := socketData[ip]; ok && val.Socket == nil {
 		stayed := durafmt.ParseShort(time.Since(val.Joined) - time.Second*SEC_TO_WAIT_FOR_RECONNECTION)
-		fmt.Printf("socket data removed: %s (%s) -> %s\n", s.ID(), ip, stayed)
+		log.Socket.Info(fmt.Sprintf("socket data removed: %s (%s) -> %s\n", s.ID(), ip, stayed))
 		LogNewUser(ip, stayed)
 		delete(socketData, ip)
 	}

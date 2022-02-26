@@ -2,12 +2,12 @@ package db
 
 import (
 	"fmt"
-	"log"
 	"strconv"
 
 	_redis "github.com/go-redis/redis/v7"
 	"github.com/tahsinature/future-proof-gin/pkg/config"
 	"github.com/tahsinature/future-proof-gin/pkg/db/models"
+	"github.com/tahsinature/future-proof-gin/pkg/log"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -31,14 +31,14 @@ func Init() {
 		panic(err)
 	}
 
-	fmt.Println("DB Connected...")
+	log.DB.Info("DB Connected...")
 
 	if config.EntryArgs.SyncForce {
 		Sync(true)
 	}
 
 	if err != nil {
-		log.Fatal(err)
+		log.DB.Fatal(err)
 	}
 }
 
@@ -61,10 +61,10 @@ func Sync(force bool) {
 		models.Post{},
 	)
 	if err != nil {
-		log.Panic(err)
+		log.DB.Fatal(err)
 	}
 
-	fmt.Println("SyncForce Done...")
+	log.DB.Info("SyncForce Done...")
 }
 
 func GetDB() *gorm.DB {
@@ -86,10 +86,10 @@ func InitRedis() {
 
 	response := RedisClient.Ping()
 	if response.Err() != nil {
-		log.Panicf("Redis Connect Error: %s", response.Err())
+		log.Redis.Fatal(fmt.Errorf("Redis Connect Error: %s", response.Err()))
 	}
 
-	fmt.Println("Redis Connected...")
+	log.Redis.Info("Redis Connected...")
 }
 
 func GetRedis() *_redis.Client {

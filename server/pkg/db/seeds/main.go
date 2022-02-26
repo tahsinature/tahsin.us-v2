@@ -1,10 +1,9 @@
 package seeds
 
 import (
-	"fmt"
-
 	"github.com/tahsinature/future-proof-gin/pkg/config"
 	"github.com/tahsinature/future-proof-gin/pkg/db"
+	"github.com/tahsinature/future-proof-gin/pkg/log"
 )
 
 func Execute() {
@@ -15,5 +14,5 @@ func Execute() {
 	users := userSeeder.CreateMany(3)
 	postSeeder.CreateMany(users, 3)
 
-	fmt.Println("Seeding Done...")
+	log.DB.Info("Seeding Done...")
 }

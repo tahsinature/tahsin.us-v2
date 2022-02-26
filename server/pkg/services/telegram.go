@@ -6,6 +6,7 @@ import (
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/tahsinature/future-proof-gin/pkg/config"
+	"github.com/tahsinature/future-proof-gin/pkg/log"
 )
 
 type Telegram struct{}
@@ -26,17 +27,17 @@ func (tgbot Telegram) Init() {
 		panic(err)
 	}
 
-	fmt.Printf("Authorized on account %s\n", bot.Self.UserName)
+	log.Telegram.Info(fmt.Sprintf("Authorized on account %s", bot.Self.UserName))
 }
 
 func (tgbot Telegram) SendMessage(text string) {
-	fmt.Println("sending TG msg...")
+	log.Telegram.Info("sending TG msg...")
 	if config.Telegram.SEND {
 		msg := tgbotapi.NewMessage(TELEGRAM_BOT_CHAT_ID, text)
 		msg.DisableWebPagePreview = true
 		_, err := bot.Send(msg)
 		if err != nil {
-			fmt.Printf("error sending TG msg: %s", err)
+			log.Telegram.Error(fmt.Errorf("error sending TG msg: %s", err.Error()))
 		}
 	}
 }

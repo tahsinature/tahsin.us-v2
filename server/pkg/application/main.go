@@ -12,7 +12,6 @@ import (
 type Application struct{}
 
 func (*Application) Setup() {
-	log.App.Info("foo")
 	config.Validate()
 	gin.SetMode(gin.ReleaseMode)
 	new(services.Telegram).Init()
@@ -22,7 +21,7 @@ func (*Application) Setup() {
 }
 
 func (*Application) Listen(engine *gin.Engine) {
-	fmt.Println("Server started on port:", config.App.Port)
+	log.App.Info(fmt.Sprintf("Server started on port: %s", config.App.Port))
 
 	if err := engine.Run(":" + config.App.Port); err != nil {
 		panic(err)
