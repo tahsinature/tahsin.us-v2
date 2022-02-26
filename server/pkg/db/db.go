@@ -86,7 +86,7 @@ func InitRedis() {
 
 	response := RedisClient.Ping()
 	if response.Err() != nil {
-		log.Redis.Fatal(fmt.Errorf("Redis Connect Error: %s", response.Err()))
+		log.Redis.Fatal(response.Err())
 	}
 
 	log.Redis.Info("Redis Connected...")
