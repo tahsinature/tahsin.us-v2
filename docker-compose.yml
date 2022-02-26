@@ -40,6 +40,8 @@ services:
     command: sh -c './scripts/doppler && make run-watch'
     ports:
       - "3001:3001"
+    stdin_open: true
+    tty: true
 
   frontend:
     build:
