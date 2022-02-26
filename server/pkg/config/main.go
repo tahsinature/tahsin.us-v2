@@ -23,6 +23,7 @@ var (
 	Redis     redisConfig
 	EntryArgs EntryArgsType
 	Telegram  telegramConfig
+	Notion    notionConfig
 	Other     otherConfig
 )
 
@@ -69,9 +70,14 @@ func Validate() {
 		SEND:              os.Getenv("TELEGRAM_SEND") == "true",
 	}
 
+	Notion = notionConfig{
+		Auth:      os.Getenv("NOTION_AUTH"),
+		DB_Movies: "test",
+	}
+
 	Other = otherConfig{
 		RootPath: serverRootPath,
 	}
 
-	utilities.ValidateMultipleStruct(DB, App, JWT, Redis, Other, Telegram)
+	utilities.ValidateMultipleStruct(DB, App, JWT, Redis, Other, Telegram, Notion)
 }
