@@ -44,4 +44,5 @@ var (
 	Socket   = new(_Logger).init("socket")
 	DB       = new(_Logger).init("database")
 	Redis    = new(_Logger).init("redis")
+	GraphQL  = new(_Logger).init("graphql")
 )
