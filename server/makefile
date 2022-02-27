@@ -12,3 +12,5 @@ test:
 	go clean -cache && go test -v ./pkg/tests
 dependency:
 	docker-compose up -d db redis
+generate-graphql:
+	go run github.com/99designs/gqlgen@v0.16.0 generate
