@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	"github.com/brianvoe/gofakeit/v6"
-	"github.com/tahsinature/future-proof-gin/pkg/db"
-	"github.com/tahsinature/future-proof-gin/pkg/db/models"
+	"github.com/tahsinature/tahsin.us/pkg/db"
+	"github.com/tahsinature/tahsin.us/pkg/db/models"
 )
 
 type UserSeeder struct{}

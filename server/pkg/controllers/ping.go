@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/tahsinature/future-proof-gin/pkg/utilities"
+	"github.com/tahsinature/tahsin.us/pkg/utilities"
 )
 
 type Ping struct{}

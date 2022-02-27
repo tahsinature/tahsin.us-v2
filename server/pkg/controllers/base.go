@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
-	"github.com/tahsinature/future-proof-gin/pkg/exception"
+	"github.com/tahsinature/tahsin.us/pkg/exception"
 )
 
 type ResponseType struct{}

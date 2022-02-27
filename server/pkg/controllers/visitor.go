@@ -8,7 +8,7 @@ import (
 	"path"
 
 	"github.com/gin-gonic/gin"
-	"github.com/tahsinature/future-proof-gin/pkg/config"
+	"github.com/tahsinature/tahsin.us/pkg/config"
 )
 
 type Visitor struct{}

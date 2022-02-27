@@ -7,7 +7,7 @@ import (
 	"runtime"
 
 	"github.com/joho/godotenv"
-	"github.com/tahsinature/future-proof-gin/pkg/utilities"
+	"github.com/tahsinature/tahsin.us/pkg/utilities"
 )
 
 type EntryArgsType struct {

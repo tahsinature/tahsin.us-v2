@@ -5,8 +5,8 @@ import (
 	"strconv"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"github.com/tahsinature/future-proof-gin/pkg/config"
-	"github.com/tahsinature/future-proof-gin/pkg/log"
+	"github.com/tahsinature/tahsin.us/pkg/config"
+	"github.com/tahsinature/tahsin.us/pkg/log"
 )
 
 type Telegram struct{}

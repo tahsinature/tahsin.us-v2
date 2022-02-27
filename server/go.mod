@@ -1,4 +1,4 @@
-module github.com/tahsinature/future-proof-gin
+module github.com/tahsinature/tahsin.us
 
 go 1.14
 

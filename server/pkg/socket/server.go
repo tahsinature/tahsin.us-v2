@@ -8,8 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 	socketio "github.com/googollee/go-socket.io"
 	"github.com/hako/durafmt"
-	"github.com/tahsinature/future-proof-gin/pkg/log"
-	"github.com/tahsinature/future-proof-gin/pkg/services"
+	"github.com/tahsinature/tahsin.us/pkg/log"
+	"github.com/tahsinature/tahsin.us/pkg/services"
 )
 
 var (

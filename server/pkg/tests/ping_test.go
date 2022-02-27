@@ -6,9 +6,9 @@ import (
 	"testing"
 
 	"github.com/go-playground/assert/v2"
-	"github.com/tahsinature/future-proof-gin/pkg/application"
-	"github.com/tahsinature/future-proof-gin/pkg/db"
-	"github.com/tahsinature/future-proof-gin/pkg/routes"
+	"github.com/tahsinature/tahsin.us/pkg/application"
+	"github.com/tahsinature/tahsin.us/pkg/db"
+	"github.com/tahsinature/tahsin.us/pkg/routes"
 )
 
 func TestPingRoute(t *testing.T) {

@@ -4,10 +4,10 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/tahsinature/future-proof-gin/pkg/db"
-	"github.com/tahsinature/future-proof-gin/pkg/db/models"
-	"github.com/tahsinature/future-proof-gin/pkg/exception"
-	"github.com/tahsinature/future-proof-gin/pkg/forms/user"
+	"github.com/tahsinature/tahsin.us/pkg/db"
+	"github.com/tahsinature/tahsin.us/pkg/db/models"
+	"github.com/tahsinature/tahsin.us/pkg/exception"
+	"github.com/tahsinature/tahsin.us/pkg/forms/user"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )

@@ -4,9 +4,9 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
-	"github.com/tahsinature/future-proof-gin/pkg/config"
-	"github.com/tahsinature/future-proof-gin/pkg/log"
-	"github.com/tahsinature/future-proof-gin/pkg/services"
+	"github.com/tahsinature/tahsin.us/pkg/config"
+	"github.com/tahsinature/tahsin.us/pkg/log"
+	"github.com/tahsinature/tahsin.us/pkg/services"
 )
 
 type Application struct{}

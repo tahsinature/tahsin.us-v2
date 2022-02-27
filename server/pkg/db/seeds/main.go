@@ -1,9 +1,9 @@
 package seeds
 
 import (
-	"github.com/tahsinature/future-proof-gin/pkg/config"
-	"github.com/tahsinature/future-proof-gin/pkg/db"
-	"github.com/tahsinature/future-proof-gin/pkg/log"
+	"github.com/tahsinature/tahsin.us/pkg/config"
+	"github.com/tahsinature/tahsin.us/pkg/db"
+	"github.com/tahsinature/tahsin.us/pkg/log"
 )
 
 func Execute() {

@@ -15,9 +15,9 @@ import (
 	"testing"
 
 	"github.com/joho/godotenv"
-	"github.com/tahsinature/future-proof-gin/pkg/controllers"
-	"github.com/tahsinature/future-proof-gin/pkg/db"
-	"github.com/tahsinature/future-proof-gin/pkg/forms"
+	"github.com/tahsinature/tahsin.us/pkg/controllers"
+	"github.com/tahsinature/tahsin.us/pkg/db"
+	"github.com/tahsinature/tahsin.us/pkg/forms"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"

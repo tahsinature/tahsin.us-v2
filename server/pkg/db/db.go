@@ -5,9 +5,9 @@ import (
 	"strconv"
 
 	_redis "github.com/go-redis/redis/v7"
-	"github.com/tahsinature/future-proof-gin/pkg/config"
-	"github.com/tahsinature/future-proof-gin/pkg/db/models"
-	"github.com/tahsinature/future-proof-gin/pkg/log"
+	"github.com/tahsinature/tahsin.us/pkg/config"
+	"github.com/tahsinature/tahsin.us/pkg/db/models"
+	"github.com/tahsinature/tahsin.us/pkg/log"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

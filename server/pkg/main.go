@@ -2,11 +2,11 @@ package main
 
 import (
 	"github.com/alexflint/go-arg"
-	"github.com/tahsinature/future-proof-gin/pkg/application"
-	"github.com/tahsinature/future-proof-gin/pkg/config"
-	"github.com/tahsinature/future-proof-gin/pkg/db/seeds"
-	"github.com/tahsinature/future-proof-gin/pkg/routes"
-	"github.com/tahsinature/future-proof-gin/pkg/socket"
+	"github.com/tahsinature/tahsin.us/pkg/application"
+	"github.com/tahsinature/tahsin.us/pkg/config"
+	"github.com/tahsinature/tahsin.us/pkg/db/seeds"
+	"github.com/tahsinature/tahsin.us/pkg/routes"
+	"github.com/tahsinature/tahsin.us/pkg/socket"
 )
 
 func main() {

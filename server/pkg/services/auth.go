@@ -6,10 +6,10 @@ import (
 	"net/http"
 
 	"github.com/golang-jwt/jwt/v4"
-	"github.com/tahsinature/future-proof-gin/pkg/config"
-	"github.com/tahsinature/future-proof-gin/pkg/db/repositories"
-	"github.com/tahsinature/future-proof-gin/pkg/exception"
-	"github.com/tahsinature/future-proof-gin/pkg/forms/user"
+	"github.com/tahsinature/tahsin.us/pkg/config"
+	"github.com/tahsinature/tahsin.us/pkg/db/repositories"
+	"github.com/tahsinature/tahsin.us/pkg/exception"
+	"github.com/tahsinature/tahsin.us/pkg/forms/user"
 )
 
 type AuthService struct{}

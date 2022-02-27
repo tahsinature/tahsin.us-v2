@@ -6,9 +6,9 @@ import (
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 
-	"github.com/tahsinature/future-proof-gin/pkg/controllers"
-	"github.com/tahsinature/future-proof-gin/pkg/exception"
-	"github.com/tahsinature/future-proof-gin/pkg/middlewares"
+	"github.com/tahsinature/tahsin.us/pkg/controllers"
+	"github.com/tahsinature/tahsin.us/pkg/exception"
+	"github.com/tahsinature/tahsin.us/pkg/middlewares"
 )
 
 var (
