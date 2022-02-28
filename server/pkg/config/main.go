@@ -72,7 +72,8 @@ func Validate() {
 
 	Notion = notionConfig{
 		Auth:      os.Getenv("NOTION_AUTH"),
-		DB_Movies: "test",
+		DB_Movies: "24a291a3e1954ac199aa89b89e3927c0",
+		Version:   "2021-08-16",
 	}
 
 	Other = otherConfig{
