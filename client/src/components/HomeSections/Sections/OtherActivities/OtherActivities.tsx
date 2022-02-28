@@ -27,7 +27,7 @@ const activities = [
   {
     name: 'Movies & TV Series',
     image: images.otherActivities.movies,
-    clickHandler: addSoon,
+    clickHandler: () => history.push('/movies'),
   },
   {
     name: 'Music',
