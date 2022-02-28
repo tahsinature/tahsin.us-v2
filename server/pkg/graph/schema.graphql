@@ -1,25 +1,13 @@
-type Todo {
+type Movie {
   id: ID!
-  text: String!
-  done: Boolean!
-  user: User!
-}
-
-type User {
-  id: ID!
-  name: String!
-  email: String!
+  title: String!
+  year: Int!
+  myRating: String!
+  genres: [String!]!
+  image: String!
+  watchedAt: String!
 }
 
 type Query {
-  todos: [Todo!]!
-}
-
-input NewTodo {
-  text: String!
-  userId: String!
-}
-
-type Mutation {
-  createTodo(input: NewTodo!): Todo!
+  movies: [Movie!]!
 }

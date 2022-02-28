@@ -8,28 +8,21 @@ import (
 
 	"github.com/tahsinature/tahsin.us/pkg/graph/generated"
 	"github.com/tahsinature/tahsin.us/pkg/graph/model"
+	"github.com/tahsinature/tahsin.us/pkg/services"
 )
 
-func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
-	return &model.Todo{
-		ID:   "1",
-		Text: "test",
-		Done: false,
-		User: &model.User{ID: "1", Name: "testUser"},
-	}, nil
-}
+var notionService = new(services.Notion)
 
-func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
-	return r.todos, nil
-}
+func (r *queryResolver) Movies(ctx context.Context) (movies []*model.Movie, err error) {
+	data, err := notionService.GetWatchedMovies()
+	if err != nil {
+		return nil, err
+	}
 
-// Mutation returns generated.MutationResolver implementation.
-func (r *Resolver) Mutation() generated.MutationResolver { return &mutationResolver{r} }
+	return data, err
+}
 
 // Query returns generated.QueryResolver implementation.
 func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
 
-type (
-	mutationResolver struct{ *Resolver }
-	queryResolver    struct{ *Resolver }
-)
+type queryResolver struct{ *Resolver }
