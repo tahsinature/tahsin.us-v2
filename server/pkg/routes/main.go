@@ -1,13 +1,10 @@
 package routes
 
 import (
-	"net/http"
-
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 
 	"github.com/tahsinature/tahsin.us/pkg/controllers"
-	"github.com/tahsinature/tahsin.us/pkg/exception"
 	"github.com/tahsinature/tahsin.us/pkg/middlewares"
 )
 
@@ -19,11 +16,11 @@ var (
 func Setup() *gin.Engine {
 	staticEngine := gin.New()
 	staticEngine.Use(middlewares.Cors)
-	staticEngine.Static("/", "./public")
 	staticEngine.Use(gzip.Gzip(gzip.DefaultCompression))
+	staticEngine.Static("/", "./public")
 
 	staticEngine.NoRoute(func(c *gin.Context) {
-		controllers.Response.FromError(c, exception.Response{HTTPCode: http.StatusNotFound, Message: "Seems like you are lost.", Flag: exception.Flags.Get("ROUTE_NOT_FOUNT")})
+		c.File("./public/index.html")
 	})
 
 	engine := gin.New()
