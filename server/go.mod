@@ -19,7 +19,7 @@ require (
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/googollee/go-socket.io v1.6.1
 	github.com/hako/durafmt v0.0.0-20210608085754-5c1018a4e16b
-	github.com/jinzhu/now v1.1.3 // indirect
+	github.com/jinzhu/now v1.1.3
 	github.com/joho/godotenv v1.3.0
 	github.com/json-iterator/go v1.1.11 // indirect
 	github.com/myesui/uuid v1.0.0 // indirect

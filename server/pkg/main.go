@@ -20,7 +20,6 @@ func main() {
 		graph.Setup(engine)
 		socket.Setup(engine)
 		application.Listen(engine)
-
 	}
 
 	if config.EntryArgs.Seed {
