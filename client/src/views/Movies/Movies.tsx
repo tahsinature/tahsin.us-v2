@@ -2,6 +2,8 @@ import React from 'react';
 import { gql, useQuery } from '@apollo/client';
 
 import ScrollingText from 'src/components/ScrollingText/ScrollingText';
+import ImageLoader from 'src/components/ImageLoader/ImageLoader';
+import classes from './Movies.module.scss';
 
 // import classes from './Movies.module.scss';
 import './Movies.scss';
@@ -48,11 +50,18 @@ export default function Movies() {
   const mainComp = (
     <>
       <div className="app">
-        {/* <h2>Most Popular Movies</h2> */}
+        <h2>Some of my favorite movies of all time</h2>
+        {/* <div >
+          
+        </div> */}
+        <hr />
         <section className="movies">
           {data?.movies.map(ele => (
             <div className={['movie'].join(' ')} key={ele.title}>
-              <img src={ele.image} alt="" className="poster" />
+              <div className={classes.ImageBox}>
+                <ImageLoader src={ele.image} />
+              </div>
+              {/* <img onLoad={() => console.log('loaded')} src={ele.image} alt="" className="poster" /> */}
               <div className="title">
                 <ScrollingText text={`${ele.title} (${ele.year})`} />
               </div>

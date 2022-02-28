@@ -1,12 +1,5 @@
 @import '../../assets/sass/main.scss';
 
-@mixin center {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 /*--------------------
 App
 --------------------*/
@@ -17,7 +10,12 @@ App
   position: absolute;
   border-radius: 15px;
   top: 0;
-  // left: 0;
+  h2 {
+    text-align: center;
+  }
+  hr {
+    margin: 1rem 0;
+  }
 }
 
 /*--------------------
@@ -38,11 +36,10 @@ Movies
     border-radius: 5px;
     margin-bottom: 1rem;
     transition: all 0.3s;
-
     &:hover {
       border-color: $primaryGreenish;
     }
-    .poster {
+    img {
       width: 100%;
       margin-bottom: 6px;
       border-radius: 4px;
@@ -55,6 +52,8 @@ Movies
     .title {
       //text-transform: uppercase;
       // color: #525661;
+      overflow: hidden;
+      margin-top: 4px;
       margin-bottom: 4px;
       font-size: 12px;
       white-space: pre;
