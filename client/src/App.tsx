@@ -24,13 +24,14 @@ import NavBar from 'src/components/NavBar/NavBar';
 import PageLoader from 'src/components/PageLoader/PageLoader';
 import mySocket from 'src/mySocket';
 
+const Error404 = lazy(() => import('src/views/Error404/Error404'));
 const Home = lazy(() => import('src/views/Home/Home'));
 const Chat = lazy(() => import('src/views/Chat/Chat'));
 const List = lazy(() => import('src/views/List/List'));
-const Error404 = lazy(() => import('src/views/Error404/Error404'));
 const Markdown = lazy(() => import('src/views/Markdown/Markdown'));
 const JSONData = lazy(() => import('src/views/JSONData/JSONData'));
 const Gallery = lazy(() => import('src/views/Gallery/Gallery'));
+const Movies = lazy(() => import('src/views/Movies/Movies'));
 const Travels = lazy(() => import('src/views/Travels/Travels'));
 
 function App(props: any) {
@@ -70,6 +71,7 @@ function App(props: any) {
                   <Route path="/chat" component={() => <Chat />} />
                   <Route path="/list" component={() => <List />} />
                   <Route path="/gallery" component={() => <Gallery />} />
+                  <Route path="/movies" component={() => <Movies />} />
                   <Route path="/travels" component={() => <Travels />} />
                   <Route path="/md/:id" component={() => <Markdown />} />
                   <Route path="/json/:id" component={() => <JSONData />} />
