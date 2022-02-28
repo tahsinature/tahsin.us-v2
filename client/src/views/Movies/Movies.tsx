@@ -4,6 +4,7 @@ import { gql, useQuery } from '@apollo/client';
 import ScrollingText from 'src/components/ScrollingText/ScrollingText';
 import ImageLoader from 'src/components/ImageLoader/ImageLoader';
 import classes from './Movies.module.scss';
+import GraphLoader from 'src/components/GraphLoader/GraphLoader';
 
 const GET_MOVIES = gql`
   query {
@@ -34,18 +35,9 @@ export default function Movies() {
     movies: Movie[];
   }
   const { error, loading, data } = useQuery<Response>(GET_MOVIES);
-  console.log('error', error);
-  console.log('loading', loading);
-  console.log('data', data);
 
-  const loadingComp = (
-    <>
-      <p>Loading</p>
-    </>
-  );
-
-  const mainComp = (
-    <>
+  return (
+    <GraphLoader data={data} error={error} loading={loading} loadingMsg="Fetching Watched Movies">
       <div className={classes.Movies}>
         <h2>Some of my favorite movies of all time</h2>
         <hr />
@@ -68,8 +60,8 @@ export default function Movies() {
           ))}
         </section>
       </div>
-    </>
+    </GraphLoader>
   );
 
-  return loading ? loadingComp : mainComp;
+  // return loading ? loadingComp : mainComp;
 }
