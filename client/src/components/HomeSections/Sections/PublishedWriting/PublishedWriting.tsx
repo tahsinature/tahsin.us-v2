@@ -6,6 +6,7 @@ import Section from 'src/components/Section/Section';
 import classes from './PublishedWriting.module.scss';
 import data from 'src/api/data';
 import ReadMoreButton from 'src/components/HomeSections/Sections/PublishedWriting/ReadMoreButton/ReadMoreButton';
+import ScrollingText from 'src/components/ScrollingText/ScrollingText';
 
 let intervalId: NodeJS.Timeout;
 
@@ -49,7 +50,8 @@ const PublishedWriting = () => {
               </div>
               <div className={classes.TextContainer}>
                 <div className={classes.TextBox}>
-                  <p>{writing.title}</p>
+                  {/* <p>{writing.title}</p> */}
+                  <ScrollingText text={writing.title} />
                 </div>
               </div>
             </div>
