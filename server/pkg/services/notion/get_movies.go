@@ -111,6 +111,11 @@ type APIResponse struct {
 					Color string `json:"color"`
 				} `json:"select"`
 			} `json:"Column"`
+			ShowInApp struct {
+				ID       string `json:"id"`
+				Type     string `json:"type"`
+				Checkbox bool   `json:"checkbox"`
+			}
 			Genre struct {
 				ID          string `json:"id"`
 				Type        string `json:"type"`

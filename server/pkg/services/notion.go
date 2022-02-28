@@ -18,6 +18,9 @@ func (Notion) GetWatchedMovies() (movies []*model.Movie, err error) {
 	}
 
 	for _, row := range apiResp.Results {
+		if !row.Properties.ShowInApp.Checkbox {
+			continue
+		}
 		releaseTime, _ := now.Parse(row.Properties.ApproxRelease.Date.Start)
 
 		genres := []string{}
