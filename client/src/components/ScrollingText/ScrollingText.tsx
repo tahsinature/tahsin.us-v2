@@ -4,24 +4,18 @@ import { useSpring, animated } from 'react-spring';
 export default function ScrollingText(props: { text: string }) {
   const parent = useRef(null);
   const text = useRef(null);
-  const [key, setKey] = useState(1);
   const [shouldScroll, scroll] = useState(false);
 
-  const scrolling = useSpring(
-    shouldScroll
-      ? {
-          from: { transform: 'translate(0%,0)' },
-          to: { transform: 'translate(-80%,0)' },
-          config: { duration: 5000 },
+  const scrolling = useSpring({
+    from: { transform: 'translate(0%,0)' },
+    to: { transform: 'translate(-60%,0)' },
+    config: { duration: 5000 },
 
-          reset: true,
-          //reverse: key % 2 == 0,
-          onRest: () => {
-            setKey(key + 1);
-          },
-        }
-      : {},
-  );
+    reset: true,
+    loop: true,
+    delay: 1000,
+    //reverse: key % 2 == 0,
+  });
 
   useEffect(() => {
     const parentWidth = (parent.current as any).offsetWidth;
@@ -33,9 +27,13 @@ export default function ScrollingText(props: { text: string }) {
 
   return (
     <div ref={parent}>
-      <animated.p style={scrolling} ref={text}>
-        {props.text}
-      </animated.p>
+      {shouldScroll ? (
+        <animated.p style={scrolling} ref={text}>
+          {props.text}
+        </animated.p>
+      ) : (
+        <p ref={text}>{props.text}</p>
+      )}
     </div>
   );
 }
