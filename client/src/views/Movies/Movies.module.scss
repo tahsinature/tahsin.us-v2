@@ -1,4 +1,60 @@
+@import '../../assets/sass/main.scss';
+
 .Movies {
+  position: absolute;
+  top: 0;
+  h2 {
+    text-align: center;
+  }
+  hr {
+    margin: 1rem 0;
+  }
+}
+
+.Cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  // padding: 8px 18px;
+
+  .Card {
+    overflow: hidden;
+    padding: 10px;
+    width: 160px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+    &:hover {
+      border-color: $primaryGreenish;
+    }
+    img {
+      width: 100%;
+      border-radius: 4px;
+
+      &.active {
+        opacity: 0;
+      }
+    }
+
+    .Title {
+      overflow: hidden;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      font-size: 12px;
+      white-space: pre;
+    }
+
+    .Info {
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    .Desc {
+      display: none;
+    }
+  }
 }
 
 .ImageBox {

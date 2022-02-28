@@ -5,9 +5,6 @@ import ScrollingText from 'src/components/ScrollingText/ScrollingText';
 import ImageLoader from 'src/components/ImageLoader/ImageLoader';
 import classes from './Movies.module.scss';
 
-// import classes from './Movies.module.scss';
-import './Movies.scss';
-
 const GET_MOVIES = gql`
   query {
     movies {
@@ -49,50 +46,27 @@ export default function Movies() {
 
   const mainComp = (
     <>
-      <div className="app">
+      <div className={classes.Movies}>
         <h2>Some of my favorite movies of all time</h2>
-        {/* <div >
-          
-        </div> */}
         <hr />
-        <section className="movies">
+        <section className={classes.Cards}>
           {data?.movies.map(ele => (
-            <div className={['movie'].join(' ')} key={ele.title}>
+            <div className={classes.Card} key={ele.title}>
               <div className={classes.ImageBox}>
                 <ImageLoader src={ele.image} />
               </div>
-              {/* <img onLoad={() => console.log('loaded')} src={ele.image} alt="" className="poster" /> */}
-              <div className="title">
+              <div className={classes.Title}>
                 <ScrollingText text={`${ele.title} (${ele.year})`} />
               </div>
-              <div className="info">
-                <span className="length">My Rating: {ele.myRating}</span>
+              <div className={classes.Info}>
+                <span>My Rating: {ele.myRating}</span>
                 <br />
-                <span className="length">Watched: {ele.watchedAt}</span>
+                <span>Watched: {ele.watchedAt}</span>
               </div>
-              <div className="desc">No description yet</div>
+              <div className={classes.Desc}>No description yet</div>
             </div>
           ))}
         </section>
-        <div className="detail">
-          <svg className="close">
-            <use href="#close"></use>
-          </svg>
-          <div className="movie">
-            <img src="https://github.com/supahfunk/supah-codepen/blob/master/movie-room.jpg?raw=true" alt="" className="poster active" />
-            <div className="title">Room</div>
-            <div className="info">
-              <span className="length">117 min</span>
-              <span className="year">2015</span>
-            </div>
-            <div className="desc">
-              Jack is a young boy of 5 years old who has lived all his life in one room. He believes everything within it are the only real things in the world. But what will happen when his Ma
-              suddenly tells him that there are other things outside of Room?
-            </div>
-
-            <button className="play">play movie</button>
-          </div>
-        </div>
       </div>
     </>
   );

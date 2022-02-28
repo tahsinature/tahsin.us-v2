@@ -10,12 +10,7 @@ export default function ImageLoader(props: { src: string }) {
   const [style, setStyle] = useState({ width: 0, height: 0 });
 
   const handleImageLoaded = () => {
-    console.log('loaded');
     setReady(true);
-  };
-
-  const handleImageLoadStart = () => {
-    console.log('starting to load');
   };
 
   useEffect(() => {
@@ -26,10 +21,10 @@ export default function ImageLoader(props: { src: string }) {
 
   return (
     <div className={classes.ImageLoader} ref={parent}>
-      <img style={{ display: isReady ? 'inline' : 'none' }} src={props.src} alt="" onLoad={handleImageLoaded} onLoadStart={handleImageLoadStart} />
+      <img style={{ display: isReady ? 'inline' : 'none' }} src={props.src} alt="" onLoad={handleImageLoaded} />
 
       {isReady ? null : (
-        <ReactPlaceholder style={style} className={classes.PlaceHolder} type="rect" showLoadingAnimation ready={isReady}>
+        <ReactPlaceholder style={style} type="rect" showLoadingAnimation ready={isReady}>
           <p>component not found</p>
         </ReactPlaceholder>
       )}
