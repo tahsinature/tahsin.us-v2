@@ -36,6 +36,10 @@ type APIResponse struct {
 			External struct {
 				URL string `json:"url"`
 			} `json:"external"`
+			File struct {
+				URL        string `json:"url"`
+				ExpiryTime string `json:"expiry_time"`
+			} `json:"file"`
 		} `json:"cover"`
 		Icon   interface{} `json:"icon"`
 		Parent struct {

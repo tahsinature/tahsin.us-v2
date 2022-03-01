@@ -2,6 +2,7 @@ package services
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 
 	"github.com/jinzhu/now"
@@ -25,6 +26,13 @@ func (Notion) GetWatchedMovies() (movies []*model.Movie, err error) {
 
 		genres := []string{}
 
+		cover := ""
+		if row.Cover.Type == "file" {
+			cover = row.Cover.File.URL
+		} else if row.Cover.Type == "external" {
+			cover = row.Cover.External.URL
+		}
+
 		for _, genre := range row.Properties.Genre.MultiSelect {
 			genres = append(genres, genre.Name)
 		}
@@ -34,11 +42,15 @@ func (Notion) GetWatchedMovies() (movies []*model.Movie, err error) {
 			Year:      releaseTime.Year(),
 			MyRating:  strconv.Itoa(row.Properties.Rating110.Number),
 			WatchedAt: row.Properties.WatchDate.Date.Start,
-			Image:     row.Cover.External.URL,
+			Image:     cover,
 			ID:        row.ID,
 			Genres:    genres,
 		})
 	}
+
+	sort.SliceStable(movies, func(i, j int) bool {
+		return movies[i].Year > movies[j].Year
+	})
 
 	return movies, err
 }
