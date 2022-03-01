@@ -1,9 +1,15 @@
+type Genre {
+  id: ID!
+  name: String!
+  color: String!
+}
+
 type Movie {
   id: ID!
   title: String!
   year: Int!
-  myRating: String!
-  genres: [String!]!
+  myRating: Int!
+  genres: [Genre!]!
   image: String!
   watchedAt: String!
 }

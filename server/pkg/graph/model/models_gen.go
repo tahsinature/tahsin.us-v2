@@ -2,12 +2,18 @@
 
 package model
 
+type Genre struct {
+	ID    string `json:"id"`
+	Name  string `json:"name"`
+	Color string `json:"color"`
+}
+
 type Movie struct {
 	ID        string   `json:"id"`
 	Title     string   `json:"title"`
 	Year      int      `json:"year"`
-	MyRating  string   `json:"myRating"`
-	Genres    []string `json:"genres"`
+	MyRating  int      `json:"myRating"`
+	Genres    []*Genre `json:"genres"`
 	Image     string   `json:"image"`
 	WatchedAt string   `json:"watchedAt"`
 }

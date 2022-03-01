@@ -3,7 +3,6 @@ package services
 import (
 	"fmt"
 	"sort"
-	"strconv"
 
 	"github.com/jinzhu/now"
 	"github.com/tahsinature/tahsin.us/pkg/graph/model"
@@ -24,7 +23,7 @@ func (Notion) GetWatchedMovies() (movies []*model.Movie, err error) {
 		}
 		releaseTime, _ := now.Parse(row.Properties.ApproxRelease.Date.Start)
 
-		genres := []string{}
+		genres := []*model.Genre{}
 
 		cover := ""
 		if row.Cover.Type == "file" {
@@ -34,13 +33,17 @@ func (Notion) GetWatchedMovies() (movies []*model.Movie, err error) {
 		}
 
 		for _, genre := range row.Properties.Genre.MultiSelect {
-			genres = append(genres, genre.Name)
+			genres = append(genres, &model.Genre{
+				ID:    genre.ID,
+				Name:  genre.Name,
+				Color: genre.Color,
+			})
 		}
 
 		movies = append(movies, &model.Movie{
 			Title:     row.Properties.Title.Title[0].PlainText,
 			Year:      releaseTime.Year(),
-			MyRating:  strconv.Itoa(row.Properties.Rating110.Number),
+			MyRating:  row.Properties.Rating110.Number,
 			WatchedAt: row.Properties.WatchDate.Date.Start,
 			Image:     cover,
 			ID:        row.ID,
