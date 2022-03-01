@@ -21,7 +21,7 @@ ReactDOM.render(
       </React.StrictMode>
     </Provider>
   </ApolloProvider>,
-  document.getElementById('iamassumingyouareadevelopertoo'),
+  document.getElementById('tahsin.us'),
 );
 
 // If you want your app to work offline and load faster, you can change
