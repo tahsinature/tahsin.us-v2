@@ -9,7 +9,10 @@ export default function GraphLoader(props: { loading: boolean; loadingMsg?: stri
   const noDataComp = <h1>No Data Found</h1>;
 
   if (props.loading) return loadingComp;
-  if (props.error) return errorComp;
+  if (props.error) {
+    console.error(props.error);
+    return errorComp;
+  }
   if (!props.data) return noDataComp;
 
   return props.children;
