@@ -19,12 +19,13 @@ class MySocket {
     this.socket = socketIOClient(config.backEndBaseUrl, {
       reconnection: false,
       reconnectionAttempts: 5,
-      reconnectionDelay: 5000,
+      reconnectionDelay: 10000,
     });
 
     const socket = this.socket;
 
     socket.on('connect', () => {
+      this.e.emit('connect');
       console.log(`socket connection established: ${this.socket.id}`);
     });
     socket.on('disconnect', () => {

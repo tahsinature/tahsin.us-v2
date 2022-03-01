@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Avatar } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -12,6 +12,7 @@ import ThemeToggle from 'src/components/Buttons/ThemeToggle/ThemeToggle';
 
 let totalClicked = 0;
 let currentResetter: NodeJS.Timeout;
+let timeout: NodeJS.Timeout;
 
 const resetClick = () => {
   if (currentResetter) clearTimeout(currentResetter);
@@ -23,8 +24,29 @@ const resetClick = () => {
 const NavBar = (props: any) => {
   const { appState } = props;
   const connectionId = localStorage.getItem(variables.connectionId);
+  const [avatarClass, changeAvatarClass] = useState('');
 
   const history = useHistory();
+
+  useEffect(() => {
+    mySocket.e.addListener('disconnect', () => {
+      changeAvatarClass(classes.NoSocket);
+      console.log('disconnect from navbar');
+    });
+
+    mySocket.e.addListener('connect', () => {
+      changeAvatarClass(classes.Connected);
+      timeout = setTimeout(() => {
+        changeAvatarClass('');
+      }, 5000);
+
+      console.log('conect from navbar');
+    });
+
+    return () => {
+      if (timeout) clearTimeout(timeout);
+    };
+  }, []);
 
   const handleShowVersion = () => {
     ++totalClicked;
@@ -47,7 +69,7 @@ Connection ID: ${connectionId}
   return (
     <nav className={classes.NavBar}>
       <button className={classes.Button} onClick={handleShowVersion} aria-label="home">
-        <Avatar style={{ cursor: 'pointer', backgroundColor: appState.appTheme === 'dark' ? '#fff' : '#000' }} onClick={() => history.push('/')}>
+        <Avatar className={[classes.Avatar, avatarClass].join(' ')} style={{ cursor: 'pointer', backgroundColor: appState.appTheme === 'dark' ? '#fff' : '#000' }} onClick={() => history.push('/')}>
           <p style={{ color: appState.appTheme === 'dark' ? '#000' : '#fff', paddingTop: '3px' }}>T</p>
         </Avatar>
       </button>

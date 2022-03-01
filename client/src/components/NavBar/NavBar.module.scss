@@ -1,14 +1,25 @@
+@import '../../assets/sass/main.scss';
+
 .NavBar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 4rem;
-  // background-color: red;
 }
 
 .Button {
   border: none;
   background-color: transparent;
-  // border-radius: 50%;
+}
+
+.Avatar {
+  border: 2px solid transparent;
+  &.NoSocket {
+    border: 2px solid red;
+  }
+  &.Connected {
+    border: 2px solid $primaryGreenish;
+  }
+  transition: all 1s;
 }
