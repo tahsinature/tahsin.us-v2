@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 
 	"github.com/tahsinature/tahsin.us/pkg/controllers"
@@ -16,7 +15,7 @@ var (
 func Setup() *gin.Engine {
 	staticEngine := gin.New()
 	staticEngine.Use(middlewares.Cors)
-	staticEngine.Use(gzip.Gzip(gzip.DefaultCompression))
+	// staticEngine.Use(gzip.Gzip(gzip.DefaultCompression))
 	staticEngine.Static("/", "./public")
 
 	staticEngine.NoRoute(func(c *gin.Context) {
