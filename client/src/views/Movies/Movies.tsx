@@ -5,6 +5,7 @@ import Rating from '@material-ui/lab/Rating';
 import ScrollingText from 'src/components/ScrollingText/ScrollingText';
 import ImageLoader from 'src/components/ImageLoader/ImageLoader';
 import classes from './Movies.module.scss';
+import './Movies.scss';
 import GraphLoader from 'src/components/GraphLoader/GraphLoader';
 
 interface Movie {
@@ -56,7 +57,6 @@ export default function Movies() {
     movies: Movie[];
   }
   const { error, loading, data } = useQuery<Response>(GET_MOVIES);
-  console.log(data);
 
   return (
     <GraphLoader data={data} error={error} loading={loading} loadingMsg="Fetching Watched Movies">
@@ -73,7 +73,7 @@ export default function Movies() {
                 <ScrollingText text={`${ele.title} (${ele.year})`} />
               </div>
               <div className={classes.Info}>
-                <Rating name="simple-controlled" value={ele.myRating / 2} readOnly size={'small'} style={{ fontSize: 12 }} />
+                <Rating precision={0.5} name="simple-controlled" value={ele.myRating / 2} readOnly size={'small'} style={{ fontSize: 12 }} />
                 <br />
                 <span>Watched: {ele.watchedAt}</span>
                 <Genres genres={ele.genres} />
