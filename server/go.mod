@@ -8,7 +8,6 @@ require (
 	github.com/brianvoe/gofakeit/v6 v6.10.0
 	github.com/fatih/color v1.13.0
 	github.com/gin-contrib/cors v1.3.1
-	github.com/gin-contrib/gzip v0.0.1
 	github.com/gin-gonic/gin v1.7.2
 	github.com/go-playground/assert/v2 v2.0.1
 	github.com/go-playground/validator/v10 v10.8.0
@@ -22,6 +21,8 @@ require (
 	github.com/jinzhu/now v1.1.3
 	github.com/joho/godotenv v1.3.0
 	github.com/json-iterator/go v1.1.11 // indirect
+	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
+	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/myesui/uuid v1.0.0 // indirect
 	github.com/sirupsen/logrus v1.8.1
 	github.com/twinj/uuid v1.0.0

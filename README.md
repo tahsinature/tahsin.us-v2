@@ -26,10 +26,9 @@
 
 ### Todo
 
-- [ ] make socket more stable -> localstorage sid trick
 - [ ] put latest source code on the host machine
 - [ ] try to put in kubernetes
-- [ ] other activities -> photos / music / movies
+- [ ] other activities -> photos / music
 - [ ] put NFT -> https://juliancanderson.com/nfts
 - [ ] do something on all image load on gallery
 
