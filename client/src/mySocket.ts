@@ -17,7 +17,9 @@ class MySocket {
 
   async init(): Promise<Socket> {
     this.socket = socketIOClient(config.backEndBaseUrl, {
-      withCredentials: true,
+      reconnection: false,
+      reconnectionAttempts: 5,
+      reconnectionDelay: 5000,
     });
 
     const socket = this.socket;
