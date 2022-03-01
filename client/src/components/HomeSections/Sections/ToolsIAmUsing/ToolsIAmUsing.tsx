@@ -13,8 +13,8 @@ const ToolsIAmUsing = () => {
   return (
     <Section>
       <Header title="Tools I'm using nowadays" icon={<BuildRounded />} />
-      <div className={classes.ToolBox}>{data.tools.map(ele => ele.display && <Capsule key={ele._id} logo={ele.image} title={ele.title} />)}</div>
-      <Capsule type={1} logo={''} title={'See All'} clickHandler={() => history.push({ pathname: `/list/tools` })} />
+      <div className={classes.ToolBox}>{data.tools.map(ele => ele.display && <Capsule className={classes.Capsule} key={ele._id} logo={ele.image} title={ele.title} />)}</div>
+      <Capsule className={classes.SeeMoreButton} type={1} logo={''} title={'See All'} clickHandler={() => history.push({ pathname: `/list/tools` })} />
     </Section>
   );
 };

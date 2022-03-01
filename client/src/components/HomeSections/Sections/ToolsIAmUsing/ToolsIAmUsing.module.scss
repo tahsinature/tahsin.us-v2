@@ -3,12 +3,18 @@
 .ToolBox {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.5rem 1.5rem;
   @include respond(df, sm) {
     grid-template-columns: 1fr 1fr;
+    grid-gap: 0.5rem 1rem;
   }
+}
 
-  & > div {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
+.SeeMoreButton {
+  margin-top: 1rem;
+}
+
+.Capsule {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
 }

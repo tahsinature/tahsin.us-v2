@@ -7,7 +7,7 @@ enum Type {
   button = 1,
   other = 2,
 }
-export default function Capsule(props: { logo?: string; title: string; subtitle?: string; type?: Type; clickHandler?: () => void }) {
+export default function Capsule(props: { className?: string; logo?: string; title: string; subtitle?: string; type?: Type; clickHandler?: () => void }) {
   let type: Type;
   type = props.type || Type.other;
 
@@ -18,7 +18,7 @@ export default function Capsule(props: { logo?: string; title: string; subtitle?
   };
 
   return (
-    <div className={classes.Capsule} style={style} onClick={handleClick}>
+    <div className={[classes.Capsule, props.className || ''].join(' ')} style={style} onClick={handleClick}>
       {props.logo && (
         <div className={classes.LogoBox}>
           <img src={props.logo} alt="" />

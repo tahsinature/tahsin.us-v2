@@ -36,6 +36,7 @@ const images = {
     digitalOcean: require('src/assets/images/logos/digitalocean_logo_icon_169273.png').default,
     devTo: require('src/assets/images/logos/dev-black.png').default,
     grpc: require('src/assets/images/logos/grpc.png').default,
+    graphQL: require('src/assets/images/logos/graphql-logo.png').default,
     database: require('src/assets/images/logos/databases-logo.png').default,
     gitHubActions: require('src/assets/images/logos/github-actions-logo.png').default,
     docker: require('src/assets/images/logos/docker-logo.png').default,
