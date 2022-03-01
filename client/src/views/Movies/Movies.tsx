@@ -57,7 +57,6 @@ const Card = (props: { movie: Movie }) => {
   return (
     <PreLoader className={classes.Card} isReady={isReady}>
       <div className={classes.ImageBox}>
-        {/* <ImageLoader src={} /> */}
         <img src={props.movie.image} alt="" onLoad={() => setReady(true)} />
       </div>
       <div className={classes.Title}>

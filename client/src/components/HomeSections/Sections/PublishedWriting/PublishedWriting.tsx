@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { DescriptionRounded } from '@material-ui/icons';
 
 import Header from 'src/components/Header/Header';
@@ -7,6 +7,7 @@ import classes from './PublishedWriting.module.scss';
 import data from 'src/api/data';
 import ReadMoreButton from 'src/components/HomeSections/Sections/PublishedWriting/ReadMoreButton/ReadMoreButton';
 import ScrollingText from 'src/components/ScrollingText/ScrollingText';
+import PreLoader from 'src/components/PreLoader/PreLoader';
 
 let intervalId: NodeJS.Timeout;
 
@@ -36,26 +37,32 @@ const PublishedWriting = () => {
     clearInterval(intervalId);
   };
 
+  const Box = (props: { writing: typeof data.articles[0] }) => {
+    const [ready, setReady] = useState(false);
+    return (
+      <PreLoader className={classes.Box} onClick={() => handleClick(props.writing.url)} isReady={ready}>
+        <div className={classes.BoxContent}>
+          <div className={classes.ImageContainer}>
+            <div className={classes.InnerSkew}>
+              <img src={props.writing.thumb} alt="article-thumb" onLoad={() => setReady(true)} />
+            </div>
+          </div>
+          <div className={classes.TextContainer}>
+            <div className={classes.TextBox}>
+              <ScrollingText text={props.writing.title} />
+            </div>
+          </div>
+        </div>
+      </PreLoader>
+    );
+  };
+
   return (
     <Section classNames={[classes.PublishedWriting]}>
       <Header title="Published Writing" icon={<DescriptionRounded />} />
       <div className={classes.Boxes} ref={postsBox}>
         {data.articles.map(writing => (
-          <div key={writing.url} className={classes.Box} onClick={() => handleClick(writing.url)}>
-            <div className={classes.BoxContent}>
-              <div className={classes.ImageContainer}>
-                <div className={classes.InnerSkew}>
-                  <img src={writing.thumb} alt="article-thumb" />
-                </div>
-              </div>
-              <div className={classes.TextContainer}>
-                <div className={classes.TextBox}>
-                  {/* <p>{writing.title}</p> */}
-                  <ScrollingText text={writing.title} />
-                </div>
-              </div>
-            </div>
-          </div>
+          <Box key={writing.url} writing={writing} />
         ))}
       </div>
       <div className={classes.Buttons}>

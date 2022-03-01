@@ -17,13 +17,14 @@ export default function ScrollingText(props: { text: string }) {
     //reverse: key % 2 == 0,
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const parentWidth = (parent.current as any).offsetWidth;
     const textWidth = (text.current as any).scrollWidth;
     if (textWidth > parentWidth) {
       scroll(true);
     }
-  }, []);
+  });
 
   return (
     <div ref={parent}>
