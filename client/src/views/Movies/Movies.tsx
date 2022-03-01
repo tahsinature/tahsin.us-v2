@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import Rating from '@material-ui/lab/Rating';
 
 import ScrollingText from 'src/components/ScrollingText/ScrollingText';
-import ImageLoader from 'src/components/ImageLoader/ImageLoader';
 import classes from './Movies.module.scss';
 import './Movies.scss';
 import GraphLoader from 'src/components/GraphLoader/GraphLoader';
+import PreLoader from 'src/components/PreLoader/PreLoader';
 
 interface Movie {
   id: string;
@@ -52,6 +52,28 @@ const GET_MOVIES = gql`
   }
 `;
 
+const Card = (props: { movie: Movie }) => {
+  const [isReady, setReady] = useState(false);
+  return (
+    <PreLoader className={classes.Card} isReady={isReady}>
+      <div className={classes.ImageBox}>
+        {/* <ImageLoader src={} /> */}
+        <img src={props.movie.image} alt="" onLoad={() => setReady(true)} />
+      </div>
+      <div className={classes.Title}>
+        <ScrollingText text={`${props.movie.title} (${props.movie.year})`} />
+      </div>
+      <div className={classes.Info}>
+        <Rating precision={0.5} name="simple-controlled" value={props.movie.myRating / 2} readOnly size={'small'} style={{ fontSize: 12 }} />
+        <br />
+        <span>Watched: {props.movie.watchedAt}</span>
+        <Genres genres={props.movie.genres} />
+      </div>
+      <div className={classes.Desc}>No description yet</div>
+    </PreLoader>
+  );
+};
+
 export default function Movies() {
   interface Response {
     movies: Movie[];
@@ -65,21 +87,7 @@ export default function Movies() {
         <hr />
         <section className={classes.Cards}>
           {data?.movies.map(ele => (
-            <div className={classes.Card} key={ele.title}>
-              <div className={classes.ImageBox}>
-                <ImageLoader src={ele.image} />
-              </div>
-              <div className={classes.Title}>
-                <ScrollingText text={`${ele.title} (${ele.year})`} />
-              </div>
-              <div className={classes.Info}>
-                <Rating precision={0.5} name="simple-controlled" value={ele.myRating / 2} readOnly size={'small'} style={{ fontSize: 12 }} />
-                <br />
-                <span>Watched: {ele.watchedAt}</span>
-                <Genres genres={ele.genres} />
-              </div>
-              <div className={classes.Desc}>No description yet</div>
-            </div>
+            <Card key={ele.id} movie={ele} />
           ))}
         </section>
       </div>
