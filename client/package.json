@@ -49,6 +49,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-move": "./scripts/build-to-server",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "commit": "git-cz"
