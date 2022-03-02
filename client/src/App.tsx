@@ -23,6 +23,7 @@ import { IReducers } from 'src/interfaces/reducers';
 import NavBar from 'src/components/NavBar/NavBar';
 import PageLoader from 'src/components/PageLoader/PageLoader';
 import mySocket from 'src/mySocket';
+import Books from './views/Books/Books';
 
 const Error404 = lazy(() => import('src/views/Error404/Error404'));
 const Home = lazy(() => import('src/views/Home/Home'));
@@ -72,6 +73,7 @@ function App(props: any) {
                   <Route path="/list" component={() => <List />} />
                   <Route path="/gallery" component={() => <Gallery />} />
                   <Route path="/movies" component={() => <Movies />} />
+                  <Route path="/books" component={() => <Books />} />
                   <Route path="/travels" component={() => <Travels />} />
                   <Route path="/md/:id" component={() => <Markdown />} />
                   <Route path="/json/:id" component={() => <JSONData />} />
