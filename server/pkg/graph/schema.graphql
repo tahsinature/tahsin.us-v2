@@ -14,6 +14,17 @@ type Movie {
   watchedAt: String!
 }
 
+type Book {
+  id: ID!
+  title: String!
+  author: String!
+  myRating: Int!
+  genres: [Genre!]!
+  cover: String!
+  isReading: Boolean!
+}
+
 type Query {
   movies: [Movie!]!
+  books: [Book!]!
 }

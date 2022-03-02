@@ -2,6 +2,16 @@
 
 package model
 
+type Book struct {
+	ID        string   `json:"id"`
+	Title     string   `json:"title"`
+	Author    string   `json:"author"`
+	MyRating  int      `json:"myRating"`
+	Genres    []*Genre `json:"genres"`
+	Cover     string   `json:"cover"`
+	IsReading bool     `json:"isReading"`
+}
+
 type Genre struct {
 	ID    string `json:"id"`
 	Name  string `json:"name"`
