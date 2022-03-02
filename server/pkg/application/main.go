@@ -13,6 +13,8 @@ type Application struct{}
 
 func (*Application) Setup() {
 	config.Validate()
+	services.All.Setup()
+
 	gin.SetMode(gin.ReleaseMode)
 	new(services.Telegram).Init()
 
