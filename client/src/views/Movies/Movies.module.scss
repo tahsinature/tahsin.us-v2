@@ -15,7 +15,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  // padding: 8px 18px;
 
   .Card {
     min-height: 200px;
@@ -39,14 +38,6 @@
       }
     }
 
-    .Title {
-      overflow: hidden;
-      margin-top: 4px;
-      margin-bottom: 4px;
-      font-size: 12px;
-      white-space: pre;
-    }
-
     .Info {
       font-size: 11px;
       opacity: 0.8;
@@ -60,18 +51,4 @@
 
 .ImageBox {
   height: 210px;
-}
-
-.Genres {
-  display: flex;
-  flex-wrap: wrap;
-  .Genre {
-    background-color: $primaryGreenish;
-    padding: 0.2rem;
-    margin: 0.1rem;
-    border-radius: 3px;
-    line-height: 1;
-    font-size: 9px;
-    color: #fff;
-  }
 }

@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import Rating from '@material-ui/lab/Rating';
 
-import ScrollingText from 'src/components/ScrollingText/ScrollingText';
 import classes from './Movies.module.scss';
 import './Movies.scss';
 import GraphLoader from 'src/components/GraphLoader/GraphLoader';
 import PreLoader from 'src/components/PreLoader/PreLoader';
+import CardTitle from 'src/components/Texts/CardTitle/CardTitle';
+import Genres from 'src/components/Genres/Genres';
 
 interface Movie {
   id: string;
@@ -21,18 +22,6 @@ interface Movie {
   image: string;
   watchedAt: string;
 }
-
-const Genres = (props: { genres: Movie['genres'] }) => {
-  return (
-    <div className={classes.Genres}>
-      {props.genres.map(genre => (
-        <span style={{ backgroundColor: genre.color }} key={genre.id} className={classes.Genre}>
-          {genre.name}
-        </span>
-      ))}
-    </div>
-  );
-};
 
 const GET_MOVIES = gql`
   query {
@@ -59,9 +48,9 @@ const Card = (props: { movie: Movie }) => {
       <div className={classes.ImageBox}>
         <img src={props.movie.image} alt="" onLoad={() => setReady(true)} />
       </div>
-      <div className={classes.Title}>
-        <ScrollingText text={`${props.movie.title} (${props.movie.year})`} />
-      </div>
+
+      <CardTitle title={props.movie.title} release={String(props.movie.year)} />
+
       <div className={classes.Info}>
         <Rating precision={0.5} name="simple-controlled" value={props.movie.myRating / 2} readOnly size={'small'} style={{ fontSize: 12 }} />
         <br />
@@ -73,7 +62,7 @@ const Card = (props: { movie: Movie }) => {
   );
 };
 
-export default function Movies() {
+function Movies() {
   interface Response {
     movies: Movie[];
   }
@@ -93,3 +82,5 @@ export default function Movies() {
     </GraphLoader>
   );
 }
+
+export default Movies;
