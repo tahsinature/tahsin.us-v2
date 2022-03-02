@@ -18,7 +18,7 @@ const activities = [
   {
     name: 'Books',
     image: images.otherActivities.books,
-    clickHandler: addSoon,
+    clickHandler: () => history.push('/books'),
   },
   {
     name: 'Photography',
