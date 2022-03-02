@@ -1,23 +1,62 @@
 package services
 
 import (
+	"encoding/json"
 	"fmt"
 	"sort"
 
+	"github.com/go-resty/resty/v2"
 	"github.com/jinzhu/now"
+	"github.com/tahsinature/tahsin.us/pkg/config"
 	"github.com/tahsinature/tahsin.us/pkg/graph/model"
-	"github.com/tahsinature/tahsin.us/pkg/services/notion"
+	notion "github.com/tahsinature/tahsin.us/pkg/types/notion_api_response"
+	"github.com/tahsinature/tahsin.us/pkg/utilities"
 )
 
-type Notion struct{}
+type NotionService struct {
+	client *resty.Client
+}
 
-func (Notion) GetWatchedMovies() (movies []*model.Movie, err error) {
-	apiResp, err := notion.GetWatchedMovies()
+func (n *NotionService) Init() {
+	n.client = resty.New()
+
+	n.client.SetHeader("Authorization", fmt.Sprintf("Bearer %s", config.Notion.Auth))
+	n.client.SetHeader("Notion-Version", config.Notion.Version)
+}
+
+func (n NotionService) checkInit() {
+	if n.client == nil {
+		panic("notion not initialized")
+	}
+}
+
+func (n NotionService) getDBResp(dbId string, mappedPointer interface{}) error {
+	n.checkInit()
+
+	url := fmt.Sprintf("https://api.notion.com/v1/databases/%s/query", dbId)
+	apiResp, err := n.client.R().Post(url)
 	if err != nil {
-		return nil, fmt.Errorf("failed to get watched movies")
+		fmt.Println(err)
+
+		return err
+	} else if apiResp.StatusCode() != 200 {
+		err = fmt.Errorf(utilities.ReadJSON(apiResp.Body())["message"].(string))
+		return err
 	}
 
-	for _, row := range apiResp.Results {
+	json.Unmarshal(apiResp.Body(), mappedPointer)
+
+	return nil
+}
+
+func (n NotionService) GetWatchedMovies() (movies []*model.Movie, err error) {
+	apiResult := notion.MoviesQuery{}
+	err = n.getDBResp(config.Notion.DB_Movies, &apiResult)
+	if err != nil {
+		return movies, err
+	}
+
+	for _, row := range apiResult.Results {
 		if !row.Properties.ShowInApp.Checkbox {
 			continue
 		}
@@ -56,4 +95,55 @@ func (Notion) GetWatchedMovies() (movies []*model.Movie, err error) {
 	})
 
 	return movies, err
+}
+
+func (n NotionService) GetBooks() (books []*model.Book, err error) {
+	n.checkInit()
+
+	apiResult := notion.BooksQuery{}
+	err = n.getDBResp(config.Notion.DB_Books, &apiResult)
+	if err != nil {
+		return books, err
+	}
+
+	books = make([]*model.Book, 0)
+
+	for _, row := range apiResult.Results {
+		genres := []*model.Genre{}
+
+		for _, genre := range row.Properties.Tags.MultiSelect {
+			genres = append(genres, &model.Genre{
+				ID:    genre.ID,
+				Name:  genre.Name,
+				Color: genre.Color,
+			})
+		}
+
+		cover := ""
+
+		if len(row.Properties.Covers.Files) > 0 {
+			cover = row.Properties.Covers.Files[0].File.URL
+		}
+
+		isReading := false
+
+		allowedStatus := []string{"Reading", "Finished", "RF"}
+		if !utilities.ContainsInStrSlice(allowedStatus, row.Properties.Status.Select.Name) {
+			continue
+		} else {
+			isReading = row.Properties.Status.Select.Name == "Reading"
+		}
+
+		books = append(books, &model.Book{
+			ID:        row.ID,
+			Title:     row.Properties.Name.Title[0].PlainText,
+			Author:    row.Properties.Author.RichText[0].PlainText,
+			MyRating:  row.Properties.PersonalRating.Number,
+			Genres:    genres,
+			Cover:     cover,
+			IsReading: isReading,
+		})
+	}
+
+	return books, nil
 }
