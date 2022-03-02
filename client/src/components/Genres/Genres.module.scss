@@ -1,0 +1,15 @@
+@import '../../assets/sass/main.scss';
+
+.Genres {
+  display: flex;
+  flex-wrap: wrap;
+  .Genre {
+    background-color: $primaryGreenish;
+    padding: 0.2rem;
+    margin: 0.1rem;
+    border-radius: 3px;
+    line-height: 1;
+    font-size: 9px;
+    color: #fff;
+  }
+}
