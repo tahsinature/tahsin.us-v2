@@ -1,0 +1,91 @@
+@import '../../assets/sass/main.scss';
+
+$color-bg: #111;
+$book-color-bg: lighten($color-bg, 20%);
+$book-color-border: lighten(#000, 85%);
+$book-border: 1px solid $book-color-border;
+
+%book-rounded-corners {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.Root {
+  width: 100%;
+}
+
+.Books {
+  font-size: 11px;
+
+  display: grid;
+  // grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  grid-gap: 2rem;
+
+  @include respond(df, sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.Cover {
+  @extend %book-rounded-corners;
+
+  cursor: pointer;
+  display: block;
+  width: 150px;
+  height: 220px;
+  position: relative;
+  background: $book-color-bg;
+  z-index: 1;
+  box-shadow: 0 2px 4px 0 rgba(#000, 0.1), 0 9px 20px 0 rgba(#000, 0.25);
+  overflow: hidden;
+  transition: box-shadow 0.3s linear;
+  margin: auto;
+  img {
+    @extend %book-rounded-corners;
+
+    width: inherit;
+    height: inherit;
+    transform-origin: 0 50%;
+    transform: rotateY(0);
+    transition: all 0.45s ease;
+  }
+  &:hover {
+    box-shadow: 0 2px 4px 0 rgba(#000, 0.25), 0 9px 20px 0 rgba(#000, 0.45);
+
+    img {
+      transform: rotateY(-25deg);
+      box-shadow: 1px 1px 5px 5px rgba(#000, 0.2);
+    }
+  }
+
+  &::after,
+  &::before {
+    @extend %book-rounded-corners;
+
+    content: '';
+    display: block;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    background: $book-color-bg;
+    border: $book-border;
+  }
+
+  &::before {
+    left: -3px;
+  }
+  &::after {
+    left: -6px;
+  }
+}
+
+.Details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem 0;
+}
