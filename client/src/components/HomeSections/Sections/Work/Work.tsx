@@ -8,7 +8,7 @@ import colors from 'src/constants/colors';
 import { ThemeManager } from 'src/App.theme';
 import Section from 'src/components/Section/Section';
 import Header from 'src/components/Header/Header';
-import images from 'src/assets/images';
+import data from 'src/api/data';
 
 interface IWorkExperience {
   company: string;
@@ -21,48 +21,7 @@ interface IWorkExperience {
   techStack: string;
 }
 
-const items: IWorkExperience[] = [
-  {
-    timeRange: 'Jul 2021 - Present',
-    company: 'Rakuten Travel Xchange',
-    position: 'FullStack Engineer',
-    logo: 'https://solutions.travel.rakuten.com/favicon.ico',
-    url: 'https://solutions.travel.rakuten.com/',
-    location: 'Singapore (Remote)',
-    specialization: 'Express, Vue 3',
-    techStack: 'foo-stack',
-  },
-  {
-    timeRange: 'Jul 2021 - Jan 2022',
-    company: 'Bountie',
-    position: 'FullStack Engineer',
-    logo: images.logogs.work.bountie.justLogo,
-    url: 'https://www.bountie.io/',
-    location: 'Singapore (Remote)',
-    specialization: 'Go, Node.js, TypeScript',
-    techStack: 'foo-stack',
-  },
-  {
-    timeRange: 'Jul 2021 - Present',
-    company: 'TerasWork',
-    position: 'FullStack Engineer',
-    logo: images.logogs.work.teras,
-    url: 'http://www.history.com',
-    location: 'Indonesia (Remote)',
-    specialization: 'Go, React',
-    techStack: 'foo-stack',
-  },
-  {
-    timeRange: 'Feb 2019 - Jun 2021',
-    company: 'HaloJasa',
-    position: 'Sr. Software Engineer',
-    logo: images.logogs.work.halojasa,
-    url: 'https://halojasa.com/',
-    location: 'Indonesia',
-    specialization: 'Node.js, Microservices, JavaScript, TypeScript',
-    techStack: 'foo-stack',
-  },
-];
+const items: IWorkExperience[] = data.work;
 
 const map = {
   dark: {
