@@ -33,6 +33,7 @@ const Markdown = lazy(() => import('src/views/Markdown/Markdown'));
 const JSONData = lazy(() => import('src/views/JSONData/JSONData'));
 const Gallery = lazy(() => import('src/views/Gallery/Gallery'));
 const Movies = lazy(() => import('src/views/Movies/Movies'));
+const Music = lazy(() => import('src/views/Music/Music'));
 const Travels = lazy(() => import('src/views/Travels/Travels'));
 
 function App(props: any) {
@@ -73,6 +74,7 @@ function App(props: any) {
                   <Route path="/list" component={() => <List />} />
                   <Route path="/gallery" component={() => <Gallery />} />
                   <Route path="/movies" component={() => <Movies />} />
+                  <Route path="/music" component={() => <Music />} />
                   <Route path="/books" component={() => <Books />} />
                   <Route path="/travels" component={() => <Travels />} />
                   <Route path="/md/:id" component={() => <Markdown />} />

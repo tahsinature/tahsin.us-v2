@@ -33,7 +33,7 @@ const activities = [
   {
     name: 'Music',
     image: images.otherActivities.music,
-    clickHandler: addSoon,
+    clickHandler: () => history.push('/music'),
   },
   {
     name: 'Travel',
