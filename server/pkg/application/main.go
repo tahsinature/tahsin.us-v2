@@ -16,7 +16,6 @@ func (*Application) Setup() {
 	services.All.Setup()
 
 	gin.SetMode(gin.ReleaseMode)
-	new(services.Telegram).Init()
 
 	// db.Init()
 	// db.InitRedis()

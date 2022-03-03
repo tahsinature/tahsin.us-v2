@@ -12,17 +12,12 @@ import (
 	"github.com/tahsinature/tahsin.us/pkg/services"
 )
 
-var (
-	telegramService = new(services.Telegram)
-	ipService       = new(services.IP)
-)
-
 const (
 	SEC_TO_WAIT_FOR_RECONNECTION = 60
 )
 
 func LogNewUser(ip string, stayed *durafmt.Durafmt) {
-	ipData := ipService.Lookup(ip)
+	ipData := services.All.IP.Lookup(ip)
 	msg := fmt.Sprintf(`
 ip: %s
 city: %s
@@ -44,7 +39,7 @@ more2: ip2location.com/%s
 		ip,
 		ip)
 
-	telegramService.SendMessage(msg)
+	services.All.Telegram.SendMessage(msg)
 }
 
 type ConnectionDetails struct {

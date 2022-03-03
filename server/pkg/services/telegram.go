@@ -9,14 +9,14 @@ import (
 	"github.com/tahsinature/tahsin.us/pkg/log"
 )
 
-type Telegram struct{}
+type TelegramService struct{}
 
 var (
 	TELEGRAM_BOT_CHAT_ID int64
 	bot                  *tgbotapi.BotAPI
 )
 
-func (tgbot Telegram) Init() {
+func (tgbot TelegramService) Init() {
 	var err error
 	TELEGRAM_BOT_CHAT_ID, err = strconv.ParseInt(config.Telegram.CHAT_ID_ME_SERVER, 10, 64)
 	if err != nil {
@@ -30,7 +30,7 @@ func (tgbot Telegram) Init() {
 	log.Telegram.Info(fmt.Sprintf("Authorized on account %s", bot.Self.UserName))
 }
 
-func (tgbot Telegram) SendMessage(text string) {
+func (tgbot TelegramService) SendMessage(text string) {
 	log.Telegram.Info("sending TG msg...")
 	if config.Telegram.SEND {
 		msg := tgbotapi.NewMessage(TELEGRAM_BOT_CHAT_ID, text)

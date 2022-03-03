@@ -8,8 +8,8 @@ import (
 )
 
 type (
-	IP       struct{}
-	Response struct {
+	IPService struct{}
+	Response  struct {
 		Ip          string `json:"ip"`
 		City        string `json:"city"`
 		Region      string `json:"region"`
@@ -23,7 +23,7 @@ type (
 	}
 )
 
-func (IP) Lookup(ip string) Response {
+func (IPService) Lookup(ip string) Response {
 	client := resty.New()
 	url := fmt.Sprintf("https://ipapi.co/%s/json", ip)
 	response, err := client.R().Get(url)
