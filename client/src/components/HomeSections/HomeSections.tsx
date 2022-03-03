@@ -1,5 +1,5 @@
 import React from 'react';
-import ScrollAnimation from 'react-animate-on-scroll';
+// import ScrollAnimation from 'react-animate-on-scroll';
 
 import classes from './HomeSections.module.scss';
 import FewWordsAboutMe from 'src/components/HomeSections/Sections/FewWordsAboutMe/FewWordsAboutMe';
@@ -16,11 +16,11 @@ import HumanLanguages from 'src/components/HomeSections/Sections/HumanLanguages/
 // import EventsIAmAt from './Sections/EventsIAmAt/EventsIAmAt';
 
 const Animation = (props: { children: JSX.Element }) => {
-  return (
-    <ScrollAnimation animateOnce className={classes.Animation} animateIn="fadeIn">
-      {props.children}
-    </ScrollAnimation>
-  );
+  return <div className={classes.Animation}>{props.children}</div>;
+  // return (
+  //   <ScrollAnimation animateOnce className={classes.Animation} animateIn="fadeIn">
+  //   </ScrollAnimation>
+  // );
 };
 
 const HomeSections = () => {

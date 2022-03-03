@@ -79,9 +79,9 @@ const PublishedWriting = () => {
   };
 
   return (
-    <Section classNames={[classes.PublishedWriting]}>
-      <Header title="Published Writing" icon={<DescriptionRounded />} />
-      <GraphLoader loading={loading} data={data?.articles} error={error} loadingMsg="Fetching articles from different platforms...">
+    <GraphLoader hideOnError loading={loading} data={data?.articles} error={error} loadingMsg="Fetching articles from different platforms...">
+      <Section classNames={[classes.PublishedWriting]}>
+        <Header title="Published Writing" icon={<DescriptionRounded />} />
         <>
           <div className={classes.Boxes} ref={postsBox}>
             {data?.articles.map(writing => (
@@ -92,8 +92,8 @@ const PublishedWriting = () => {
             <ReadMoreButton clickHandler={() => readMore(100)} onHoldHandler={handleHold} holdReleaseHandler={handleCancelHold} />
           </div>
         </>
-      </GraphLoader>
-    </Section>
+      </Section>
+    </GraphLoader>
   );
 };
 

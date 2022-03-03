@@ -1,13 +1,13 @@
 @import '../../../../assets/sass/main.scss';
 
 .TimeRange {
-  font-size: 60%;
+  font-size: 70%;
   margin-left: 0.4rem;
 }
 
 .Logobox {
   height: 30px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.4rem;
   img {
     height: 100%;
   }
@@ -18,6 +18,9 @@
   align-items: center;
   p {
     margin-left: 0.3rem;
+  }
+  svg {
+    font-size: 100%;
   }
 }
 
@@ -88,6 +91,7 @@
 }
 
 .TimelineEventCopy {
+  font-size: 70%;
   padding: 2em 2em 0 6rem;
   position: relative;
   top: -1.875em;
