@@ -24,7 +24,15 @@ type Book {
   isReading: Boolean!
 }
 
+type Article {
+  id: ID!
+  title: String!
+  cover: String!
+  url: String!
+}
+
 type Query {
   movies: [Movie!]!
   books: [Book!]!
+  articles: [Article!]!
 }

@@ -27,7 +27,15 @@ func (r *queryResolver) Books(ctx context.Context) ([]*model.Book, error) {
 	}
 
 	return data, err
-	// return []*model.Book{}, nil
+}
+
+func (r *queryResolver) Articles(ctx context.Context) ([]*model.Article, error) {
+	data, err := services.All.Notion.GetArticles()
+	if err != nil {
+		return nil, err
+	}
+
+	return data, err
 }
 
 // Query returns generated.QueryResolver implementation.

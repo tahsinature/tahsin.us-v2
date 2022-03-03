@@ -2,6 +2,13 @@
 
 package model
 
+type Article struct {
+	ID    string `json:"id"`
+	Title string `json:"title"`
+	Cover string `json:"cover"`
+	URL   string `json:"url"`
+}
+
 type Book struct {
 	ID        string   `json:"id"`
 	Title     string   `json:"title"`

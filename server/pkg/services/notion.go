@@ -33,6 +33,14 @@ func (n *NotionService) Init() {
 				},
 			},
 		},
+		config.Notion.DB_Articles: map[string]interface{}{
+			"filter": map[string]interface{}{
+				"property": "ShowInApp",
+				"checkbox": map[string]interface{}{
+					"equals": true,
+				},
+			},
+		},
 	}
 }
 
@@ -163,4 +171,43 @@ func (n NotionService) GetBooks() (books []*model.Book, err error) {
 	})
 
 	return books, nil
+}
+
+func (n NotionService) GetArticles() (books []*model.Article, err error) {
+	n.checkInit()
+
+	apiResp := notion.ArticlesQuery{}
+	err = n.getDBResp(config.Notion.DB_Articles, &apiResp)
+	if err != nil {
+		return books, err
+	}
+
+	books = make([]*model.Article, 0)
+
+	for _, row := range apiResp.Results {
+		cover := ""
+		url := ""
+		title := ""
+
+		if len(row.Properties.Cover.Files) > 0 {
+			cover = row.Properties.Cover.Files[0].File.URL
+		}
+
+		if len(row.Properties.Link.RichText) > 0 {
+			url = row.Properties.Link.RichText[0].PlainText
+		}
+
+		if len(row.Properties.Name.Title) > 0 {
+			title = row.Properties.Name.Title[0].PlainText
+		}
+
+		books = append(books, &model.Article{
+			ID:    row.ID,
+			Title: title,
+			Cover: cover,
+			URL:   url,
+		})
+	}
+
+	return books, err
 }

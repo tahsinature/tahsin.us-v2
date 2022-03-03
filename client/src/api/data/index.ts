@@ -1,4 +1,3 @@
-import articles from 'src/api/data/articles';
 import basicData from 'src/api/data/basicData';
 import contribution from 'src/api/data/contribution';
 import findMeElsewhere from 'src/api/data/findMeElsewhere';
@@ -8,7 +7,6 @@ import work from 'src/api/data/work';
 
 const data = {
   tools,
-  articles,
   basicData,
   frameworkAndLib,
   findMeElsewhere,
