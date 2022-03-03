@@ -38,7 +38,7 @@ const work = [
     logo: images.logogs.work.halojasa,
     url: 'https://halojasa.com/',
     location: 'Indonesia',
-    specialization: 'Node.js, Microservices, JavaScript, TypeScript',
+    specialization: 'Microservices, TypeScript, gRPC',
     techStack: 'foo-stack',
   },
 ];

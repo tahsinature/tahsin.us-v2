@@ -9,6 +9,7 @@ import { ThemeManager } from 'src/App.theme';
 import Section from 'src/components/Section/Section';
 import Header from 'src/components/Header/Header';
 import data from 'src/api/data';
+import ScrollingText from 'src/components/ScrollingText/ScrollingText';
 
 interface IWorkExperience {
   company: string;
@@ -79,7 +80,7 @@ const Work = () => {
                 </div>
                 <div className={classes.LocationBox}>
                   <BuildRounded fontSize="small" />
-                  <p>{item.specialization}</p>
+                  <ScrollingText className={classes.TextScroller} text={item.specialization} />
                 </div>
               </div>
             </li>
