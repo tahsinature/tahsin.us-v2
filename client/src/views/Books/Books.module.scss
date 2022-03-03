@@ -84,11 +84,13 @@ $book-border: 1px solid $book-color-border;
 
 .Cover {
   @extend %book-rounded-corners;
+  $height: 220px;
+  $ratio: 0.6818;
 
   cursor: pointer;
   display: block;
-  width: 150px;
-  height: 220px;
+  width: $height * $ratio;
+  height: $height;
   position: relative;
   background: $book-color-bg;
   z-index: 1;
@@ -96,6 +98,16 @@ $book-border: 1px solid $book-color-border;
   overflow: hidden;
   transition: box-shadow 0.3s linear;
   margin: auto;
+  @include respond(df, tab-p) {
+    $height: 180px;
+    height: $height;
+    width: $height * $ratio;
+  }
+  @include respond(df, mbl) {
+    $height: 100px;
+    height: $height;
+    width: $height * $ratio;
+  }
   img {
     @extend %book-rounded-corners;
 
