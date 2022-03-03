@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Avatar } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useLongPress } from 'use-long-press';
 
 import classes from './NavBar.module.scss';
 import variables from 'src/constants/variables';
@@ -66,9 +67,18 @@ Connection ID: ${connectionId}
 `);
   };
 
+  const bind = useLongPress(() => {
+    const socket = mySocket.getSocket();
+    if (!socket.id) {
+      mySocket.init().then(() => {
+        console.log('socket reconnected');
+      });
+    } else console.log('socket already connected');
+  });
+
   return (
     <nav className={classes.NavBar}>
-      <button className={classes.Button} onClick={handleShowVersion} aria-label="home">
+      <button className={classes.Button} onClick={handleShowVersion} aria-label="home" {...bind}>
         <Avatar className={[classes.Avatar, avatarClass].join(' ')} style={{ cursor: 'pointer', backgroundColor: appState.appTheme === 'dark' ? '#fff' : '#000' }} onClick={() => history.push('/')}>
           <p style={{ color: appState.appTheme === 'dark' ? '#000' : '#fff', paddingTop: '3px' }}>T</p>
         </Avatar>
