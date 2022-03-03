@@ -8,6 +8,7 @@ import GraphLoader from 'src/components/GraphLoader/GraphLoader';
 import PreLoader from 'src/components/PreLoader/PreLoader';
 import CardTitle from 'src/components/Texts/CardTitle/CardTitle';
 import Genres from 'src/components/Genres/Genres';
+import { useEffect } from 'react';
 
 interface Movie {
   id: string;
@@ -63,6 +64,9 @@ const Card = (props: { movie: Movie }) => {
 };
 
 function Movies() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   interface Response {
     movies: Movie[];
   }

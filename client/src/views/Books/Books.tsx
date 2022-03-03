@@ -7,6 +7,7 @@ import GraphLoader from 'src/components/GraphLoader/GraphLoader';
 import classes from './Books.module.scss';
 import CardTitle from 'src/components/Texts/CardTitle/CardTitle';
 import Genres from 'src/components/Genres/Genres';
+import { useEffect } from 'react';
 
 const GET_MOVIES = gql`
   query {
@@ -41,6 +42,9 @@ interface Book {
 }
 
 function Books() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { loading, error, data } = useQuery<{ books: Book[] }>(GET_MOVIES);
 
   const Card = (props: { book: Book }) => {
