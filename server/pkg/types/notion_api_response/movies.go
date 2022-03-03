@@ -17,16 +17,7 @@ type MoviesQuery struct {
 			Object string `json:"object"`
 			ID     string `json:"id"`
 		} `json:"last_edited_by"`
-		Cover struct {
-			Type     string `json:"type"`
-			External struct {
-				URL string `json:"url"`
-			} `json:"external"`
-			File struct {
-				URL        string `json:"url"`
-				ExpiryTime string `json:"expiry_time"`
-			} `json:"file"`
-		} `json:"cover"`
+		Cover  interface{} `json:"cover"`
 		Icon   interface{} `json:"icon"`
 		Parent struct {
 			Type       string `json:"type"`
@@ -44,7 +35,7 @@ type MoviesQuery struct {
 				Type string `json:"type"`
 				Date struct {
 					Start    string      `json:"start"`
-					End      interface{} `json:"end"`
+					End      string      `json:"end"`
 					TimeZone interface{} `json:"time_zone"`
 				} `json:"date"`
 			} `json:"Approx Release"`
@@ -87,12 +78,24 @@ type MoviesQuery struct {
 					Color string `json:"color"`
 				} `json:"select"`
 			} `json:"Type"`
+			Covers struct {
+				ID    string `json:"id"`
+				Type  string `json:"type"`
+				Files []struct {
+					Name string `json:"name"`
+					Type string `json:"type"`
+					File struct {
+						URL        string    `json:"url"`
+						ExpiryTime time.Time `json:"expiry_time"`
+					} `json:"file"`
+				} `json:"files"`
+			} `json:"Covers"`
 			Rating110 struct {
 				ID     string `json:"id"`
 				Type   string `json:"type"`
 				Number int    `json:"number"`
 			} `json:"Rating (1-10)"`
-			Column struct {
+			RegionalType struct {
 				ID     string `json:"id"`
 				Type   string `json:"type"`
 				Select struct {
@@ -100,12 +103,12 @@ type MoviesQuery struct {
 					Name  string `json:"name"`
 					Color string `json:"color"`
 				} `json:"select"`
-			} `json:"Column"`
+			} `json:"Regional Type"`
 			ShowInApp struct {
 				ID       string `json:"id"`
 				Type     string `json:"type"`
 				Checkbox bool   `json:"checkbox"`
-			}
+			} `json:"ShowInApp"`
 			Genre struct {
 				ID          string `json:"id"`
 				Type        string `json:"type"`
@@ -135,8 +138,10 @@ type MoviesQuery struct {
 				Title []struct {
 					Type string `json:"type"`
 					Text struct {
-						Content string      `json:"content"`
-						Link    interface{} `json:"link"`
+						Content string `json:"content"`
+						Link    struct {
+							URL string `json:"url"`
+						} `json:"link"`
 					} `json:"text"`
 					Annotations struct {
 						Bold          bool   `json:"bold"`
@@ -146,8 +151,8 @@ type MoviesQuery struct {
 						Code          bool   `json:"code"`
 						Color         string `json:"color"`
 					} `json:"annotations"`
-					PlainText string      `json:"plain_text"`
-					Href      interface{} `json:"href"`
+					PlainText string `json:"plain_text"`
+					Href      string `json:"href"`
 				} `json:"title"`
 			} `json:"Title"`
 		} `json:"properties"`

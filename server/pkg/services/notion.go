@@ -14,7 +14,8 @@ import (
 )
 
 type NotionService struct {
-	client *resty.Client
+	client     *resty.Client
+	reqBodyMap map[string]interface{}
 }
 
 func (n *NotionService) Init() {
@@ -22,6 +23,17 @@ func (n *NotionService) Init() {
 
 	n.client.SetHeader("Authorization", fmt.Sprintf("Bearer %s", config.Notion.Auth))
 	n.client.SetHeader("Notion-Version", config.Notion.Version)
+
+	n.reqBodyMap = map[string]interface{}{
+		config.Notion.DB_Movies: map[string]interface{}{
+			"filter": map[string]interface{}{
+				"property": "ShowInApp",
+				"checkbox": map[string]interface{}{
+					"equals": true,
+				},
+			},
+		},
+	}
 }
 
 func (n NotionService) checkInit() {
@@ -34,7 +46,8 @@ func (n NotionService) getDBResp(dbId string, mappedPointer interface{}) error {
 	n.checkInit()
 
 	url := fmt.Sprintf("https://api.notion.com/v1/databases/%s/query", dbId)
-	apiResp, err := n.client.R().Post(url)
+
+	apiResp, err := n.client.R().SetBody(n.reqBodyMap[dbId]).Post(url)
 	if err != nil {
 		fmt.Println(err)
 
@@ -57,18 +70,14 @@ func (n NotionService) GetWatchedMovies() (movies []*model.Movie, err error) {
 	}
 
 	for _, row := range apiResult.Results {
-		if !row.Properties.ShowInApp.Checkbox {
-			continue
-		}
 		releaseTime, _ := now.Parse(row.Properties.ApproxRelease.Date.Start)
 
 		genres := []*model.Genre{}
 
 		cover := ""
-		if row.Cover.Type == "file" {
-			cover = row.Cover.File.URL
-		} else if row.Cover.Type == "external" {
-			cover = row.Cover.External.URL
+
+		if len(row.Properties.Covers.Files) > 0 {
+			cover = row.Properties.Covers.Files[0].File.URL
 		}
 
 		for _, genre := range row.Properties.Genre.MultiSelect {
@@ -91,7 +100,7 @@ func (n NotionService) GetWatchedMovies() (movies []*model.Movie, err error) {
 	}
 
 	sort.SliceStable(movies, func(i, j int) bool {
-		return movies[i].Year > movies[j].Year
+		return movies[i].Year < movies[j].Year
 	})
 
 	return movies, err
@@ -144,6 +153,14 @@ func (n NotionService) GetBooks() (books []*model.Book, err error) {
 			IsReading: isReading,
 		})
 	}
+
+	sort.SliceStable(books, func(i, j int) bool {
+		if books[i].IsReading {
+			return true
+		}
+
+		return books[i].MyRating > books[j].MyRating
+	})
 
 	return books, nil
 }

@@ -71,7 +71,7 @@ function Movies() {
   return (
     <GraphLoader data={data} error={error} loading={loading} loadingMsg="Fetching Watched Movies">
       <div className={classes.Movies}>
-        <h2>Some of my favorite movies of all time</h2>
+        <h2>Some Movies & TV Series I Like</h2>
         <hr />
         <section className={classes.Cards}>
           {data?.movies.map(ele => (

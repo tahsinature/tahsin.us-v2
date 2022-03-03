@@ -52,7 +52,7 @@ function Books() {
 
     return (
       <li className={classes.Book}>
-        <div className={classes.ReadingBadge}>Reading</div>
+        {props.book.isReading && <div className={classes.ReadingBadge}>Reading</div>}
         <div className={classes.Cover}>
           <img src={props.book.cover} alt="book-cover" />
         </div>
