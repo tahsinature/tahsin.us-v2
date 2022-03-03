@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 import classes from './HomeSections.module.scss';
 import FewWordsAboutMe from 'src/components/HomeSections/Sections/FewWordsAboutMe/FewWordsAboutMe';
@@ -14,21 +15,47 @@ import HumanLanguages from 'src/components/HomeSections/Sections/HumanLanguages/
 // import PublicSpeaking from './Sections/PublicSpeaking/PublicSpeaking';
 // import EventsIAmAt from './Sections/EventsIAmAt/EventsIAmAt';
 
+const Animation = (props: { children: JSX.Element }) => {
+  return (
+    <ScrollAnimation animateOnce className={classes.Animation} animateIn="fadeIn">
+      {props.children}
+    </ScrollAnimation>
+  );
+};
+
 const HomeSections = () => {
   return (
     <div className={classes.HomeSections}>
-      <FewWordsAboutMe />
-      <Work />
-      <ToolsIAmUsing />
-      <FrameworksAndLibraries />
-      <ProgrammingLanguages />
-      <MyContributions />
-      <PublishedWriting />
-      <HumanLanguages />
-      {/* <PublicSpeaking /> */}
-      {/* <EventsIAmAt /> */}
-      <OtherActivities />
-      <FindMeElseWhere />
+      <Animation>
+        <FewWordsAboutMe />
+      </Animation>
+      <Animation>
+        <Work />
+      </Animation>
+      <Animation>
+        <ToolsIAmUsing />
+      </Animation>
+      <Animation>
+        <FrameworksAndLibraries />
+      </Animation>
+      <Animation>
+        <ProgrammingLanguages />
+      </Animation>
+      <Animation>
+        <MyContributions />
+      </Animation>
+      <Animation>
+        <PublishedWriting />
+      </Animation>
+      <Animation>
+        <HumanLanguages />
+      </Animation>
+      <Animation>
+        <OtherActivities />
+      </Animation>
+      <Animation>
+        <FindMeElseWhere />
+      </Animation>
     </div>
   );
 };

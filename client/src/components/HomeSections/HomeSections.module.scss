@@ -4,13 +4,13 @@
   margin-top: 4rem;
   padding-bottom: 4rem;
 
-  section:not(:last-child) {
-    margin-bottom: 4rem;
-  }
-
   ul {
     @include respond(df, sm) {
       padding-inline-start: 0px;
     }
   }
+}
+
+.Animation {
+  margin-bottom: 4rem;
 }

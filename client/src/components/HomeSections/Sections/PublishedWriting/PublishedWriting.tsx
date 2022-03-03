@@ -81,7 +81,7 @@ const PublishedWriting = () => {
   return (
     <Section classNames={[classes.PublishedWriting]}>
       <Header title="Published Writing" icon={<DescriptionRounded />} />
-      <GraphLoader loading={loading} data={data?.articles} error={error} loadingMsg="Fetching articles from different platform">
+      <GraphLoader loading={loading} data={data?.articles} error={error} loadingMsg="Fetching articles from different platforms...">
         <>
           <div className={classes.Boxes} ref={postsBox}>
             {data?.articles.map(writing => (
