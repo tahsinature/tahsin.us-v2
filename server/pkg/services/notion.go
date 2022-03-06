@@ -173,16 +173,20 @@ func (n NotionService) GetBooks() (books []*model.Book, err error) {
 	return books, nil
 }
 
-func (n NotionService) GetArticles() (books []*model.Article, err error) {
+func (n NotionService) GetArticles() (articles []*model.Article, err error) {
 	n.checkInit()
 
 	apiResp := notion.ArticlesQuery{}
 	err = n.getDBResp(config.Notion.DB_Articles, &apiResp)
 	if err != nil {
-		return books, err
+		return articles, err
 	}
 
-	books = make([]*model.Article, 0)
+	articles = make([]*model.Article, 0)
+
+	sort.SliceStable(apiResp.Results, func(i, j int) bool {
+		return apiResp.Results[i].Properties.SortField.Number < apiResp.Results[j].Properties.SortField.Number
+	})
 
 	for _, row := range apiResp.Results {
 		cover := ""
@@ -201,7 +205,7 @@ func (n NotionService) GetArticles() (books []*model.Article, err error) {
 			title = row.Properties.Name.Title[0].PlainText
 		}
 
-		books = append(books, &model.Article{
+		articles = append(articles, &model.Article{
 			ID:    row.ID,
 			Title: title,
 			Cover: cover,
@@ -209,5 +213,5 @@ func (n NotionService) GetArticles() (books []*model.Article, err error) {
 		})
 	}
 
-	return books, err
+	return articles, err
 }

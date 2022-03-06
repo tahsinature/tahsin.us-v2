@@ -81,6 +81,11 @@ type ArticlesQuery struct {
 				Type     string `json:"type"`
 				Checkbox bool   `json:"checkbox"`
 			} `json:"ShowInApp"`
+			SortField struct {
+				ID     string `json:"id"`
+				Type   string `json:"type"`
+				Number int    `json:"number"`
+			} `json:"SortField"`
 			Name struct {
 				ID    string `json:"id"`
 				Type  string `json:"type"`
