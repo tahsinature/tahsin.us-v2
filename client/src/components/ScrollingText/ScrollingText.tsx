@@ -14,14 +14,13 @@ export default function ScrollingText(props: { text: string; className?: string 
     reset: true,
     loop: true,
     delay: 1000,
-    //reverse: key % 2 == 0,
   });
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const parentWidth = (parent.current as any).offsetWidth;
     const textWidth = (text.current as any).scrollWidth;
-    console.log(props.text, parentWidth, textWidth);
+
     if (textWidth > parentWidth) {
       scroll(true);
     }
