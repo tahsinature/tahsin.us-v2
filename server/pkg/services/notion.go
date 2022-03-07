@@ -197,8 +197,8 @@ func (n NotionService) GetArticles() (articles []*model.Article, err error) {
 			cover = row.Properties.Cover.Files[0].File.URL
 		}
 
-		if len(row.Properties.Link.RichText) > 0 {
-			url = row.Properties.Link.RichText[0].PlainText
+		if len(row.Properties.Links.Files) > 0 {
+			url = row.Properties.Links.Files[0].External.URL
 		}
 
 		if len(row.Properties.Name.Title) > 0 {
