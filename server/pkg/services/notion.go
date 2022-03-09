@@ -49,6 +49,14 @@ func (n *NotionService) Init() {
 				},
 			},
 		},
+		config.Notion.DB_HumanLanguages: map[string]interface{}{
+			"filter": map[string]interface{}{
+				"property": "ShowInApp",
+				"checkbox": map[string]interface{}{
+					"equals": true,
+				},
+			},
+		},
 	}
 }
 
@@ -251,6 +259,42 @@ func (n NotionService) GetProgrammingLanguages() (languages []*model.Programming
 		}
 		if len(row.Properties.Code.RichText) > 0 {
 			record.Code = row.Properties.Code.RichText[0].PlainText
+		}
+
+		languages = append(languages, record)
+	}
+
+	return languages, err
+}
+
+func (n NotionService) GetHumanLanguages() (languages []*model.HumanLanguage, err error) {
+	n.checkInit()
+
+	apiResp := notion.HumanLanguagesQuery{}
+	err = n.getDBResp(config.Notion.DB_HumanLanguages, &apiResp)
+	if err != nil {
+		return languages, err
+	}
+
+	sort.SliceStable(apiResp.Results, func(i, j int) bool {
+		return apiResp.Results[i].Properties.SortField.Number < apiResp.Results[j].Properties.SortField.Number
+	})
+
+	for _, row := range apiResp.Results {
+		record := &model.HumanLanguage{
+			ID: row.ID,
+		}
+
+		if len(row.Properties.Name.Title) > 0 {
+			record.Name = row.Properties.Name.Title[0].PlainText
+		}
+
+		if len(row.Properties.SubOnLang.RichText) > 0 {
+			record.SubOnLang = row.Properties.SubOnLang.RichText[0].PlainText
+		}
+
+		if len(row.Properties.SubOnEng.RichText) > 0 {
+			record.SubOnEng = row.Properties.SubOnEng.RichText[0].PlainText
 		}
 
 		languages = append(languages, record)
