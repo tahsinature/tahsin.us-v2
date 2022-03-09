@@ -25,6 +25,13 @@ type Genre struct {
 	Color string `json:"color"`
 }
 
+type HumanLanguage struct {
+	ID        string `json:"id"`
+	Name      string `json:"name"`
+	SubOnLang string `json:"subOnLang"`
+	SubOnEng  string `json:"subOnEng"`
+}
+
 type Movie struct {
 	ID        string   `json:"id"`
 	Title     string   `json:"title"`
@@ -33,4 +40,11 @@ type Movie struct {
 	Genres    []*Genre `json:"genres"`
 	Image     string   `json:"image"`
 	WatchedAt string   `json:"watchedAt"`
+}
+
+type ProgrammingLanguage struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+	Code string `json:"code"`
+	Logo string `json:"logo"`
 }

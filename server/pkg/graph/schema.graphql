@@ -14,6 +14,20 @@ type Movie {
   watchedAt: String!
 }
 
+type ProgrammingLanguage {
+  id: ID!
+  name: String!
+  code: String!
+  logo: String!
+}
+
+type HumanLanguage {
+  id: ID!
+  name: String!
+  subOnLang: String!
+  subOnEng: String!
+}
+
 type Book {
   id: ID!
   title: String!
@@ -35,4 +49,6 @@ type Query {
   movies: [Movie!]!
   books: [Book!]!
   articles: [Article!]!
+  programmingLanguages: [ProgrammingLanguage!]!
+  humanLanguages: [HumanLanguage!]!
 }

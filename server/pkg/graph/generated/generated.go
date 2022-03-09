@@ -65,6 +65,13 @@ type ComplexityRoot struct {
 		Name  func(childComplexity int) int
 	}
 
+	HumanLanguage struct {
+		ID        func(childComplexity int) int
+		Name      func(childComplexity int) int
+		SubOnEng  func(childComplexity int) int
+		SubOnLang func(childComplexity int) int
+	}
+
 	Movie struct {
 		Genres    func(childComplexity int) int
 		ID        func(childComplexity int) int
@@ -75,10 +82,19 @@ type ComplexityRoot struct {
 		Year      func(childComplexity int) int
 	}
 
+	ProgrammingLanguage struct {
+		Code func(childComplexity int) int
+		ID   func(childComplexity int) int
+		Logo func(childComplexity int) int
+		Name func(childComplexity int) int
+	}
+
 	Query struct {
-		Articles func(childComplexity int) int
-		Books    func(childComplexity int) int
-		Movies   func(childComplexity int) int
+		Articles             func(childComplexity int) int
+		Books                func(childComplexity int) int
+		HumanLanguages       func(childComplexity int) int
+		Movies               func(childComplexity int) int
+		ProgrammingLanguages func(childComplexity int) int
 	}
 }
 
@@ -86,6 +102,8 @@ type QueryResolver interface {
 	Movies(ctx context.Context) ([]*model.Movie, error)
 	Books(ctx context.Context) ([]*model.Book, error)
 	Articles(ctx context.Context) ([]*model.Article, error)
+	ProgrammingLanguages(ctx context.Context) ([]*model.ProgrammingLanguage, error)
+	HumanLanguages(ctx context.Context) ([]*model.HumanLanguage, error)
 }
 
 type executableSchema struct {
@@ -201,6 +219,34 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.Genre.Name(childComplexity), true
 
+	case "HumanLanguage.id":
+		if e.complexity.HumanLanguage.ID == nil {
+			break
+		}
+
+		return e.complexity.HumanLanguage.ID(childComplexity), true
+
+	case "HumanLanguage.name":
+		if e.complexity.HumanLanguage.Name == nil {
+			break
+		}
+
+		return e.complexity.HumanLanguage.Name(childComplexity), true
+
+	case "HumanLanguage.subOnEng":
+		if e.complexity.HumanLanguage.SubOnEng == nil {
+			break
+		}
+
+		return e.complexity.HumanLanguage.SubOnEng(childComplexity), true
+
+	case "HumanLanguage.subOnLang":
+		if e.complexity.HumanLanguage.SubOnLang == nil {
+			break
+		}
+
+		return e.complexity.HumanLanguage.SubOnLang(childComplexity), true
+
 	case "Movie.genres":
 		if e.complexity.Movie.Genres == nil {
 			break
@@ -250,6 +296,34 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.Movie.Year(childComplexity), true
 
+	case "ProgrammingLanguage.code":
+		if e.complexity.ProgrammingLanguage.Code == nil {
+			break
+		}
+
+		return e.complexity.ProgrammingLanguage.Code(childComplexity), true
+
+	case "ProgrammingLanguage.id":
+		if e.complexity.ProgrammingLanguage.ID == nil {
+			break
+		}
+
+		return e.complexity.ProgrammingLanguage.ID(childComplexity), true
+
+	case "ProgrammingLanguage.logo":
+		if e.complexity.ProgrammingLanguage.Logo == nil {
+			break
+		}
+
+		return e.complexity.ProgrammingLanguage.Logo(childComplexity), true
+
+	case "ProgrammingLanguage.name":
+		if e.complexity.ProgrammingLanguage.Name == nil {
+			break
+		}
+
+		return e.complexity.ProgrammingLanguage.Name(childComplexity), true
+
 	case "Query.articles":
 		if e.complexity.Query.Articles == nil {
 			break
@@ -264,12 +338,26 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.Query.Books(childComplexity), true
 
+	case "Query.humanLanguages":
+		if e.complexity.Query.HumanLanguages == nil {
+			break
+		}
+
+		return e.complexity.Query.HumanLanguages(childComplexity), true
+
 	case "Query.movies":
 		if e.complexity.Query.Movies == nil {
 			break
 		}
 
 		return e.complexity.Query.Movies(childComplexity), true
+
+	case "Query.programmingLanguages":
+		if e.complexity.Query.ProgrammingLanguages == nil {
+			break
+		}
+
+		return e.complexity.Query.ProgrammingLanguages(childComplexity), true
 
 	}
 	return 0, false
@@ -337,6 +425,20 @@ type Movie {
   watchedAt: String!
 }
 
+type ProgrammingLanguage {
+  id: ID!
+  name: String!
+  code: String!
+  logo: String!
+}
+
+type HumanLanguage {
+  id: ID!
+  name: String!
+  subOnLang: String!
+  subOnEng: String!
+}
+
 type Book {
   id: ID!
   title: String!
@@ -358,6 +460,8 @@ type Query {
   movies: [Movie!]!
   books: [Book!]!
   articles: [Article!]!
+  programmingLanguages: [ProgrammingLanguage!]!
+  humanLanguages: [HumanLanguage!]!
 }
 `, BuiltIn: false},
 }
@@ -910,6 +1014,146 @@ func (ec *executionContext) _Genre_color(ctx context.Context, field graphql.Coll
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
+func (ec *executionContext) _HumanLanguage_id(ctx context.Context, field graphql.CollectedField, obj *model.HumanLanguage) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "HumanLanguage",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.ID, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNID2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _HumanLanguage_name(ctx context.Context, field graphql.CollectedField, obj *model.HumanLanguage) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "HumanLanguage",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Name, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _HumanLanguage_subOnLang(ctx context.Context, field graphql.CollectedField, obj *model.HumanLanguage) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "HumanLanguage",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.SubOnLang, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _HumanLanguage_subOnEng(ctx context.Context, field graphql.CollectedField, obj *model.HumanLanguage) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "HumanLanguage",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.SubOnEng, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
 func (ec *executionContext) _Movie_id(ctx context.Context, field graphql.CollectedField, obj *model.Movie) (ret graphql.Marshaler) {
 	defer func() {
 		if r := recover(); r != nil {
@@ -1155,6 +1399,146 @@ func (ec *executionContext) _Movie_watchedAt(ctx context.Context, field graphql.
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
+func (ec *executionContext) _ProgrammingLanguage_id(ctx context.Context, field graphql.CollectedField, obj *model.ProgrammingLanguage) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "ProgrammingLanguage",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.ID, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNID2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _ProgrammingLanguage_name(ctx context.Context, field graphql.CollectedField, obj *model.ProgrammingLanguage) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "ProgrammingLanguage",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Name, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _ProgrammingLanguage_code(ctx context.Context, field graphql.CollectedField, obj *model.ProgrammingLanguage) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "ProgrammingLanguage",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Code, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _ProgrammingLanguage_logo(ctx context.Context, field graphql.CollectedField, obj *model.ProgrammingLanguage) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "ProgrammingLanguage",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Logo, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
 func (ec *executionContext) _Query_movies(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
 	defer func() {
 		if r := recover(); r != nil {
@@ -1258,6 +1642,76 @@ func (ec *executionContext) _Query_articles(ctx context.Context, field graphql.C
 	res := resTmp.([]*model.Article)
 	fc.Result = res
 	return ec.marshalNArticle2ᚕᚖgithubᚗcomᚋtahsinatureᚋtahsinᚗusᚋpkgᚋgraphᚋmodelᚐArticleᚄ(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _Query_programmingLanguages(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "Query",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   true,
+		IsResolver: true,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return ec.resolvers.Query().ProgrammingLanguages(rctx)
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.([]*model.ProgrammingLanguage)
+	fc.Result = res
+	return ec.marshalNProgrammingLanguage2ᚕᚖgithubᚗcomᚋtahsinatureᚋtahsinᚗusᚋpkgᚋgraphᚋmodelᚐProgrammingLanguageᚄ(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _Query_humanLanguages(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "Query",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   true,
+		IsResolver: true,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return ec.resolvers.Query().HumanLanguages(rctx)
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.([]*model.HumanLanguage)
+	fc.Result = res
+	return ec.marshalNHumanLanguage2ᚕᚖgithubᚗcomᚋtahsinatureᚋtahsinᚗusᚋpkgᚋgraphᚋmodelᚐHumanLanguageᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Query___type(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -2664,6 +3118,67 @@ func (ec *executionContext) _Genre(ctx context.Context, sel ast.SelectionSet, ob
 	return out
 }
 
+var humanLanguageImplementors = []string{"HumanLanguage"}
+
+func (ec *executionContext) _HumanLanguage(ctx context.Context, sel ast.SelectionSet, obj *model.HumanLanguage) graphql.Marshaler {
+	fields := graphql.CollectFields(ec.OperationContext, sel, humanLanguageImplementors)
+	out := graphql.NewFieldSet(fields)
+	var invalids uint32
+	for i, field := range fields {
+		switch field.Name {
+		case "__typename":
+			out.Values[i] = graphql.MarshalString("HumanLanguage")
+		case "id":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._HumanLanguage_id(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "name":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._HumanLanguage_name(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "subOnLang":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._HumanLanguage_subOnLang(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "subOnEng":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._HumanLanguage_subOnEng(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		default:
+			panic("unknown field " + strconv.Quote(field.Name))
+		}
+	}
+	out.Dispatch()
+	if invalids > 0 {
+		return graphql.Null
+	}
+	return out
+}
+
 var movieImplementors = []string{"Movie"}
 
 func (ec *executionContext) _Movie(ctx context.Context, sel ast.SelectionSet, obj *model.Movie) graphql.Marshaler {
@@ -2737,6 +3252,67 @@ func (ec *executionContext) _Movie(ctx context.Context, sel ast.SelectionSet, ob
 		case "watchedAt":
 			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
 				return ec._Movie_watchedAt(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		default:
+			panic("unknown field " + strconv.Quote(field.Name))
+		}
+	}
+	out.Dispatch()
+	if invalids > 0 {
+		return graphql.Null
+	}
+	return out
+}
+
+var programmingLanguageImplementors = []string{"ProgrammingLanguage"}
+
+func (ec *executionContext) _ProgrammingLanguage(ctx context.Context, sel ast.SelectionSet, obj *model.ProgrammingLanguage) graphql.Marshaler {
+	fields := graphql.CollectFields(ec.OperationContext, sel, programmingLanguageImplementors)
+	out := graphql.NewFieldSet(fields)
+	var invalids uint32
+	for i, field := range fields {
+		switch field.Name {
+		case "__typename":
+			out.Values[i] = graphql.MarshalString("ProgrammingLanguage")
+		case "id":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._ProgrammingLanguage_id(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "name":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._ProgrammingLanguage_name(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "code":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._ProgrammingLanguage_code(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "logo":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._ProgrammingLanguage_logo(ctx, field, obj)
 			}
 
 			out.Values[i] = innerFunc(ctx)
@@ -2830,6 +3406,52 @@ func (ec *executionContext) _Query(ctx context.Context, sel ast.SelectionSet) gr
 					}
 				}()
 				res = ec._Query_articles(ctx, field)
+				if res == graphql.Null {
+					atomic.AddUint32(&invalids, 1)
+				}
+				return res
+			}
+
+			rrm := func(ctx context.Context) graphql.Marshaler {
+				return ec.OperationContext.RootResolverMiddleware(ctx, innerFunc)
+			}
+
+			out.Concurrently(i, func() graphql.Marshaler {
+				return rrm(innerCtx)
+			})
+		case "programmingLanguages":
+			field := field
+
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				defer func() {
+					if r := recover(); r != nil {
+						ec.Error(ctx, ec.Recover(ctx, r))
+					}
+				}()
+				res = ec._Query_programmingLanguages(ctx, field)
+				if res == graphql.Null {
+					atomic.AddUint32(&invalids, 1)
+				}
+				return res
+			}
+
+			rrm := func(ctx context.Context) graphql.Marshaler {
+				return ec.OperationContext.RootResolverMiddleware(ctx, innerFunc)
+			}
+
+			out.Concurrently(i, func() graphql.Marshaler {
+				return rrm(innerCtx)
+			})
+		case "humanLanguages":
+			field := field
+
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				defer func() {
+					if r := recover(); r != nil {
+						ec.Error(ctx, ec.Recover(ctx, r))
+					}
+				}()
+				res = ec._Query_humanLanguages(ctx, field)
 				if res == graphql.Null {
 					atomic.AddUint32(&invalids, 1)
 				}
@@ -3454,6 +4076,60 @@ func (ec *executionContext) marshalNGenre2ᚖgithubᚗcomᚋtahsinatureᚋtahsin
 	return ec._Genre(ctx, sel, v)
 }
 
+func (ec *executionContext) marshalNHumanLanguage2ᚕᚖgithubᚗcomᚋtahsinatureᚋtahsinᚗusᚋpkgᚋgraphᚋmodelᚐHumanLanguageᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.HumanLanguage) graphql.Marshaler {
+	ret := make(graphql.Array, len(v))
+	var wg sync.WaitGroup
+	isLen1 := len(v) == 1
+	if !isLen1 {
+		wg.Add(len(v))
+	}
+	for i := range v {
+		i := i
+		fc := &graphql.FieldContext{
+			Index:  &i,
+			Result: &v[i],
+		}
+		ctx := graphql.WithFieldContext(ctx, fc)
+		f := func(i int) {
+			defer func() {
+				if r := recover(); r != nil {
+					ec.Error(ctx, ec.Recover(ctx, r))
+					ret = nil
+				}
+			}()
+			if !isLen1 {
+				defer wg.Done()
+			}
+			ret[i] = ec.marshalNHumanLanguage2ᚖgithubᚗcomᚋtahsinatureᚋtahsinᚗusᚋpkgᚋgraphᚋmodelᚐHumanLanguage(ctx, sel, v[i])
+		}
+		if isLen1 {
+			f(i)
+		} else {
+			go f(i)
+		}
+
+	}
+	wg.Wait()
+
+	for _, e := range ret {
+		if e == graphql.Null {
+			return graphql.Null
+		}
+	}
+
+	return ret
+}
+
+func (ec *executionContext) marshalNHumanLanguage2ᚖgithubᚗcomᚋtahsinatureᚋtahsinᚗusᚋpkgᚋgraphᚋmodelᚐHumanLanguage(ctx context.Context, sel ast.SelectionSet, v *model.HumanLanguage) graphql.Marshaler {
+	if v == nil {
+		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	return ec._HumanLanguage(ctx, sel, v)
+}
+
 func (ec *executionContext) unmarshalNID2string(ctx context.Context, v interface{}) (string, error) {
 	res, err := graphql.UnmarshalID(v)
 	return res, graphql.ErrorOnPath(ctx, err)
@@ -3536,6 +4212,60 @@ func (ec *executionContext) marshalNMovie2ᚖgithubᚗcomᚋtahsinatureᚋtahsin
 		return graphql.Null
 	}
 	return ec._Movie(ctx, sel, v)
+}
+
+func (ec *executionContext) marshalNProgrammingLanguage2ᚕᚖgithubᚗcomᚋtahsinatureᚋtahsinᚗusᚋpkgᚋgraphᚋmodelᚐProgrammingLanguageᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.ProgrammingLanguage) graphql.Marshaler {
+	ret := make(graphql.Array, len(v))
+	var wg sync.WaitGroup
+	isLen1 := len(v) == 1
+	if !isLen1 {
+		wg.Add(len(v))
+	}
+	for i := range v {
+		i := i
+		fc := &graphql.FieldContext{
+			Index:  &i,
+			Result: &v[i],
+		}
+		ctx := graphql.WithFieldContext(ctx, fc)
+		f := func(i int) {
+			defer func() {
+				if r := recover(); r != nil {
+					ec.Error(ctx, ec.Recover(ctx, r))
+					ret = nil
+				}
+			}()
+			if !isLen1 {
+				defer wg.Done()
+			}
+			ret[i] = ec.marshalNProgrammingLanguage2ᚖgithubᚗcomᚋtahsinatureᚋtahsinᚗusᚋpkgᚋgraphᚋmodelᚐProgrammingLanguage(ctx, sel, v[i])
+		}
+		if isLen1 {
+			f(i)
+		} else {
+			go f(i)
+		}
+
+	}
+	wg.Wait()
+
+	for _, e := range ret {
+		if e == graphql.Null {
+			return graphql.Null
+		}
+	}
+
+	return ret
+}
+
+func (ec *executionContext) marshalNProgrammingLanguage2ᚖgithubᚗcomᚋtahsinatureᚋtahsinᚗusᚋpkgᚋgraphᚋmodelᚐProgrammingLanguage(ctx context.Context, sel ast.SelectionSet, v *model.ProgrammingLanguage) graphql.Marshaler {
+	if v == nil {
+		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	return ec._ProgrammingLanguage(ctx, sel, v)
 }
 
 func (ec *executionContext) unmarshalNString2string(ctx context.Context, v interface{}) (string, error) {

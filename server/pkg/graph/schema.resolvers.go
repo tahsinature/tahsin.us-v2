@@ -38,6 +38,22 @@ func (r *queryResolver) Articles(ctx context.Context) ([]*model.Article, error) 
 	return data, err
 }
 
+func (r *queryResolver) ProgrammingLanguages(ctx context.Context) ([]*model.ProgrammingLanguage, error) {
+	data, err := services.All.Notion.GetProgrammingLanguages()
+	if err != nil {
+		return nil, err
+	}
+
+	return data, err
+}
+
+func (r *queryResolver) HumanLanguages(ctx context.Context) ([]*model.HumanLanguage, error) {
+	var err error
+	data := []*model.HumanLanguage{}
+
+	return data, err
+}
+
 // Query returns generated.QueryResolver implementation.
 func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
 
