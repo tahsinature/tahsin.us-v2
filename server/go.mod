@@ -14,7 +14,6 @@ require (
 	github.com/go-redis/redis/v7 v7.3.0
 	github.com/go-resty/resty/v2 v2.7.0
 	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1
-	github.com/golang-jwt/jwt/v4 v4.1.0
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/googollee/go-socket.io v1.6.1
 	github.com/hako/durafmt v0.0.0-20210608085754-5c1018a4e16b
