@@ -48,8 +48,10 @@ func (r *queryResolver) ProgrammingLanguages(ctx context.Context) ([]*model.Prog
 }
 
 func (r *queryResolver) HumanLanguages(ctx context.Context) ([]*model.HumanLanguage, error) {
-	var err error
-	data := []*model.HumanLanguage{}
+	data, err := services.All.Notion.GetHumanLanguages()
+	if err != nil {
+		return nil, err
+	}
 
 	return data, err
 }
