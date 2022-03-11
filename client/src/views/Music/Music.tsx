@@ -12,7 +12,7 @@ function Music() {
   const [isReady, setReady] = useState(false);
   return (
     <div className={classes.Music}>
-      <h2>Type of music I'm into</h2>
+      <h2>My Productivity Booster Playlist</h2>
       <hr />
 
       <PreLoader isReady={isReady} className={classes.Loader}>
@@ -20,9 +20,9 @@ function Music() {
           onLoad={() => {
             setReady(true);
           }}
-          title="My Everyday Music"
+          title="My Productivity Booster Playlist"
           style={style}
-          src="https://open.spotify.com/embed/playlist/5IS5OuuFSRWfnOJTTJ5769?utm_source=generator&theme=0"
+          src="https://open.spotify.com/embed/playlist/5IS5OuuFSRWfnOJTTJ5769?utm_source=generator&theme=1"
           width="100%"
           height="380"
           frameBorder="0"

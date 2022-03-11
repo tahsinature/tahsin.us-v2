@@ -26,14 +26,14 @@ const activities = [
     clickHandler: () => history.push('/gallery'),
   },
   {
+    name: 'My Listenings',
+    image: images.otherActivities.listenings,
+    clickHandler: () => history.push('/listenings'),
+  },
+  {
     name: 'Movies & TV Series',
     image: images.otherActivities.movies,
     clickHandler: () => history.push('/movies'),
-  },
-  {
-    name: 'Music',
-    image: images.otherActivities.music,
-    clickHandler: () => history.push('/music'),
   },
   {
     name: 'Travel',
@@ -63,8 +63,8 @@ const OtherActivities = () => {
     <Section>
       <Header title="Other Activities" icon={<RowingOutlined />} />
       <p>
-        When I am away from my keyboard, you can either find me playing with my camera or flipping pages near my bookshelf or on the couch chilling with Netflix. If you can't, you can be pretty much
-        sure: I am on a long trip somewhere natural.
+        When I am away from my keyboard, you can either find me playing with my camera or flipping pages near my bookshelf. If you can't, you can be pretty much sure: I am on a long trip somewhere
+        natural.
       </p>
 
       <div className={classes.Cards}>

@@ -9,6 +9,7 @@ const images = {
     books: require('src/assets/images/other-activities/resized/book-with-coffee.jpg').default,
     movies: require('src/assets/images/other-activities/resized/movie-pop-corn.jpg').default,
     music: require('src/assets/images/other-activities/resized/music-concert.jpg').default,
+    listenings: require('src/assets/images/other-activities/resized/listening.jpg').default,
     travel: require('src/assets/images/other-activities/resized/plane.jpg').default,
   },
   logogs: {

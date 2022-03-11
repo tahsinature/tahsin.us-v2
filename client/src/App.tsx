@@ -74,7 +74,7 @@ function App(props: any) {
                   <Route path="/list" component={() => <List />} />
                   <Route path="/gallery" component={() => <Gallery />} />
                   <Route path="/movies" component={() => <Movies />} />
-                  <Route path="/music" component={() => <Music />} />
+                  <Route path="/listenings" component={() => <Music />} />
                   <Route path="/books" component={() => <Books />} />
                   <Route path="/travels" component={() => <Travels />} />
                   <Route path="/md/:id" component={() => <Markdown />} />
