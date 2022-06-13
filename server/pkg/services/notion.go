@@ -153,24 +153,28 @@ func (n NotionService) GetBooks() (books []*model.Book, err error) {
 		}
 
 		cover := ""
+		isReading := false
+		allowedStatus := []string{"Reading", "Finished", "RF"}
+		author := ""
 
 		if len(row.Properties.Covers.Files) > 0 {
 			cover = row.Properties.Covers.Files[0].File.URL
 		}
 
-		isReading := false
-
-		allowedStatus := []string{"Reading", "Finished", "RF"}
 		if !utilities.ContainsInStrSlice(allowedStatus, row.Properties.Status.Select.Name) {
 			continue
 		} else {
 			isReading = row.Properties.Status.Select.Name == "Reading"
 		}
 
+		if len(row.Properties.Author.MultiSelect) > 0 {
+			author = row.Properties.Author.MultiSelect[0].Name
+		}
+
 		books = append(books, &model.Book{
 			ID:        row.ID,
 			Title:     row.Properties.Name.Title[0].PlainText,
-			Author:    row.Properties.Author.RichText[0].PlainText,
+			Author:    author,
 			MyRating:  row.Properties.PersonalRating.Number,
 			Genres:    genres,
 			Cover:     cover,

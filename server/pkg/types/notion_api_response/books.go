@@ -47,25 +47,13 @@ type BooksQuery struct {
 				} `json:"files"`
 			} `json:"Covers"`
 			Author struct {
-				ID       string `json:"id"`
-				Type     string `json:"type"`
-				RichText []struct {
-					Type string `json:"type"`
-					Text struct {
-						Content string      `json:"content"`
-						Link    interface{} `json:"link"`
-					} `json:"text"`
-					Annotations struct {
-						Bold          bool   `json:"bold"`
-						Italic        bool   `json:"italic"`
-						Strikethrough bool   `json:"strikethrough"`
-						Underline     bool   `json:"underline"`
-						Code          bool   `json:"code"`
-						Color         string `json:"color"`
-					} `json:"annotations"`
-					PlainText string      `json:"plain_text"`
-					Href      interface{} `json:"href"`
-				} `json:"rich_text"`
+				ID          string `json:"id"`
+				Type        string `json:"type"`
+				MultiSelect []struct {
+					ID    string `json:"id"`
+					Name  string `json:"name"`
+					Color string `json:"color"`
+				} `json:"multi_select"`
 			} `json:"Author"`
 			PersonalRating struct {
 				ID     string `json:"id"`
@@ -101,8 +89,10 @@ type BooksQuery struct {
 				Title []struct {
 					Type string `json:"type"`
 					Text struct {
-						Content string      `json:"content"`
-						Link    interface{} `json:"link"`
+						Content string `json:"content"`
+						Link    struct {
+							URL string `json:"url"`
+						} `json:"link"`
 					} `json:"text"`
 					Annotations struct {
 						Bold          bool   `json:"bold"`
@@ -112,8 +102,8 @@ type BooksQuery struct {
 						Code          bool   `json:"code"`
 						Color         string `json:"color"`
 					} `json:"annotations"`
-					PlainText string      `json:"plain_text"`
-					Href      interface{} `json:"href"`
+					PlainText string `json:"plain_text"`
+					Href      string `json:"href"`
 				} `json:"title"`
 			} `json:"Name"`
 		} `json:"properties"`
@@ -121,6 +111,4 @@ type BooksQuery struct {
 	} `json:"results"`
 	NextCursor interface{} `json:"next_cursor"`
 	HasMore    bool        `json:"has_more"`
-	Type       string      `json:"type"`
-	Page       struct{}    `json:"page"`
 }
