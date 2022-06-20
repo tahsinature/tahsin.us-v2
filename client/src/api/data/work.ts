@@ -2,7 +2,17 @@ import images from 'src/assets/images';
 
 const work = [
   {
-    timeRange: 'Feb 2022 - Present',
+    timeRange: 'Jun 2022 - Present',
+    company: 'EnPowered',
+    position: 'FullStack Engineer',
+    logo: 'https://www.getenpowered.com/favicon-32x32.png',
+    url: 'getenpowered.com',
+    location: 'Ontario, Canada',
+    specialization: 'AWS, JavaScript',
+    techStack: 'foo-stack',
+  },
+  {
+    timeRange: 'Feb 2022 - Jun 2022',
     company: 'Rakuten Travel Xchange',
     position: 'FullStack Engineer',
     logo: 'https://solutions.travel.rakuten.com/favicon.ico',
