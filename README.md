@@ -28,9 +28,4 @@
 
 - [ ] put latest source code on the host machine
 - [ ] try to put in kubernetes
-- [ ] other activities -> photos / music
-- [ ] put NFT -> https://juliancanderson.com/nfts
 - [ ] do something on all image load on gallery
-
-- [ ] fetch article -> `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@tahsinature`
-- [ ] fetch article -> `https://dev.to/api/articles?username=tahsinature`
