@@ -42,6 +42,13 @@ type Movie struct {
 	WatchedAt string   `json:"watchedAt"`
 }
 
+type Photograph struct {
+	ID       string `json:"id"`
+	Location string `json:"location"`
+	URL      string `json:"url"`
+	Caption  string `json:"caption"`
+}
+
 type ProgrammingLanguage struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`

@@ -56,6 +56,15 @@ func (r *queryResolver) HumanLanguages(ctx context.Context) ([]*model.HumanLangu
 	return data, err
 }
 
+func (r *queryResolver) Photographs(ctx context.Context) ([]*model.Photograph, error) {
+	data, err := services.All.Notion.GetPhotographs()
+	if err != nil {
+		return nil, err
+	}
+
+	return data, err
+}
+
 // Query returns generated.QueryResolver implementation.
 func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
 

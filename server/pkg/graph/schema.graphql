@@ -45,10 +45,18 @@ type Article {
   url: String!
 }
 
+type Photograph {
+  id: ID!
+  location: String!
+  url: String!
+  caption: String!
+}
+
 type Query {
   movies: [Movie!]!
   books: [Book!]!
   articles: [Article!]!
   programmingLanguages: [ProgrammingLanguage!]!
   humanLanguages: [HumanLanguage!]!
+  photographs: [Photograph!]!
 }
