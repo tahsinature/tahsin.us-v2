@@ -1,92 +1,73 @@
-import React, { useCallback, useState, useEffect } from 'react';
-import Gallery from 'react-photo-gallery';
-import Carousel, { Modal, ModalGateway } from 'react-images';
+import React, { useState, useEffect } from 'react';
+import { gql, useQuery } from '@apollo/client';
 
 import classes from './ImageGallery.module.scss';
+import GraphLoader from 'src/components/GraphLoader/GraphLoader';
+import images from 'src/assets/images';
 
-const photos = [
-  {
-    src: 'https://source.unsplash.com/2ShvY8Lf6l0/800x599',
-    width: 4,
-    height: 3,
-    caption: 'Awesome photo',
-  },
-  {
-    src: 'https://source.unsplash.com/u9cG4cuJ6bU/4927x1000',
-    width: 4927,
-    height: 1000,
-  },
-  {
-    src: 'https://source.unsplash.com/qDkso9nvCg0/600x799',
-    width: 3,
-    height: 4,
-  },
-  {
-    src: 'https://source.unsplash.com/iecJiKe_RNg/600x799',
-    width: 3,
-    height: 4,
-  },
-  {
-    src: 'https://source.unsplash.com/epcsn8Ed8kY/600x799',
-    width: 3,
-    height: 4,
-  },
-  {
-    src: 'https://source.unsplash.com/NQSWvyVRIJk/800x599',
-    width: 4,
-    height: 3,
-  },
-  {
-    src: 'https://source.unsplash.com/zh7GEuORbUw/600x799',
-    width: 3,
-    height: 4,
-  },
-  {
-    src: 'https://source.unsplash.com/PpOHJezOalU/800x599',
-    width: 4,
-    height: 3,
-  },
-  {
-    src: 'https://source.unsplash.com/I1ASdgphUH4/800x599',
-    width: 4,
-    height: 3,
-  },
-];
+const GET_PHOTOGRAPHS = gql`
+  query {
+    photographs {
+      id
+      location
+      url
+      caption
+    }
+  }
+`;
+
+interface Photograph {
+  id: string;
+  location: string;
+  url: string;
+  caption: string;
+}
+
+const Block = (props: { src: string }) => {
+  const loadingImage = new Image();
+  loadingImage.src = images.gifs.cameraShutter;
+  const [src, updateSrc] = useState(loadingImage.src);
+  const [customClasses, setClasses] = useState<string[]>([]);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = props.src;
+    img.onload = () => {
+      if (img.height > img.width) setClasses([classes.Vertical]);
+      else if (img.height < img.width) setClasses([classes.Horizontal]);
+      else setClasses([classes.Big]);
+
+      updateSrc(props.src);
+    };
+    return () => {
+      img.onload = null;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <a target="_blank" rel="noreferrer" href={props.src} className={customClasses.join(' ')}>
+      <img src={src} alt="photograph" />
+    </a>
+  );
+};
 
 const ImageGallery = () => {
+  const { loading, error, data } = useQuery<{ photographs: Photograph[] }>(GET_PHOTOGRAPHS);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const [currentImage, setCurrentImage] = useState(0);
-  const [viewerIsOpen, setViewerIsOpen] = useState(false);
-
-  const openLightbox = useCallback((event, { photo, index }) => {
-    setCurrentImage(index);
-    setViewerIsOpen(true);
-  }, []);
-
-  const closeLightbox = () => {
-    setCurrentImage(0);
-    setViewerIsOpen(false);
-  };
 
   return (
     <div className={classes.Root}>
-      <Gallery photos={photos} onClick={openLightbox} />
-      <ModalGateway>
-        {viewerIsOpen && (
-          <Modal onClose={closeLightbox}>
-            <Carousel
-              currentIndex={currentImage}
-              views={photos.map(photo => ({
-                source: photo.src,
-                // srcset: 'foo srcset',
-                caption: photo.caption || 'No Caption',
-              }))}
-            />
-          </Modal>
-        )}
-      </ModalGateway>
+      <GraphLoader data={data} error={error} loading={loading}>
+        <div className={classes.Container}>
+          {data?.photographs.map(ele => (
+            <Block key={ele.id} src={ele.url} />
+          ))}
+        </div>
+      </GraphLoader>
     </div>
   );
 };

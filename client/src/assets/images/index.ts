@@ -2,6 +2,7 @@ const images = {
   gifs: {
     loadingBar: require('src/assets/gifs/Loading-bar.gif').default,
     iPhoneSpinner: require('src/assets/gifs/iPhone-spinner.gif').default,
+    cameraShutter: require('src/assets/gifs/camera-shutter.gif').default,
   },
 
   otherActivities: {
