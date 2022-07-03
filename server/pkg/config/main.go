@@ -77,6 +77,7 @@ func Validate() {
 		DB_Articles:             "3b7cb55d7395448bb3319201f0d72f0d",
 		DB_ProgrammingLanguages: "cbcb72d3e7dc4b76932820924b2235f0",
 		DB_HumanLanguages:       "3bcd0134b20543a28dd77d8599368cb6",
+		DB_Photographs:          "1fd4dd4839e14ec5a855b80b8c065210",
 		Version:                 "2021-08-16",
 	}
 
