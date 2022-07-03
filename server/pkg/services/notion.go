@@ -306,3 +306,32 @@ func (n NotionService) GetHumanLanguages() (languages []*model.HumanLanguage, er
 
 	return languages, err
 }
+
+func (n NotionService) GetPhotographs() (photographs []*model.Photograph, err error) {
+	n.checkInit()
+
+	apiResp := notion.PhotographsQuery{}
+	err = n.getDBResp(config.Notion.DB_Photographs, &apiResp)
+	if err != nil {
+		return photographs, err
+	}
+
+	for _, row := range apiResp.Results {
+		record := &model.Photograph{
+			ID:       row.ID,
+			Location: "Unknown",
+		}
+
+		if len(row.Properties.Caption.RichText) > 0 {
+			record.Caption = row.Properties.Caption.RichText[0].PlainText
+		}
+
+		if len(row.Properties.File.Files) > 0 {
+			record.URL = row.Properties.File.Files[0].File.URL
+		}
+
+		photographs = append(photographs, record)
+	}
+
+	return photographs, err
+}
