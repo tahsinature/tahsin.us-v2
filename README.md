@@ -29,3 +29,4 @@
 - [ ] put latest source code on the host machine
 - [ ] try to put in kubernetes
 - [ ] do something on all image load on gallery
+- [ ] for work -> take logos from notion & remove local asset logos
