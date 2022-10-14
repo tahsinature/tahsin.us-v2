@@ -6,6 +6,7 @@
 - React
 - Redux
 - Redux Saga
+- Styled Components
 
 ### Backend
 
