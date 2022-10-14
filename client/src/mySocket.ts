@@ -1,3 +1,4 @@
+// @ts-nocheck
 import socketIOClient, { Socket } from 'socket.io-client';
 import EventEmitter from 'events';
 
@@ -31,13 +32,13 @@ class MySocket {
       console.log(`socket disconnected`);
       this.e.emit('disconnect');
     });
-    socket.on('connect_error', (error: any) => {
+    socket.on('connect_error', error => {
       this.handleError(error);
     });
-    socket.on('reconnect_error', (error: any) => {
+    socket.on('reconnect_error', error => {
       this.handleError(error);
     });
-    socket.on('error', (error: any) => {
+    socket.on('error', error => {
       this.handleError(error);
     });
 
