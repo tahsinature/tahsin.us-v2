@@ -12,15 +12,6 @@ export interface CustomImage extends RGGImage {
   original: string;
 }
 
-// const imageWithSize = {
-//   '6mb':
-//     'https://s3.amazonaws.com/files.dpreview.com/sample_galleries/5930710153/2558684247.jpg?X-Amz-Expires=3600&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4NPXSRZNWJ7B6UIE/20230107/us-east-1/s3/aws4_request&X-Amz-Date=20230107T100044Z&X-Amz-SignedHeaders=host&X-Amz-Signature=4e9b1316a64e83e5d6a5684d567d8dfc0922016751011bd3241c790687f7b834',
-//   '3.5mb':
-//     'https://s3.amazonaws.com/files.dpreview.com/sample_galleries/5930710153/8395616540.jpg?X-Amz-Expires=3600&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4NPXSRZNWJ7B6UIE/20230107/us-east-1/s3/aws4_request&X-Amz-Date=20230107T100044Z&X-Amz-SignedHeaders=host&X-Amz-Signature=03095ffbcefa90b32501723ca93f17721d77e32809e1099e1cb2892517413805',
-//   '2.4mb':
-//     'https://s3.amazonaws.com/files.dpreview.com/sample_galleries/5930710153/8778847729.jpg?X-Amz-Expires=3600&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4NPXSRZNWJ7B6UIE/20230107/us-east-1/s3/aws4_request&X-Amz-Date=20230107T100044Z&X-Amz-SignedHeaders=host&X-Amz-Signature=8a3fe7445022e3fe463e113b2fdc41c05a3b5df00192a74d4311edc26ded9e84',
-// };
-
 const GET_PHOTOGRAPHS = gql`
   query {
     photographs {
@@ -28,6 +19,7 @@ const GET_PHOTOGRAPHS = gql`
       location
       url
       caption
+      camera
     }
   }
 `;
@@ -37,6 +29,7 @@ interface Photograph {
   location: string;
   url: string;
   caption: string;
+  camera: string;
 }
 
 const Block = (props: { src: string; currentimage: CustomImage; nextImage: CustomImage; prevImage: CustomImage; handleClose: () => void; handleMovePrev: () => void; handleMoveNext: () => void }) => {
@@ -56,32 +49,49 @@ const Block = (props: { src: string; currentimage: CustomImage; nextImage: Custo
   );
 };
 
-const MyGallery = (props: { photographs?: Photograph[] }) => {
-  // const [loadedImages, setLoadedImages] = useState(
-  //   props.photographs?.map(photograph => {
-  //     return {
-  //       src: photograph.url,
-  //       original: photograph.url,
-  //       width: 0,
-  //       height: 0,
-  //       caption: photograph.caption,
-  //     };
-  //   }),
-  // );
+const CameraInfo = (props: { camera: string }) => {
+  if (!props.camera) return null;
+  return <p className={classes.Camera}>📸 {props.camera}</p>;
+};
 
-  const loadedImages = props.photographs?.map(photograph => {
-    return {
-      src: photograph.url,
-      original: photograph.url,
-      width: 100,
-      height: 100,
-      caption: photograph.caption || 'No Caption',
-      tags: [
-        { value: 'Nature', title: 'Nature' },
-        { value: 'Flora', title: 'Flora' },
-      ],
-    };
-  });
+const Caption = (props: { caption: string; location: string; camera: string }) => {
+  return (
+    <div className={classes.Caption}>
+      <p>{`${props.caption || 'No Caption'} - ${props.location}`}</p>
+      <CameraInfo camera={props.camera} />
+    </div>
+  );
+};
+
+const MyGallery = (props: { photographs?: Photograph[] }) => {
+  const [loadedImages, setLoadedImages] = useState(
+    props.photographs?.map(photograph => {
+      return {
+        src: photograph.url,
+        original: photograph.url,
+        width: 100,
+        height: 100,
+        caption: <Caption caption={photograph.caption} location={photograph.location} camera={photograph.camera} />,
+        customOverlay: <CameraInfo camera={photograph.camera} />,
+        tags: [
+          // { value: 'Nature', title: 'Nature' },
+        ],
+      };
+    }),
+  );
+
+  useEffect(() => {
+    loadedImages?.forEach(ele => {
+      const img = new Image();
+      img.src = ele.src;
+      img.onload = () => {
+        ele.width = img.width;
+        ele.height = img.height;
+        setLoadedImages([...loadedImages]);
+      };
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [index, setIndex] = useState(-1);
 
