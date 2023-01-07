@@ -75,7 +75,7 @@ const MyGallery = (props: { photographs?: Photograph[] }) => {
       original: photograph.url,
       width: 100,
       height: 100,
-      caption: 'Still developing (Tahsin - tahsin.us)',
+      caption: photograph.caption || 'No Caption',
       tags: [
         { value: 'Nature', title: 'Nature' },
         { value: 'Flora', title: 'Flora' },
