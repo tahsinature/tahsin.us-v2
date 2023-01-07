@@ -319,11 +319,16 @@ func (n NotionService) GetPhotographs() (photographs []*model.Photograph, err er
 	for _, row := range apiResp.Results {
 		record := &model.Photograph{
 			ID:       row.ID,
-			Location: "Unknown",
+			Camera:   row.Properties.Camera.Select.Name,
+			Location: "Unknown Location",
 		}
 
 		if len(row.Properties.Caption.RichText) > 0 {
 			record.Caption = row.Properties.Caption.RichText[0].PlainText
+		}
+
+		if len(row.Properties.Location.RichText) > 0 {
+			record.Location = row.Properties.Location.RichText[0].PlainText
 		}
 
 		if len(row.Properties.File.Files) > 0 {

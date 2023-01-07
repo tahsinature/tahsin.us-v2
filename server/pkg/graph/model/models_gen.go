@@ -47,6 +47,7 @@ type Photograph struct {
 	Location string `json:"location"`
 	URL      string `json:"url"`
 	Caption  string `json:"caption"`
+	Camera   string `json:"camera"`
 }
 
 type ProgrammingLanguage struct {

@@ -50,6 +50,7 @@ type Photograph {
   location: String!
   url: String!
   caption: String!
+  camera: String!
 }
 
 type Query {

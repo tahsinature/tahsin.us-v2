@@ -37,6 +37,11 @@ type PhotographsQuery struct {
 					} `json:"file"`
 				} `json:"files"`
 			} `json:"File"`
+			Camera struct {
+				Select struct {
+					Name string `json:"name"`
+				}
+			}
 			Caption struct {
 				ID       string `json:"id"`
 				Type     string `json:"type"`
@@ -58,6 +63,11 @@ type PhotographsQuery struct {
 					Href      interface{} `json:"href"`
 				} `json:"rich_text"`
 			} `json:"Caption"`
+			Location struct {
+				RichText []struct {
+					PlainText string `json:"plain_text"`
+				} `json:"rich_text"`
+			}
 			Name struct {
 				ID    string `json:"id"`
 				Type  string `json:"type"`
