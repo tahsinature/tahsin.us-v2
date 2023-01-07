@@ -5,6 +5,7 @@ import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 
 import classes from './ImageGallery.module.scss';
+import './ImageGallery.scss';
 import GraphLoader from 'src/components/GraphLoader/GraphLoader';
 
 export interface CustomImage extends RGGImage {
