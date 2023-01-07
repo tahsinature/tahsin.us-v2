@@ -17,5 +17,5 @@ export default function GraphLoader(props: { loading: boolean; loadingMsg?: stri
   }
   if (!props.data) return noDataComp;
 
-  return props.children;
+  return React.cloneElement(props.children, { ...props.data });
 }
