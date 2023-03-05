@@ -142,7 +142,7 @@ func (n NotionService) GetWatchedMovies() (movies []*model.Movie, err error) {
 			Title:     row.Properties.Title.Title[0].PlainText,
 			Year:      releaseTime,
 			MyRating:  row.Properties.Rating110.Number,
-			WatchedAt: row.Properties.WatchDate.Date.Start,
+			WatchedAt: row.Properties.WatchYear.RichText[0].PlainText,
 			Image:     cover,
 			ID:        row.ID,
 			Genres:    genres,

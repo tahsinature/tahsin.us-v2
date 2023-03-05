@@ -28,15 +28,11 @@ type MoviesQuery struct {
 					Color string `json:"color"`
 				} `json:"multi_select"`
 			} `json:"Genre"`
-			WatchDate struct {
-				ID   string `json:"id"`
-				Type string `json:"type"`
-				Date struct {
-					Start    string      `json:"start"`
-					End      interface{} `json:"end"`
-					TimeZone interface{} `json:"time_zone"`
-				} `json:"date"`
-			} `json:"Watch Date"`
+			WatchYear struct {
+				RichText []struct {
+					PlainText string `json:"plain_text"`
+				} `json:"rich_text"`
+			} `json:"Watch Year"`
 			Title struct {
 				Title []struct {
 					PlainText string `json:"plain_text"`
