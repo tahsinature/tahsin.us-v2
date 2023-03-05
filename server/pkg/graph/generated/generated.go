@@ -470,7 +470,7 @@ var sources = []*ast.Source{
 type Movie {
   id: ID!
   title: String!
-  year: Int!
+  year: String!
   myRating: Int!
   genres: [Genre!]!
   image: String!
