@@ -6,7 +6,6 @@ import (
 	"sort"
 
 	"github.com/go-resty/resty/v2"
-	"github.com/jinzhu/now"
 	"github.com/tahsinature/tahsin.us/pkg/config"
 	"github.com/tahsinature/tahsin.us/pkg/graph/model"
 	notion "github.com/tahsinature/tahsin.us/pkg/types/notion_api_response"
@@ -86,6 +85,33 @@ func (n NotionService) getDBResp(dbId string, mappedPointer interface{}) error {
 	return nil
 }
 
+func (n NotionService) GetBasicData() (basicData *model.Basic, err error) {
+	n.checkInit()
+	basicData = &model.Basic{}
+
+	apiResult := notion.BasicDataQuery{}
+	err = n.getDBResp(config.Notion.DB_BasicData, &apiResult)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, row := range apiResult.Results {
+		if row.Properties.Name.Title[0].PlainText == "Full Name" {
+			basicData.FullName = row.Properties.Value.RichText[0].PlainText
+		} else if row.Properties.Name.Title[0].PlainText == "Email" {
+			basicData.Email = row.Properties.Value.RichText[0].PlainText
+		} else if row.Properties.Name.Title[0].PlainText == "Photo" {
+			basicData.Photo = row.Properties.Files.Files[0].File.URL
+		} else if row.Properties.Name.Title[0].PlainText == "About Me" {
+			basicData.AboutMe = row.Properties.Value.RichText[0].PlainText
+		} else {
+			fmt.Println("Unknown property: ", row.Properties.Name.Title[0].PlainText)
+		}
+	}
+
+	return basicData, err
+}
+
 func (n NotionService) GetWatchedMovies() (movies []*model.Movie, err error) {
 	apiResult := notion.MoviesQuery{}
 	err = n.getDBResp(config.Notion.DB_Movies, &apiResult)
@@ -94,7 +120,7 @@ func (n NotionService) GetWatchedMovies() (movies []*model.Movie, err error) {
 	}
 
 	for _, row := range apiResult.Results {
-		releaseTime, _ := now.Parse(row.Properties.ApproxRelease.Date.Start)
+		releaseTime := row.Properties.Release.RichText[0].PlainText
 
 		genres := []*model.Genre{}
 
@@ -114,7 +140,7 @@ func (n NotionService) GetWatchedMovies() (movies []*model.Movie, err error) {
 
 		movies = append(movies, &model.Movie{
 			Title:     row.Properties.Title.Title[0].PlainText,
-			Year:      releaseTime.Year(),
+			Year:      releaseTime,
 			MyRating:  row.Properties.Rating110.Number,
 			WatchedAt: row.Properties.WatchDate.Date.Start,
 			Image:     cover,
@@ -183,11 +209,7 @@ func (n NotionService) GetBooks() (books []*model.Book, err error) {
 	}
 
 	sort.SliceStable(books, func(i, j int) bool {
-		if books[i].IsReading {
-			return true
-		}
-
-		return books[i].MyRating > books[j].MyRating
+		return books[i].IsReading
 	})
 
 	return books, nil

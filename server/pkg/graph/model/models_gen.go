@@ -9,6 +9,13 @@ type Article struct {
 	URL   string `json:"url"`
 }
 
+type Basic struct {
+	FullName string `json:"fullName"`
+	AboutMe  string `json:"aboutMe"`
+	Email    string `json:"email"`
+	Photo    string `json:"photo"`
+}
+
 type Book struct {
 	ID        string   `json:"id"`
 	Title     string   `json:"title"`
@@ -35,7 +42,7 @@ type HumanLanguage struct {
 type Movie struct {
 	ID        string   `json:"id"`
 	Title     string   `json:"title"`
-	Year      int      `json:"year"`
+	Year      string   `json:"year"`
 	MyRating  int      `json:"myRating"`
 	Genres    []*Genre `json:"genres"`
 	Image     string   `json:"image"`
