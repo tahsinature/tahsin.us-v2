@@ -1315,9 +1315,9 @@ func (ec *executionContext) _Movie_year(ctx context.Context, field graphql.Colle
 		}
 		return graphql.Null
 	}
-	res := resTmp.(int)
+	res := resTmp.(string)
 	fc.Result = res
-	return ec.marshalNInt2int(ctx, field.Selections, res)
+	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Movie_myRating(ctx context.Context, field graphql.CollectedField, obj *model.Movie) (ret graphql.Marshaler) {
