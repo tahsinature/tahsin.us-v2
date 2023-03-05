@@ -85,32 +85,32 @@ func (n NotionService) getDBResp(dbId string, mappedPointer interface{}) error {
 	return nil
 }
 
-func (n NotionService) GetBasicData() (basicData *model.Basic, err error) {
-	n.checkInit()
-	basicData = &model.Basic{}
+// func (n NotionService) GetBasicData() (basicData *model.Basic, err error) {
+// 	n.checkInit()
+// 	basicData = &model.Basic{}
 
-	apiResult := notion.BasicDataQuery{}
-	err = n.getDBResp(config.Notion.DB_BasicData, &apiResult)
-	if err != nil {
-		return nil, err
-	}
+// 	apiResult := notion.BasicDataQuery{}
+// 	err = n.getDBResp(config.Notion.DB_BasicData, &apiResult)
+// 	if err != nil {
+// 		return nil, err
+// 	}
 
-	for _, row := range apiResult.Results {
-		if row.Properties.Name.Title[0].PlainText == "Full Name" {
-			basicData.FullName = row.Properties.Value.RichText[0].PlainText
-		} else if row.Properties.Name.Title[0].PlainText == "Email" {
-			basicData.Email = row.Properties.Value.RichText[0].PlainText
-		} else if row.Properties.Name.Title[0].PlainText == "Photo" {
-			basicData.Photo = row.Properties.Files.Files[0].File.URL
-		} else if row.Properties.Name.Title[0].PlainText == "About Me" {
-			basicData.AboutMe = row.Properties.Value.RichText[0].PlainText
-		} else {
-			fmt.Println("Unknown property: ", row.Properties.Name.Title[0].PlainText)
-		}
-	}
+// 	for _, row := range apiResult.Results {
+// 		if row.Properties.Name.Title[0].PlainText == "Full Name" {
+// 			basicData.FullName = row.Properties.Value.RichText[0].PlainText
+// 		} else if row.Properties.Name.Title[0].PlainText == "Email" {
+// 			basicData.Email = row.Properties.Value.RichText[0].PlainText
+// 		} else if row.Properties.Name.Title[0].PlainText == "Photo" {
+// 			basicData.Photo = row.Properties.Files.Files[0].File.URL
+// 		} else if row.Properties.Name.Title[0].PlainText == "About Me" {
+// 			basicData.AboutMe = row.Properties.Value.RichText[0].PlainText
+// 		} else {
+// 			fmt.Println("Unknown property: ", row.Properties.Name.Title[0].PlainText)
+// 		}
+// 	}
 
-	return basicData, err
-}
+// 	return basicData, err
+// }
 
 func (n NotionService) GetWatchedMovies() (movies []*model.Movie, err error) {
 	apiResult := notion.MoviesQuery{}
