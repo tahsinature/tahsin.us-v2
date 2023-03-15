@@ -54,7 +54,7 @@ const ProgrammingLanguages = () => {
       <p>All the technologies, frameworks and tools I use mostly are based on the following languages:</p>
       <br />
 
-      <GraphLoder loading={loading} data={data} error={error}>
+      <GraphLoder loading={loading} data={{}} error={error}>
         <div className={classes.Main}>
           <div className={classes.Holder}>
             {data?.programmingLanguages.map(language => (

@@ -59,15 +59,6 @@ const images = {
     selenium: require('src/assets/images/logos/resized/selenium-logo.png').default,
     socketIO: require('src/assets/images/logos/resized/socket-io-logo.png').default,
     sonarQube: require('src/assets/images/logos/resized/sonarqube-logo.png').default,
-
-    programmingLanguages: {
-      go: require('src/assets/images/logos/resized/go-programming-language.png').default,
-      typescript: require('src/assets/images/logos/resized/typescript-logo.png').default,
-      java: require('src/assets/images/logos/resized/java-logo.png').default,
-      python: require('src/assets/images/logos/resized/python-logo.png').default,
-      javascript: require('src/assets/images/logos/resized/javascript-logo.png').default,
-      bash: require('src/assets/images/logos/resized/bash-logo.png').default,
-    },
   },
 };
 
