@@ -61,9 +61,9 @@ const PublishedWriting = () => {
   const Box = (props: { writing: Response['articles'][0] }) => {
     const [ready, setReady] = useState(false);
     return (
-      <PreLoader className={classes.Box} onClick={() => handleClick(props.writing.url)} isReady={ready}>
+      <PreLoader className={classes.Box} isReady={ready}>
         <div className={classes.BoxContent}>
-          <div className={classes.ImageContainer}>
+          <div className={classes.ImageContainer} onClick={() => handleClick(props.writing.url)}>
             <div className={classes.InnerSkew}>
               <img src={props.writing.cover} alt="article-thumb" onLoad={() => setReady(true)} />
             </div>
