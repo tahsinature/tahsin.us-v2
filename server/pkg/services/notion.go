@@ -57,10 +57,12 @@ func (n *NotionService) Init() {
 			},
 		},
 		config.Notion.DB_Projects: map[string]interface{}{
-			"sorts": []map[string][interface{}{
-				"property":  "SortField",
-				"direction": "ascending",
-			}],
+			"sorts": []map[string]interface{}{
+				{
+					"property":  "SortField",
+					"direction": "ascending",
+				},
+			},
 		},
 	}
 }
