@@ -56,6 +56,12 @@ func (n *NotionService) Init() {
 				},
 			},
 		},
+		config.Notion.DB_Projects: map[string]interface{}{
+			"sorts": []map[string][interface{}{
+				"property":  "SortField",
+				"direction": "ascending",
+			}],
+		},
 	}
 }
 
@@ -111,6 +117,39 @@ func (n NotionService) getDBResp(dbId string, mappedPointer interface{}) error {
 
 // 	return basicData, err
 // }
+
+func (n NotionService) GetProjects() (projects []*model.Project, err error) {
+	apiResult := notion.ProjectsQuery{}
+	err = n.getDBResp(config.Notion.DB_Projects, &apiResult)
+	if err != nil {
+		return projects, err
+	}
+
+	for _, row := range apiResult.Results {
+		url := ""
+
+		if len(row.Properties.Links.Files) > 0 {
+			url = row.Properties.Links.Files[0].External.URL
+		}
+
+		preview := ""
+
+		if len(row.Properties.Preview.Files) > 0 {
+			preview = row.Properties.Preview.Files[0].File.URL
+		}
+
+		projects = append(projects, &model.Project{
+
+			ID:    row.ID,
+			Name:  row.Properties.Name.Title[0].PlainText,
+			URL:   url,
+			Image: preview,
+		})
+	}
+
+	return projects, err
+
+}
 
 func (n NotionService) GetWatchedMovies() (movies []*model.Movie, err error) {
 	apiResult := notion.MoviesQuery{}

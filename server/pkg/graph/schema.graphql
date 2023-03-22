@@ -53,6 +53,13 @@ type Photograph {
   camera: String!
 }
 
+type Project {
+  id: ID!
+  name: String!
+  image: String!
+  url: String!
+}
+
 type Query {
   movies: [Movie!]!
   books: [Book!]!
@@ -60,4 +67,5 @@ type Query {
   programmingLanguages: [ProgrammingLanguage!]!
   humanLanguages: [HumanLanguage!]!
   photographs: [Photograph!]!
+  projects: [Project!]!
 }

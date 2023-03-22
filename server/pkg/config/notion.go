@@ -8,5 +8,6 @@ type notionConfig = struct {
 	DB_ProgrammingLanguages string `validate:"required"`
 	DB_HumanLanguages       string `validate:"required"`
 	DB_Photographs          string `validate:"required"`
+	DB_Projects             string `validate:"required"`
 	Version                 string `validate:"required"`
 }

@@ -69,7 +69,6 @@ func Validate() {
 		CHAT_ID_ME_SERVER: os.Getenv("TELEGRAM_CHAT_ID_ME_SERVER"),
 		SEND:              os.Getenv("TELEGRAM_SEND") == "true",
 	}
-
 	Notion = notionConfig{
 		Auth:                    os.Getenv("NOTION_AUTH"),
 		DB_Movies:               "24a291a3e1954ac199aa89b89e3927c0",
@@ -78,7 +77,9 @@ func Validate() {
 		DB_ProgrammingLanguages: "cbcb72d3e7dc4b76932820924b2235f0",
 		DB_HumanLanguages:       "3bcd0134b20543a28dd77d8599368cb6",
 		DB_Photographs:          "1fd4dd4839e14ec5a855b80b8c065210",
-		Version:                 "2021-08-16",
+		DB_Projects:             "2f79671da473414eaf4ad9fb4b80bc91",
+
+		Version: "2021-08-16",
 	}
 
 	Other = otherConfig{

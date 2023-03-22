@@ -9,13 +9,6 @@ type Article struct {
 	URL   string `json:"url"`
 }
 
-type Basic struct {
-	FullName string `json:"fullName"`
-	AboutMe  string `json:"aboutMe"`
-	Email    string `json:"email"`
-	Photo    string `json:"photo"`
-}
-
 type Book struct {
 	ID        string   `json:"id"`
 	Title     string   `json:"title"`
@@ -62,4 +55,11 @@ type ProgrammingLanguage struct {
 	Name string `json:"name"`
 	Code string `json:"code"`
 	Logo string `json:"logo"`
+}
+
+type Project struct {
+	ID    string `json:"id"`
+	Name  string `json:"name"`
+	Image string `json:"image"`
+	URL   string `json:"url"`
 }

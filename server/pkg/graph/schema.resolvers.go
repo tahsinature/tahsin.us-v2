@@ -65,6 +65,15 @@ func (r *queryResolver) Photographs(ctx context.Context) ([]*model.Photograph, e
 	return data, err
 }
 
+func (r *queryResolver) Projects(ctx context.Context) ([]*model.Project, error) {
+	data, err := services.All.Notion.GetProjects()
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
 // Query returns generated.QueryResolver implementation.
 func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
 
