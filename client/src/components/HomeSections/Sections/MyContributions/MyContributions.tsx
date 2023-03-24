@@ -4,7 +4,6 @@ import { gql, useQuery } from '@apollo/client';
 
 import Header from 'src/components/Header/Header';
 import Section from 'src/components/Section/Section';
-import oldData from 'src/api/data';
 import Cards from 'src/components/Cards/Cards';
 import GraphLoader from 'src/components/GraphLoader/GraphLoader';
 
