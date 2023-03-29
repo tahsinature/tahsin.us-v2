@@ -1,7 +1,7 @@
 const basicData = {
   personal: {
     name: 'Mohammad Tahsin',
-    email: 'work.tahsin@gmail.com',
+    email: 'hello@tahsin.us',
     profession: 'Software Engineer',
     avatar: 'https://avatars2.githubusercontent.com/u/41298152',
   },
