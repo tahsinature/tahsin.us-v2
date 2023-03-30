@@ -13,7 +13,7 @@ const Terminal = (props: {
   }[];
 }) => {
   const tm = new ThemeManager();
-  const [white, setWhite] = useState(tm.currentTheme === 'dark');
+  const [white, setWhite] = useState(tm.currentTheme !== 'dark');
 
   return (
     <div
