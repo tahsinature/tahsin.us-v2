@@ -1,6 +1,6 @@
-FROM node:12.18.4-alpine3.12
+FROM node:18.16.0-alpine3.17
 WORKDIR /app
 COPY package*.json ./
-RUN npm i
+RUN yarn install
 COPY . .
 CMD [ "npm", "start" ]

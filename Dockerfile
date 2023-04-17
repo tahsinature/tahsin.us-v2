@@ -1,7 +1,7 @@
-FROM node:12.18.4-alpine3.12 AS frontend
+FROM node:18.16.0-alpine3.17 AS frontend
 WORKDIR /app
 COPY client/package*.json ./
-RUN ["npm", "i"]
+RUN ["yarn", "install"]
 COPY client .
 COPY client/.env_rename_me .env
 RUN ["npm", "run", "build"]
