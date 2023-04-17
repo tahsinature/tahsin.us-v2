@@ -4,7 +4,7 @@ COPY client/package*.json ./
 RUN ["yarn", "install"]
 COPY client .
 COPY client/.env_rename_me .env
-RUN ["npm", "run", "build"]
+RUN ["yarn", "build"]
 
 
 
