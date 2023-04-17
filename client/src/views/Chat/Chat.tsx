@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import 'react-chat-elements/dist/main.css';
 import SendIcon from '@material-ui/icons/Send';
-import Loader from 'react-loader-spinner';
+// import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 import './Chat.scss';
@@ -71,8 +71,11 @@ const Chat = (props: any) => {
           />
           <div className={classes.RightButton} onClick={handleSendMsg}>
             {isSendingState ? (
-              <Loader type="Watch" color="#00BFFF" height={30} width={30} />
+              <>
+                <p>Loader</p>
+              </>
             ) : (
+              // <Loader type="Watch" color="#00BFFF" height={30} width={30} />
               <div className={[classes.SendIcon, !input ? classes.RightButtonDisable : ''].join(' ')}>
                 <SendIcon />
               </div>
