@@ -30,7 +30,6 @@ const Home = lazy(() => import('src/views/Home/Home'));
 const Chat = lazy(() => import('src/views/Chat/Chat'));
 const List = lazy(() => import('src/views/List/List'));
 const Markdown = lazy(() => import('src/views/Markdown/Markdown'));
-const JSONData = lazy(() => import('src/views/JSONData/JSONData'));
 const Gallery = lazy(() => import('src/views/Gallery/Gallery'));
 const Movies = lazy(() => import('src/views/Movies/Movies'));
 const Music = lazy(() => import('src/views/Music/Music'));
@@ -78,7 +77,6 @@ function App(props: any) {
                   <Route path="/books" component={() => <Books />} />
                   <Route path="/travels" component={() => <Travels />} />
                   <Route path="/md/:id" component={() => <Markdown />} />
-                  <Route path="/json/:id" component={() => <JSONData />} />
                   <Route component={() => <Error404 />} />
                 </Switch>
               </Suspense>
