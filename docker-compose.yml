@@ -52,6 +52,6 @@ services:
       - ./scripts:/app/scripts
     depends_on:
       - backend
-    command: sh -c './scripts/wait-for -t 900 backend:3001 -- npm start'
+    command: sh -c './scripts/wait-for -t 900 backend:3001 -- yarn start'
     ports:
       - "3000:3000"

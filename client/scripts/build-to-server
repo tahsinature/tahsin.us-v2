@@ -4,7 +4,7 @@ const cp = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-cp.execSync('npm run build', { stdio: 'inherit' });
+cp.execSync('yarn build', { stdio: 'inherit' });
 
 const clientBuildDir = path.join(process.cwd(), 'build');
 const serverPublicDir = path.join(process.cwd(), '..', 'server', 'public');
