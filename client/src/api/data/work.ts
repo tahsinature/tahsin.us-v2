@@ -2,7 +2,17 @@ import images from 'src/assets/images';
 
 const work = [
   {
-    timeRange: 'Jun 2022 - Present',
+    timeRange: 'Jun 2023 - Present',
+    company: 'CARFAX',
+    position: 'Software Engineer',
+    logo: images.logogs.work.enpowered,
+    url: 'https://carfax.com/',
+    location: 'Ontario, Canada',
+    specialization: 'AWS, JavaScript, React',
+    techStack: 'foo-stack',
+  },
+  {
+    timeRange: 'Jun 2022 - May 2023',
     company: 'EnPowered',
     position: 'FullStack Engineer',
     logo: images.logogs.work.enpowered,
