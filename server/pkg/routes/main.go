@@ -24,6 +24,7 @@ func Setup() *gin.Engine {
 
 	engine := gin.New()
 	engine.Use(middlewares.Cors)
+	engine.Use(middlewares.ClickJackProtection)
 
 	api := engine.Group("/api")
 	api.Use(middlewares.RequestID)
