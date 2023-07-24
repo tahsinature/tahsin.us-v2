@@ -5,10 +5,10 @@ const work = [
     timeRange: 'Jun 2023 - Present',
     company: 'CARFAX',
     position: 'Software Engineer',
-    logo: images.logogs.work.enpowered,
+    logo: images.logogs.work.carfax,
     url: 'https://carfax.com/',
     location: 'Ontario, Canada',
-    specialization: 'AWS, JavaScript, React',
+    specialization: 'Java, AWS, React',
     techStack: 'foo-stack',
   },
   {

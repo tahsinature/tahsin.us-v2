@@ -16,6 +16,7 @@ const images = {
   logogs: {
     work: {
       enpowered: require('src/assets/images/logos/enpowered-logo.png').default,
+      carfax: require('src/assets/images/logos/carfax-logo.jpg').default,
       rtx: require('src/assets/images/logos/rakuten-travel-logo.png').default,
       halojasa: require('src/assets/images/logos/resized/halojasa-logo.png').default,
       teras: require('src/assets/images/logos/resized/teraswork-logo.jpg').default,
