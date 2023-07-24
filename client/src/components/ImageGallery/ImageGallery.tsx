@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useEffect } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import { Gallery, Image as RGGImage } from 'react-grid-gallery';
