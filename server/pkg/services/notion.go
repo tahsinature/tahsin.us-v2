@@ -153,6 +153,24 @@ func (n NotionService) GetProjects() (projects []*model.Project, err error) {
 
 }
 
+func (n NotionService) GetTodos() (todos []*model.Todo, err error) {
+	apiResult := notion.TodoQuery{}
+	err = n.getDBResp(config.Notion.DB_Todo, &apiResult)
+	if err != nil {
+		return todos, err
+	}
+
+	for _, row := range apiResult.Results {
+		todos = append(todos, &model.Todo{
+			ID:     row.ID,
+			Title:  row.Properties.Name.Title[0].PlainText,
+			Status: row.Properties.Status.Status.Name,
+		})
+	}
+
+	return todos, err
+}
+
 func (n NotionService) GetWatchedMovies() (movies []*model.Movie, err error) {
 	apiResult := notion.MoviesQuery{}
 	err = n.getDBResp(config.Notion.DB_Movies, &apiResult)

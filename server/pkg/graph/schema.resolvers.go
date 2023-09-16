@@ -74,6 +74,15 @@ func (r *queryResolver) Projects(ctx context.Context) ([]*model.Project, error) 
 	return data, nil
 }
 
+func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
+	data, err := services.All.Notion.GetTodos()
+	if err != nil {
+		return nil, err
+	}
+
+	return data, nil
+}
+
 // Query returns generated.QueryResolver implementation.
 func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
 

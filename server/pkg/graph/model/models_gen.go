@@ -63,3 +63,9 @@ type Project struct {
 	Image string `json:"image"`
 	URL   string `json:"url"`
 }
+
+type Todo struct {
+	ID     string `json:"id"`
+	Title  string `json:"title"`
+	Status string `json:"status"`
+}

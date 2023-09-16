@@ -4,6 +4,12 @@ type Genre {
   color: String!
 }
 
+type Todo {
+  id: ID!
+  title: String!
+  status: String!
+}
+
 type Movie {
   id: ID!
   title: String!
@@ -68,4 +74,5 @@ type Query {
   humanLanguages: [HumanLanguage!]!
   photographs: [Photograph!]!
   projects: [Project!]!
+  todos: [Todo]!
 }

@@ -17,3 +17,18 @@
 > ```bash
 > make dependency prepare syncdb run-watch
 > ```
+
+
+### GraphQL
+- Just modify: [schema.graphql](pkg%2Fgraph%2Fschema.graphql)
+- Then goto [schema.resolvers.go](pkg%2Fgraph%2Fschema.resolvers.go) & link appropriate method
+
+
+### GVM
+Go version: `go1.17.2`
+
+Install gvm
+```
+gvm install go1.17.2
+gvm use go1.17.2
+```
