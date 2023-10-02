@@ -1,0 +1,23 @@
+{
+  "name": "server-new",
+  "module": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "scripts": {
+    "dev": "bun --watch run src/index.ts"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@hono/graphql-server": "^0.4.0",
+    "@notionhq/client": "^2.2.13",
+    "@types/node-telegram-bot-api": "^0.61.8",
+    "class-validator": "^0.14.0",
+    "graphql": "^16.8.1",
+    "hono": "^3.7.3",
+    "node-telegram-bot-api": "^0.63.0"
+  }
+}
