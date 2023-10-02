@@ -1,0 +1,78 @@
+type Genre {
+  id: ID!
+  name: String!
+  color: String!
+}
+
+type Todo {
+  id: ID!
+  title: String!
+  status: String!
+}
+
+type Movie {
+  id: ID!
+  title: String!
+  year: String!
+  myRating: Int!
+  genres: [Genre!]!
+  image: String!
+  watchedAt: String!
+}
+
+type ProgrammingLanguage {
+  id: ID!
+  name: String!
+  code: String!
+  logo: String!
+}
+
+type HumanLanguage {
+  id: ID!
+  name: String!
+  subOnLang: String!
+  subOnEng: String!
+}
+
+type Book {
+  id: ID!
+  title: String!
+  author: String!
+  myRating: Int!
+  genres: [Genre!]!
+  cover: String!
+  isReading: Boolean!
+}
+
+type Article {
+  id: ID!
+  title: String!
+  cover: String!
+  url: String!
+}
+
+type Photograph {
+  id: ID!
+  location: String!
+  url: String!
+  caption: String!
+  camera: String!
+}
+
+type Project {
+  id: ID!
+  name: String!
+  image: String!
+  url: String!
+}
+
+type Query {
+  movies: [Movie!]!
+  books: [Book!]!
+  articles: [Article!]!
+  programmingLanguages: [ProgrammingLanguage!]!
+  humanLanguages: [HumanLanguage!]!
+  photographs: [Photograph!]!
+  projects: [Project!]!
+  todos: [Todo]!
+}
